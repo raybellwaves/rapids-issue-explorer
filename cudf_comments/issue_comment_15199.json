@@ -1,0 +1,46 @@
+[
+    {
+        "url": "https://api.github.com/repos/rapidsai/cudf/issues/comments/2148389008",
+        "html_url": "https://github.com/rapidsai/cudf/issues/15199#issuecomment-2148389008",
+        "issue_url": "https://api.github.com/repos/rapidsai/cudf/issues/15199",
+        "id": 2148389008,
+        "node_id": "IC_kwDOBWUGps6ADdCQ",
+        "user": {
+            "login": "esoha-nvidia",
+            "id": 69258779,
+            "node_id": "MDQ6VXNlcjY5MjU4Nzc5",
+            "avatar_url": "https://avatars.githubusercontent.com/u/69258779?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/esoha-nvidia",
+            "html_url": "https://github.com/esoha-nvidia",
+            "followers_url": "https://api.github.com/users/esoha-nvidia/followers",
+            "following_url": "https://api.github.com/users/esoha-nvidia/following{/other_user}",
+            "gists_url": "https://api.github.com/users/esoha-nvidia/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/esoha-nvidia/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/esoha-nvidia/subscriptions",
+            "organizations_url": "https://api.github.com/users/esoha-nvidia/orgs",
+            "repos_url": "https://api.github.com/users/esoha-nvidia/repos",
+            "events_url": "https://api.github.com/users/esoha-nvidia/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/esoha-nvidia/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "created_at": "2024-06-04T20:46:34Z",
+        "updated_at": "2024-06-04T20:46:34Z",
+        "author_association": "CONTRIBUTOR",
+        "body": "I have worries about the run-end encoding.  On the one hand, it is compatible with what pyArrow is doing.  So that's good.  And **run-end** *is* easier to use than **run-length** because you can search through it more quickly.  So there's upside there, too.\r\n\r\nThe downside with run-end encoding, for parquet files, is that they don't compress as well as run-length encoding.  (Because lengths are fewer bits than ends.)  So, it makes sense that the Apache developers of the parquet format selected run-length and not run-end.\r\n\r\nSo the question is, are we still getting a good performance improvement with this plan?  I worry that we won't because the transcoding will be slow, because it is dominated by the memory bandwidth.\r\n\r\n---\r\n\r\nCurrently, without any RLE support, a normal database query runs like this:\r\n\r\n1. Decompress parquet file. (gzip/zstd/etc)\r\n2. Decode RLE columns.\r\n3. Process query on decoded data.\r\n\r\nIn the image below, we can see step 2, where we decode RLE columns (3 of them in this case).  It takes 43.2ms.  And then we perform a group-by operation, which is taking 4.4ms. \r\n![image](https://github.com/rapidsai/cudf/assets/69258779/6c072df4-c95a-48a5-9462-93f749d5fc2e)\r\n\r\nWith RLE processing support, it can run like this:\r\n\r\n1. Decompress parquet file into RLE-encoded data. (gzip/zstd/etc)\r\n2. Process query on RLE-encoded data.\r\n3. Decode RLE columns.\r\n\r\nThe decompression step is the same in both.  The RLE decoding takes roughly the same amount of time in both cases.  However, the processing gets faster.  The decode operations are still taking around the same time, only slightly faster, 40.9ms.  However, the group-by operation itself has gotten much faster, down to 1.48ms.\r\n\r\n![image](https://github.com/rapidsai/cudf/assets/69258779/7c34abab-e7ab-4858-af0d-0da19a267865)\r\n\r\nWith RLE transcoding to REE, I think that it will look like this:\r\n\r\n1. Decompress parquet file into RLE-encoded data. (gzip/zstd/etc)\r\n2. Transcode columns from RLE to REE.\r\n3. Process REE data.\r\n4. Decode REE data.\r\n\r\nI think that the transcoding from RLE to REE will take a similar amount of time as decoding RLE data to regular data would take.  Probably a little faster because there is less memory to write.  I think that the subsequent processing of the REE data, because it's no longer dictionary encoded, will be slower than processing RLE-data but still faster than processing decoded data.  And finally, the decoding of REE data, will be dominated by the memory bandwidth.\r\n\r\nThe extra round-trip on memory will cause the whole thing to be overall slower in my estimation.  I already have code that does all of these steps so I can measure a prototype and see what we get.\r\n",
+        "reactions": {
+            "url": "https://api.github.com/repos/rapidsai/cudf/issues/comments/2148389008/reactions",
+            "total_count": 0,
+            "+1": 0,
+            "-1": 0,
+            "laugh": 0,
+            "hooray": 0,
+            "confused": 0,
+            "heart": 0,
+            "rocket": 0,
+            "eyes": 0
+        },
+        "performed_via_github_app": null
+    }
+]

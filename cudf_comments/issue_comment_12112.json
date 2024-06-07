@@ -1,0 +1,46 @@
+[
+    {
+        "url": "https://api.github.com/repos/rapidsai/cudf/issues/comments/1309456384",
+        "html_url": "https://github.com/rapidsai/cudf/issues/12112#issuecomment-1309456384",
+        "issue_url": "https://api.github.com/repos/rapidsai/cudf/issues/12112",
+        "id": 1309456384,
+        "node_id": "IC_kwDOBWUGps5ODLgA",
+        "user": {
+            "login": "davidwendt",
+            "id": 45795991,
+            "node_id": "MDQ6VXNlcjQ1Nzk1OTkx",
+            "avatar_url": "https://avatars.githubusercontent.com/u/45795991?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/davidwendt",
+            "html_url": "https://github.com/davidwendt",
+            "followers_url": "https://api.github.com/users/davidwendt/followers",
+            "following_url": "https://api.github.com/users/davidwendt/following{/other_user}",
+            "gists_url": "https://api.github.com/users/davidwendt/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/davidwendt/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/davidwendt/subscriptions",
+            "organizations_url": "https://api.github.com/users/davidwendt/orgs",
+            "repos_url": "https://api.github.com/users/davidwendt/repos",
+            "events_url": "https://api.github.com/users/davidwendt/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/davidwendt/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "created_at": "2022-11-09T22:18:29Z",
+        "updated_at": "2022-11-09T22:18:29Z",
+        "author_association": "CONTRIBUTOR",
+        "body": "I'm not sure I agree with this global rule. I noticed that some detail functions are in separate files as needed. What makes sense to group together for the public API may not apply to internal detail functions used by multiple internal components.",
+        "reactions": {
+            "url": "https://api.github.com/repos/rapidsai/cudf/issues/comments/1309456384/reactions",
+            "total_count": 0,
+            "+1": 0,
+            "-1": 0,
+            "laugh": 0,
+            "hooray": 0,
+            "confused": 0,
+            "heart": 0,
+            "rocket": 0,
+            "eyes": 0
+        },
+        "performed_via_github_app": null
+    }
+]

@@ -1,0 +1,46 @@
+[
+    {
+        "url": "https://api.github.com/repos/rapidsai/cudf/issues/comments/1576604705",
+        "html_url": "https://github.com/rapidsai/cudf/issues/13490#issuecomment-1576604705",
+        "issue_url": "https://api.github.com/repos/rapidsai/cudf/issues/13490",
+        "id": 1576604705,
+        "node_id": "IC_kwDOBWUGps5d-RQh",
+        "user": {
+            "login": "wence-",
+            "id": 1126981,
+            "node_id": "MDQ6VXNlcjExMjY5ODE=",
+            "avatar_url": "https://avatars.githubusercontent.com/u/1126981?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/wence-",
+            "html_url": "https://github.com/wence-",
+            "followers_url": "https://api.github.com/users/wence-/followers",
+            "following_url": "https://api.github.com/users/wence-/following{/other_user}",
+            "gists_url": "https://api.github.com/users/wence-/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/wence-/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/wence-/subscriptions",
+            "organizations_url": "https://api.github.com/users/wence-/orgs",
+            "repos_url": "https://api.github.com/users/wence-/repos",
+            "events_url": "https://api.github.com/users/wence-/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/wence-/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "created_at": "2023-06-05T11:19:36Z",
+        "updated_at": "2023-06-05T11:19:36Z",
+        "author_association": "CONTRIBUTOR",
+        "body": "Some (slightly unstructured) thoughts here.\r\n\r\n- The fix for #13479 (https://github.com/rapidsai/cudf/pull/13489) was actually a race condition (so only indirectly uninitialised bits). Unfortunately, it wasn't spotted by compute-sanitizer in synccheck mode, since, AFAICT synccheck only detects hazards on shared memory conflicts, whereas the relevant kernel in this case had a RAW-conflict in global memory.\r\n\r\n- Bitmasks allocations are always a multiple of 64 bytes (512 bits), and any words not contributing to the actual bitmask are left uninitialised. This has a twofold consequence, `memcheck` will not catch off-by-one errors (for most kernels) since the memory is _allocated_; `initcheck` complains on most `memcpy`-like operations because the source array for a bitmask is almost-always partially uninitialised. There is good reason not to fully initialise the extra bits by making an additional kernel call to memzero the relevant parts every time a bitmask is manipulated. However, it _might_ be worthwhile adapting all of the bitmask-manipulation kernels to explicitly zero out the trailing allocation (that doesn't correspond to an actual bitmask). That way we might be able to spot actual bugs due to `initcheck` errors. But see discussion in #12667.",
+        "reactions": {
+            "url": "https://api.github.com/repos/rapidsai/cudf/issues/comments/1576604705/reactions",
+            "total_count": 0,
+            "+1": 0,
+            "-1": 0,
+            "laugh": 0,
+            "hooray": 0,
+            "confused": 0,
+            "heart": 0,
+            "rocket": 0,
+            "eyes": 0
+        },
+        "performed_via_github_app": null
+    }
+]

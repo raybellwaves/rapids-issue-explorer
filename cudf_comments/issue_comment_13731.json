@@ -1,0 +1,46 @@
+[
+    {
+        "url": "https://api.github.com/repos/rapidsai/cudf/issues/comments/1648252183",
+        "html_url": "https://github.com/rapidsai/cudf/issues/13731#issuecomment-1648252183",
+        "issue_url": "https://api.github.com/repos/rapidsai/cudf/issues/13731",
+        "id": 1648252183,
+        "node_id": "IC_kwDOBWUGps5iPlUX",
+        "user": {
+            "login": "wence-",
+            "id": 1126981,
+            "node_id": "MDQ6VXNlcjExMjY5ODE=",
+            "avatar_url": "https://avatars.githubusercontent.com/u/1126981?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/wence-",
+            "html_url": "https://github.com/wence-",
+            "followers_url": "https://api.github.com/users/wence-/followers",
+            "following_url": "https://api.github.com/users/wence-/following{/other_user}",
+            "gists_url": "https://api.github.com/users/wence-/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/wence-/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/wence-/subscriptions",
+            "organizations_url": "https://api.github.com/users/wence-/orgs",
+            "repos_url": "https://api.github.com/users/wence-/repos",
+            "events_url": "https://api.github.com/users/wence-/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/wence-/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "created_at": "2023-07-24T16:41:25Z",
+        "updated_at": "2023-07-24T16:41:25Z",
+        "author_association": "CONTRIBUTOR",
+        "body": "The problem here is kind of that `-` is not defined between string columns, but if one of the values is `pd.NA` then suddenly it becomes defined in pandas land.\r\n\r\nThis might do the trick:\r\n```\r\ndiff --git a/python/cudf/cudf/core/column/string.py b/python/cudf/cudf/core/column/string.py\r\nindex 32538939a6..dbe2da77e6 100644\r\n--- a/python/cudf/cudf/core/column/string.py\r\n+++ b/python/cudf/cudf/core/column/string.py\r\n@@ -5804,6 +5804,8 @@ class StringColumn(column.ColumnBase):\r\n             return NotImplemented\r\n \r\n         if isinstance(other, (StringColumn, str, cudf.Scalar)):\r\n+            if isinstance(other, cudf.Scalar) and other.value is cudf.NA:\r\n+                return column.full(len(self), other, dtype=str)\r\n             if isinstance(other, cudf.Scalar) and other.dtype != \"O\":\r\n                 if op in {\r\n                     \"__eq__\",\r\n```",
+        "reactions": {
+            "url": "https://api.github.com/repos/rapidsai/cudf/issues/comments/1648252183/reactions",
+            "total_count": 0,
+            "+1": 0,
+            "-1": 0,
+            "laugh": 0,
+            "hooray": 0,
+            "confused": 0,
+            "heart": 0,
+            "rocket": 0,
+            "eyes": 0
+        },
+        "performed_via_github_app": null
+    }
+]

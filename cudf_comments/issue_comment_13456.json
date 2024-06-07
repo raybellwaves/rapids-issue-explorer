@@ -1,0 +1,46 @@
+[
+    {
+        "url": "https://api.github.com/repos/rapidsai/cudf/issues/comments/1564380737",
+        "html_url": "https://github.com/rapidsai/cudf/issues/13456#issuecomment-1564380737",
+        "issue_url": "https://api.github.com/repos/rapidsai/cudf/issues/13456",
+        "id": 1564380737,
+        "node_id": "IC_kwDOBWUGps5dPo5B",
+        "user": {
+            "login": "bdice",
+            "id": 3943761,
+            "node_id": "MDQ6VXNlcjM5NDM3NjE=",
+            "avatar_url": "https://avatars.githubusercontent.com/u/3943761?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/bdice",
+            "html_url": "https://github.com/bdice",
+            "followers_url": "https://api.github.com/users/bdice/followers",
+            "following_url": "https://api.github.com/users/bdice/following{/other_user}",
+            "gists_url": "https://api.github.com/users/bdice/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/bdice/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/bdice/subscriptions",
+            "organizations_url": "https://api.github.com/users/bdice/orgs",
+            "repos_url": "https://api.github.com/users/bdice/repos",
+            "events_url": "https://api.github.com/users/bdice/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/bdice/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "created_at": "2023-05-26T13:16:24Z",
+        "updated_at": "2023-05-26T13:16:24Z",
+        "author_association": "CONTRIBUTOR",
+        "body": "The better change in many places might be to eliminate \u201ctake\u201d when used in an \u201cargsort and gather\u201d in favor of a sort-by-key. https://github.com/rapidsai/cudf/pull/13419#discussion_r1203866268",
+        "reactions": {
+            "url": "https://api.github.com/repos/rapidsai/cudf/issues/comments/1564380737/reactions",
+            "total_count": 0,
+            "+1": 0,
+            "-1": 0,
+            "laugh": 0,
+            "hooray": 0,
+            "confused": 0,
+            "heart": 0,
+            "rocket": 0,
+            "eyes": 0
+        },
+        "performed_via_github_app": null
+    }
+]

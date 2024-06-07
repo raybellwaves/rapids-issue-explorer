@@ -1,0 +1,46 @@
+[
+    {
+        "url": "https://api.github.com/repos/rapidsai/cudf/issues/comments/1298750194",
+        "html_url": "https://github.com/rapidsai/cudf/issues/12023#issuecomment-1298750194",
+        "issue_url": "https://api.github.com/repos/rapidsai/cudf/issues/12023",
+        "id": 1298750194,
+        "node_id": "IC_kwDOBWUGps5NaVry",
+        "user": {
+            "login": "shwina",
+            "id": 3190405,
+            "node_id": "MDQ6VXNlcjMxOTA0MDU=",
+            "avatar_url": "https://avatars.githubusercontent.com/u/3190405?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/shwina",
+            "html_url": "https://github.com/shwina",
+            "followers_url": "https://api.github.com/users/shwina/followers",
+            "following_url": "https://api.github.com/users/shwina/following{/other_user}",
+            "gists_url": "https://api.github.com/users/shwina/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/shwina/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/shwina/subscriptions",
+            "organizations_url": "https://api.github.com/users/shwina/orgs",
+            "repos_url": "https://api.github.com/users/shwina/repos",
+            "events_url": "https://api.github.com/users/shwina/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/shwina/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "created_at": "2022-11-01T15:55:42Z",
+        "updated_at": "2022-11-01T15:55:42Z",
+        "author_association": "CONTRIBUTOR",
+        "body": "Just for completeness: libcudf does support cross joins, so we would just need to plumb it through to Python:\r\n\r\nhttps://github.com/rapidsai/cudf/blob/7af461cd0a4b616932e2766050a87d4cc82cd963/cpp/include/cudf/join.hpp#L254\r\n",
+        "reactions": {
+            "url": "https://api.github.com/repos/rapidsai/cudf/issues/comments/1298750194/reactions",
+            "total_count": 1,
+            "+1": 1,
+            "-1": 0,
+            "laugh": 0,
+            "hooray": 0,
+            "confused": 0,
+            "heart": 0,
+            "rocket": 0,
+            "eyes": 0
+        },
+        "performed_via_github_app": null
+    }
+]

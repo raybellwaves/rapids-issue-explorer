@@ -1,0 +1,46 @@
+[
+    {
+        "url": "https://api.github.com/repos/rapidsai/cudf/issues/comments/1553440620",
+        "html_url": "https://github.com/rapidsai/cudf/issues/13332#issuecomment-1553440620",
+        "issue_url": "https://api.github.com/repos/rapidsai/cudf/issues/13332",
+        "id": 1553440620,
+        "node_id": "IC_kwDOBWUGps5cl59s",
+        "user": {
+            "login": "abellina",
+            "id": 1901059,
+            "node_id": "MDQ6VXNlcjE5MDEwNTk=",
+            "avatar_url": "https://avatars.githubusercontent.com/u/1901059?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/abellina",
+            "html_url": "https://github.com/abellina",
+            "followers_url": "https://api.github.com/users/abellina/followers",
+            "following_url": "https://api.github.com/users/abellina/following{/other_user}",
+            "gists_url": "https://api.github.com/users/abellina/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/abellina/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/abellina/subscriptions",
+            "organizations_url": "https://api.github.com/users/abellina/orgs",
+            "repos_url": "https://api.github.com/users/abellina/repos",
+            "events_url": "https://api.github.com/users/abellina/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/abellina/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "created_at": "2023-05-18T18:16:46Z",
+        "updated_at": "2023-05-18T18:16:46Z",
+        "author_association": "CONTRIBUTOR",
+        "body": "Note that there was more feedback https://github.com/rapidsai/cudf/pull/13260#pullrequestreview-1431795631 that it would be good to tackle as a clean up PR separate from this particular issue.",
+        "reactions": {
+            "url": "https://api.github.com/repos/rapidsai/cudf/issues/comments/1553440620/reactions",
+            "total_count": 0,
+            "+1": 0,
+            "-1": 0,
+            "laugh": 0,
+            "hooray": 0,
+            "confused": 0,
+            "heart": 0,
+            "rocket": 0,
+            "eyes": 0
+        },
+        "performed_via_github_app": null
+    }
+]

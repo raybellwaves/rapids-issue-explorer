@@ -1,0 +1,46 @@
+[
+    {
+        "url": "https://api.github.com/repos/rapidsai/cudf/issues/comments/1534501613",
+        "html_url": "https://github.com/rapidsai/cudf/issues/13281#issuecomment-1534501613",
+        "issue_url": "https://api.github.com/repos/rapidsai/cudf/issues/13281",
+        "id": 1534501613,
+        "node_id": "IC_kwDOBWUGps5bdqLt",
+        "user": {
+            "login": "wence-",
+            "id": 1126981,
+            "node_id": "MDQ6VXNlcjExMjY5ODE=",
+            "avatar_url": "https://avatars.githubusercontent.com/u/1126981?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/wence-",
+            "html_url": "https://github.com/wence-",
+            "followers_url": "https://api.github.com/users/wence-/followers",
+            "following_url": "https://api.github.com/users/wence-/following{/other_user}",
+            "gists_url": "https://api.github.com/users/wence-/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/wence-/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/wence-/subscriptions",
+            "organizations_url": "https://api.github.com/users/wence-/orgs",
+            "repos_url": "https://api.github.com/users/wence-/repos",
+            "events_url": "https://api.github.com/users/wence-/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/wence-/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "created_at": "2023-05-04T10:26:44Z",
+        "updated_at": "2023-05-04T10:26:44Z",
+        "author_association": "CONTRIBUTOR",
+        "body": "This looks to be a bug in `cudf.core.column.concat_columns`, which does not preserve the correct dtype-data when concatenating `Interval` columns.\r\n\r\nA simpler reproducer:\r\n```python\r\nimport cudf\r\n\r\np = cudf.cut([1, 2, 3], 3)\r\np2 = cudf.concat([p, p])\r\n```\r\n\r\nWhat's going on? When categorical indices/columns are concatenated, we need to deduce the unique categories of the concatenated result. This is done like so:\r\n```\r\nunique_categories = cudf.core.column.concat_columns([p.categories, p.categories]).unique(preserve_order=True)\r\n```\r\nThese unique categories then have to be merged back with the result columns, which goes through the merge machinery. So far, all fine, _but_ `concat_columns` returns a new column of unique categories that has a different dtype than the inputs for `Interval` dtypes:\r\n\r\n```python\r\nimport pandas as pd\r\nimport cudf\r\nfrom cudf.core.column import concat_columns\r\n\r\ns = cudf.Series([pd.Interval(0.5, 1)]) # an interval series\r\n\r\nprint(s._column.dtype) # => interval[float64, right]\r\ny = concat_columns([s._column])\r\nprint(y.dtype) # => StructDtype({'0': dtype('float64'), '1': dtype('float64')})\r\n```\r\nSo some information has been lost, and when cudf then comes to merge the dtypes of the two columns it fails.\r\n\r\nAside: the reason you see this error when printing with 201 rows but not 200 is that if your dataframe is longer than a certain limit (by default 200 rows) we don't print the whole thing, but rather take a few rows from the start and the end and concatenate them together to show that. It is at the concatenation step that the bug occurs.\r\n\r\n",
+        "reactions": {
+            "url": "https://api.github.com/repos/rapidsai/cudf/issues/comments/1534501613/reactions",
+            "total_count": 0,
+            "+1": 0,
+            "-1": 0,
+            "laugh": 0,
+            "hooray": 0,
+            "confused": 0,
+            "heart": 0,
+            "rocket": 0,
+            "eyes": 0
+        },
+        "performed_via_github_app": null
+    }
+]

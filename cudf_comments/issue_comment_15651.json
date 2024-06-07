@@ -1,0 +1,46 @@
+[
+    {
+        "url": "https://api.github.com/repos/rapidsai/cudf/issues/comments/2118316919",
+        "html_url": "https://github.com/rapidsai/cudf/issues/15651#issuecomment-2118316919",
+        "issue_url": "https://api.github.com/repos/rapidsai/cudf/issues/15651",
+        "id": 2118316919,
+        "node_id": "IC_kwDOBWUGps5-QvN3",
+        "user": {
+            "login": "vyasr",
+            "id": 1538165,
+            "node_id": "MDQ6VXNlcjE1MzgxNjU=",
+            "avatar_url": "https://avatars.githubusercontent.com/u/1538165?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/vyasr",
+            "html_url": "https://github.com/vyasr",
+            "followers_url": "https://api.github.com/users/vyasr/followers",
+            "following_url": "https://api.github.com/users/vyasr/following{/other_user}",
+            "gists_url": "https://api.github.com/users/vyasr/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/vyasr/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/vyasr/subscriptions",
+            "organizations_url": "https://api.github.com/users/vyasr/orgs",
+            "repos_url": "https://api.github.com/users/vyasr/repos",
+            "events_url": "https://api.github.com/users/vyasr/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/vyasr/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "created_at": "2024-05-17T20:12:01Z",
+        "updated_at": "2024-05-17T20:12:01Z",
+        "author_association": "CONTRIBUTOR",
+        "body": "For reference, the broader ask (refactoring parametrization to either prefer fixtures or move GPU data instantiation into the test to avoid materialization on test collection) is being tracked in #9999. Since you have a PR to close this specific issue, I'm happy to leave this one open, though.",
+        "reactions": {
+            "url": "https://api.github.com/repos/rapidsai/cudf/issues/comments/2118316919/reactions",
+            "total_count": 0,
+            "+1": 0,
+            "-1": 0,
+            "laugh": 0,
+            "hooray": 0,
+            "confused": 0,
+            "heart": 0,
+            "rocket": 0,
+            "eyes": 0
+        },
+        "performed_via_github_app": null
+    }
+]

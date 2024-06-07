@@ -1,0 +1,46 @@
+[
+    {
+        "url": "https://api.github.com/repos/rapidsai/cudf/issues/comments/1321866364",
+        "html_url": "https://github.com/rapidsai/cudf/issues/12172#issuecomment-1321866364",
+        "issue_url": "https://api.github.com/repos/rapidsai/cudf/issues/12172",
+        "id": 1321866364,
+        "node_id": "IC_kwDOBWUGps5OyhR8",
+        "user": {
+            "login": "harrism",
+            "id": 783069,
+            "node_id": "MDQ6VXNlcjc4MzA2OQ==",
+            "avatar_url": "https://avatars.githubusercontent.com/u/783069?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/harrism",
+            "html_url": "https://github.com/harrism",
+            "followers_url": "https://api.github.com/users/harrism/followers",
+            "following_url": "https://api.github.com/users/harrism/following{/other_user}",
+            "gists_url": "https://api.github.com/users/harrism/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/harrism/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/harrism/subscriptions",
+            "organizations_url": "https://api.github.com/users/harrism/orgs",
+            "repos_url": "https://api.github.com/users/harrism/repos",
+            "events_url": "https://api.github.com/users/harrism/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/harrism/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "created_at": "2022-11-21T10:54:01Z",
+        "updated_at": "2022-11-21T10:54:01Z",
+        "author_association": "MEMBER",
+        "body": "Seconded.",
+        "reactions": {
+            "url": "https://api.github.com/repos/rapidsai/cudf/issues/comments/1321866364/reactions",
+            "total_count": 0,
+            "+1": 0,
+            "-1": 0,
+            "laugh": 0,
+            "hooray": 0,
+            "confused": 0,
+            "heart": 0,
+            "rocket": 0,
+            "eyes": 0
+        },
+        "performed_via_github_app": null
+    }
+]

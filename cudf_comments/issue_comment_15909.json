@@ -1,0 +1,46 @@
+[
+    {
+        "url": "https://api.github.com/repos/rapidsai/cudf/issues/comments/2146251113",
+        "html_url": "https://github.com/rapidsai/cudf/issues/15909#issuecomment-2146251113",
+        "issue_url": "https://api.github.com/repos/rapidsai/cudf/issues/15909",
+        "id": 2146251113,
+        "node_id": "IC_kwDOBWUGps5_7TFp",
+        "user": {
+            "login": "brandon-b-miller",
+            "id": 53796099,
+            "node_id": "MDQ6VXNlcjUzNzk2MDk5",
+            "avatar_url": "https://avatars.githubusercontent.com/u/53796099?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/brandon-b-miller",
+            "html_url": "https://github.com/brandon-b-miller",
+            "followers_url": "https://api.github.com/users/brandon-b-miller/followers",
+            "following_url": "https://api.github.com/users/brandon-b-miller/following{/other_user}",
+            "gists_url": "https://api.github.com/users/brandon-b-miller/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/brandon-b-miller/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/brandon-b-miller/subscriptions",
+            "organizations_url": "https://api.github.com/users/brandon-b-miller/orgs",
+            "repos_url": "https://api.github.com/users/brandon-b-miller/repos",
+            "events_url": "https://api.github.com/users/brandon-b-miller/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/brandon-b-miller/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "created_at": "2024-06-03T22:45:32Z",
+        "updated_at": "2024-06-03T22:45:32Z",
+        "author_association": "CONTRIBUTOR",
+        "body": "Hi @raybellwaves, so far we haven't done a cuDF only benchmark run to use as a direct comparison. However, we do provide some tools for determining how close to speed of light your particular workflow is. The [cudf.pandas profiler](https://docs.rapids.ai/api/cudf/stable/cudf_pandas/usage/#understanding-performance-the-cudf-pandas-profiler) in particular can highlight areas of a workflow that are hitting a CPU side bottleneck which can negatively impact your performance. Assuming the entire query is able to execute GPU side, the `cudf.pandas` python layer itself is quite lightweight, and I wouldn't expect it to have a significant effect on performance at scale. We'd probably consider such a slowdown to be somewhat buggy behavior so if you encounter that, I'd encourage reporting it as a bug. Sorry I can't offer a better comparison!",
+        "reactions": {
+            "url": "https://api.github.com/repos/rapidsai/cudf/issues/comments/2146251113/reactions",
+            "total_count": 0,
+            "+1": 0,
+            "-1": 0,
+            "laugh": 0,
+            "hooray": 0,
+            "confused": 0,
+            "heart": 0,
+            "rocket": 0,
+            "eyes": 0
+        },
+        "performed_via_github_app": null
+    }
+]

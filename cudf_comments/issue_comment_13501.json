@@ -1,0 +1,46 @@
+[
+    {
+        "url": "https://api.github.com/repos/rapidsai/cudf/issues/comments/1718466158",
+        "html_url": "https://github.com/rapidsai/cudf/issues/13501#issuecomment-1718466158",
+        "issue_url": "https://api.github.com/repos/rapidsai/cudf/issues/13501",
+        "id": 1718466158,
+        "node_id": "IC_kwDOBWUGps5mbbZu",
+        "user": {
+            "login": "etseidl",
+            "id": 25541553,
+            "node_id": "MDQ6VXNlcjI1NTQxNTUz",
+            "avatar_url": "https://avatars.githubusercontent.com/u/25541553?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/etseidl",
+            "html_url": "https://github.com/etseidl",
+            "followers_url": "https://api.github.com/users/etseidl/followers",
+            "following_url": "https://api.github.com/users/etseidl/following{/other_user}",
+            "gists_url": "https://api.github.com/users/etseidl/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/etseidl/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/etseidl/subscriptions",
+            "organizations_url": "https://api.github.com/users/etseidl/orgs",
+            "repos_url": "https://api.github.com/users/etseidl/repos",
+            "events_url": "https://api.github.com/users/etseidl/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/etseidl/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "created_at": "2023-09-14T00:07:10Z",
+        "updated_at": "2023-09-14T00:07:10Z",
+        "author_association": "CONTRIBUTOR",
+        "body": "@GregoryKimball should there be an entry for adding python bindings for the V2 options?",
+        "reactions": {
+            "url": "https://api.github.com/repos/rapidsai/cudf/issues/comments/1718466158/reactions",
+            "total_count": 0,
+            "+1": 0,
+            "-1": 0,
+            "laugh": 0,
+            "hooray": 0,
+            "confused": 0,
+            "heart": 0,
+            "rocket": 0,
+            "eyes": 0
+        },
+        "performed_via_github_app": null
+    }
+]

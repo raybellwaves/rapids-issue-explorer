@@ -1,0 +1,46 @@
+[
+    {
+        "url": "https://api.github.com/repos/rapidsai/cudf/issues/comments/2151094057",
+        "html_url": "https://github.com/rapidsai/cudf/issues/15397#issuecomment-2151094057",
+        "issue_url": "https://api.github.com/repos/rapidsai/cudf/issues/15397",
+        "id": 2151094057,
+        "node_id": "IC_kwDOBWUGps6ANxcp",
+        "user": {
+            "login": "Matt711",
+            "id": 41342305,
+            "node_id": "MDQ6VXNlcjQxMzQyMzA1",
+            "avatar_url": "https://avatars.githubusercontent.com/u/41342305?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/Matt711",
+            "html_url": "https://github.com/Matt711",
+            "followers_url": "https://api.github.com/users/Matt711/followers",
+            "following_url": "https://api.github.com/users/Matt711/following{/other_user}",
+            "gists_url": "https://api.github.com/users/Matt711/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/Matt711/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/Matt711/subscriptions",
+            "organizations_url": "https://api.github.com/users/Matt711/orgs",
+            "repos_url": "https://api.github.com/users/Matt711/repos",
+            "events_url": "https://api.github.com/users/Matt711/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/Matt711/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "created_at": "2024-06-05T22:56:27Z",
+        "updated_at": "2024-06-05T22:56:27Z",
+        "author_association": "CONTRIBUTOR",
+        "body": "> We should collect cases where we observe failures like this and see if we can, at minimum, improve the ways in which the code fails.\r\n\r\nThis is directly related to #15910, so I should also try to catch cases in our proxying scheme where we fallback to Pandas due to NumPy (or other libraries with C APIs).\r\n\r\n> If possible, we can also try to come up with more robust strategies for consuming libraries to use such that they won't accidentally go down such bad code paths with cudf.pandas objects.\r\n\r\nI think once we run the pandas test suite with cudf.pandas debugging modes turned on we should get a better of what kinds of failures we're running in to.",
+        "reactions": {
+            "url": "https://api.github.com/repos/rapidsai/cudf/issues/comments/2151094057/reactions",
+            "total_count": 0,
+            "+1": 0,
+            "-1": 0,
+            "laugh": 0,
+            "hooray": 0,
+            "confused": 0,
+            "heart": 0,
+            "rocket": 0,
+            "eyes": 0
+        },
+        "performed_via_github_app": null
+    }
+]

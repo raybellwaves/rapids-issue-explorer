@@ -1,0 +1,46 @@
+[
+    {
+        "url": "https://api.github.com/repos/rapidsai/cudf/issues/comments/1474122698",
+        "html_url": "https://github.com/rapidsai/cudf/issues/12479#issuecomment-1474122698",
+        "issue_url": "https://api.github.com/repos/rapidsai/cudf/issues/12479",
+        "id": 1474122698,
+        "node_id": "IC_kwDOBWUGps5X3VPK",
+        "user": {
+            "login": "GregoryKimball",
+            "id": 12725111,
+            "node_id": "MDQ6VXNlcjEyNzI1MTEx",
+            "avatar_url": "https://avatars.githubusercontent.com/u/12725111?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/GregoryKimball",
+            "html_url": "https://github.com/GregoryKimball",
+            "followers_url": "https://api.github.com/users/GregoryKimball/followers",
+            "following_url": "https://api.github.com/users/GregoryKimball/following{/other_user}",
+            "gists_url": "https://api.github.com/users/GregoryKimball/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/GregoryKimball/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/GregoryKimball/subscriptions",
+            "organizations_url": "https://api.github.com/users/GregoryKimball/orgs",
+            "repos_url": "https://api.github.com/users/GregoryKimball/repos",
+            "events_url": "https://api.github.com/users/GregoryKimball/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/GregoryKimball/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "created_at": "2023-03-17T16:51:17Z",
+        "updated_at": "2023-03-17T16:51:17Z",
+        "author_association": "CONTRIBUTOR",
+        "body": "Thanks @JacoCheung for sharing these results.\r\n\r\n* Would you please explain the \"features\" and \"row_group\" information in the table you shared above? I'm not sure how to interpret this information. I would like to convert it to a list of the columns and their types to better evaluate your observations.\r\n* Did you perform OS cache clearing before each read operation? Generally we recommend this to make sure the order of read operations does not impact the speed of each operation.\r\n* Would you please share nsys profiles of the 'criteo' data set in particular? (If you like we can follow up on profile or dataset exchange on Slack?)\r\n* It looks like you are using the RMM pool - that's great! How does the CUDA memory resource compare?",
+        "reactions": {
+            "url": "https://api.github.com/repos/rapidsai/cudf/issues/comments/1474122698/reactions",
+            "total_count": 0,
+            "+1": 0,
+            "-1": 0,
+            "laugh": 0,
+            "hooray": 0,
+            "confused": 0,
+            "heart": 0,
+            "rocket": 0,
+            "eyes": 0
+        },
+        "performed_via_github_app": null
+    }
+]

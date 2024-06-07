@@ -1,0 +1,46 @@
+[
+    {
+        "url": "https://api.github.com/repos/rapidsai/cudf/issues/comments/1474196284",
+        "html_url": "https://github.com/rapidsai/cudf/issues/12502#issuecomment-1474196284",
+        "issue_url": "https://api.github.com/repos/rapidsai/cudf/issues/12502",
+        "id": 1474196284,
+        "node_id": "IC_kwDOBWUGps5X3nM8",
+        "user": {
+            "login": "GregoryKimball",
+            "id": 12725111,
+            "node_id": "MDQ6VXNlcjEyNzI1MTEx",
+            "avatar_url": "https://avatars.githubusercontent.com/u/12725111?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/GregoryKimball",
+            "html_url": "https://github.com/GregoryKimball",
+            "followers_url": "https://api.github.com/users/GregoryKimball/followers",
+            "following_url": "https://api.github.com/users/GregoryKimball/following{/other_user}",
+            "gists_url": "https://api.github.com/users/GregoryKimball/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/GregoryKimball/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/GregoryKimball/subscriptions",
+            "organizations_url": "https://api.github.com/users/GregoryKimball/orgs",
+            "repos_url": "https://api.github.com/users/GregoryKimball/repos",
+            "events_url": "https://api.github.com/users/GregoryKimball/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/GregoryKimball/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "created_at": "2023-03-17T17:47:06Z",
+        "updated_at": "2023-03-17T17:47:45Z",
+        "author_association": "CONTRIBUTOR",
+        "body": "Hello @infzo thank you for raising this issue. I reworked your script a bit and found that `groupby().collect()` was about 15-30x slower than `groupby().sum()`. It looks like we are doing a lot of extra work in constructing a list output type in the `collect` case. Perhaps this could be because `collect` is doing a sort-based groupby whereas `sum` is doing a hash-based groupby. Perhaps there is an opportunity to improve libcudf performance here.\r\n\r\nProfile:\r\n![image](https://user-images.githubusercontent.com/12725111/225979786-ba227afe-3158-40e6-ae83-b2dad707bf45.png)\r\n\r\nScript:\r\n<details>\r\n  <summary>issue12502.py</summary>\r\n  import cudf\r\nimport time\r\nimport pandas\r\nimport pyarrow\r\nimport numpy as np\r\nimport nvtx\r\n\r\n\r\ndef create_table(n_rows, n_cols, n_range):\r\n    table = pyarrow.Table.from_pydict(\r\n        {f'col_{c}': np.random.randint(0, n_range, size=[n_rows]) for c in range(n_cols)})\r\n    return table\r\n\r\ndef create_table_with_str(n_rows, n_cols, n_strs, n_strs_cols, n_range):\r\n    prefix = 'xxxx_' * ((n_strs - 10) // 5)\r\n    cdf = create_table(n_rows, n_cols, n_range).to_pandas()\r\n    for i in range(n_strs_cols):\r\n         cdf[f'col_{i}'] = cdf[f'col_{i}'].apply(lambda x: f'{prefix}{x:010}')\r\n    return pyarrow.Table.from_pandas(cdf)    \r\n\r\n\r\ndef stat_cost(str_len):\r\n    tbl = create_table_with_str(2000 * 10000, 2, str_len, 1, 1500 * 10000)\r\n    start = time.time()\r\n    df = cudf.DataFrame.from_arrow(tbl)\r\n    print(f'from arrow cost: {time.time() - start} s, '\r\n          f'bandwidth: {df.shape[0] / 10000 / (time.time() - start)} WRows/s')\r\n\r\n\r\n    df_mb = (df['col_0'].str.byte_count().sum() + df['col_1'].size*8)/1e6\r\n\r\n    with nvtx.annotate(f'groupby.collect {str_len}', color='orange'):\r\n        t0 = time.time()\r\n        result = df.groupby(['col_0']).collect()\r\n        t1 = time.time()\r\n    result_mb = (cudf.Series(result.index).str.byte_count().sum() + result['col_1'].list.len().sum()*8)/1e6\r\n    \r\n    print(f'group by collect cost: {t1 - t0} s, ',\r\n           #f'bandwidth: {df.shape[0] / 10000 / (t1 - t0)} WRows/s',\r\n           f'df MB: {df_mb}',\r\n           f'result MB: {result_mb} MB',\r\n           f'bandwidth: {(df_mb + result_mb) / (t1 - t0)} MB/s',)\r\n    \r\n    with nvtx.annotate(f'groupby.sum {str_len}', color='orange'):\r\n        t0 = time.time()\r\n        result = df.groupby(['col_0']).sum()\r\n        t1 = time.time()\r\n    result_mb = (cudf.Series(result.index).str.byte_count().sum() + result['col_1'].size*8)/1e6\r\n\r\n    print(f'group by sum cost: {t1 - t0} s, ',\r\n           #f'bandwidth: {df.shape[0] / 10000 / (t1 - t0)} WRows/s',\r\n           f'df MB: {df_mb}',\r\n           f'result MB: {result_mb} MB',\r\n           f'bandwidth: {(df_mb + result_mb) / (t1 - t0)} MB/s',)\r\n\r\n\r\nif __name__ == '__main__':\r\n\r\n    print('stat_cost(10)')\r\n    stat_cost(10)\r\n\r\n    print('stat_cost(20)')\r\n    stat_cost(20)\r\n\r\n\r\n    print('stat_cost(30)')\r\n    stat_cost(30)\r\n\r\n\r\n\r\n</details>\r\n\r\n\r\nConsole output:\r\n```\r\nstat_cost(10)\r\nfrom arrow cost: 0.9572014808654785 s, bandwidth: 2089.36701848911 WRows/s\r\ngroup by collect cost: 0.25451135635375977 s,  df MB: 360.0 result MB: 270.49128 MB bandwidth: 2477.2618755905114 MB/s\r\ngroup by sum cost: 0.020035982131958008 s,  df MB: 360.0 result MB: 198.884304 MB bandwidth: 27894.030865028686 MB/s\r\nstat_cost(20)\r\nfrom arrow cost: 0.05078125 s, bandwidth: 39371.675850222004 WRows/s\r\ngroup by collect cost: 0.6336925029754639 s,  df MB: 560.0 result MB: 380.93408 MB bandwidth: 1484.8433200359832 MB/s\r\ngroup by sum cost: 0.020110130310058594 s,  df MB: 560.0 result MB: 309.307712 MB bandwidth: 43227.353507758904 MB/s\r\nstat_cost(30)\r\nfrom arrow cost: 0.0644078254699707 s, bandwidth: 31043.73859721189 WRows/s\r\ngroup by collect cost: 1.0736150741577148 s,  df MB: 760.0 result MB: 491.42092 MB bandwidth: 1165.6141480518793 MB/s\r\ngroup by sum cost: 0.02320241928100586 s,  df MB: 760.0 result MB: 419.799832 MB bandwidth: 50848.13862345021 MB/s\r\n```\r\n\r\nProfile script:\r\n```\r\n/nfs/nsight-systems-2022.5.1/bin/nsys profile -t nvtx,cuda,osrt -f true --stats=true --cuda-memory-usage=true --gpu-metrics-device=0 --output=p python issue12502.py\r\n```\r\n\r\nSystem: \r\n```\r\n23.02 release docker image, A100 GPU, AMD Epyc\r\n```\r\n\r\n",
+        "reactions": {
+            "url": "https://api.github.com/repos/rapidsai/cudf/issues/comments/1474196284/reactions",
+            "total_count": 0,
+            "+1": 0,
+            "-1": 0,
+            "laugh": 0,
+            "hooray": 0,
+            "confused": 0,
+            "heart": 0,
+            "rocket": 0,
+            "eyes": 0
+        },
+        "performed_via_github_app": null
+    }
+]

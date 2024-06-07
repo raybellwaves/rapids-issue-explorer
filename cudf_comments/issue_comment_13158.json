@@ -1,0 +1,46 @@
+[
+    {
+        "url": "https://api.github.com/repos/rapidsai/cudf/issues/comments/1527712989",
+        "html_url": "https://github.com/rapidsai/cudf/issues/13158#issuecomment-1527712989",
+        "issue_url": "https://api.github.com/repos/rapidsai/cudf/issues/13158",
+        "id": 1527712989,
+        "node_id": "IC_kwDOBWUGps5bDwzd",
+        "user": {
+            "login": "wence-",
+            "id": 1126981,
+            "node_id": "MDQ6VXNlcjExMjY5ODE=",
+            "avatar_url": "https://avatars.githubusercontent.com/u/1126981?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/wence-",
+            "html_url": "https://github.com/wence-",
+            "followers_url": "https://api.github.com/users/wence-/followers",
+            "following_url": "https://api.github.com/users/wence-/following{/other_user}",
+            "gists_url": "https://api.github.com/users/wence-/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/wence-/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/wence-/subscriptions",
+            "organizations_url": "https://api.github.com/users/wence-/orgs",
+            "repos_url": "https://api.github.com/users/wence-/repos",
+            "events_url": "https://api.github.com/users/wence-/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/wence-/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "created_at": "2023-04-28T15:09:28Z",
+        "updated_at": "2023-04-28T15:09:28Z",
+        "author_association": "CONTRIBUTOR",
+        "body": "This error occurs somewhere in torch, it calls `cudaPointerGetAttributes` on the pointer passed into torch, but somehow this is returning attribute data that says that the pointer is a host one. I don't know enough about torch to even find the path through `as_tensor` to see how this is happening.",
+        "reactions": {
+            "url": "https://api.github.com/repos/rapidsai/cudf/issues/comments/1527712989/reactions",
+            "total_count": 0,
+            "+1": 0,
+            "-1": 0,
+            "laugh": 0,
+            "hooray": 0,
+            "confused": 0,
+            "heart": 0,
+            "rocket": 0,
+            "eyes": 0
+        },
+        "performed_via_github_app": null
+    }
+]

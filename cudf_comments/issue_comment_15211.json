@@ -1,0 +1,46 @@
+[
+    {
+        "url": "https://api.github.com/repos/rapidsai/cudf/issues/comments/1974062717",
+        "html_url": "https://github.com/rapidsai/cudf/issues/15211#issuecomment-1974062717",
+        "issue_url": "https://api.github.com/repos/rapidsai/cudf/issues/15211",
+        "id": 1974062717,
+        "node_id": "IC_kwDOBWUGps51qc59",
+        "user": {
+            "login": "ayushdg",
+            "id": 19949207,
+            "node_id": "MDQ6VXNlcjE5OTQ5MjA3",
+            "avatar_url": "https://avatars.githubusercontent.com/u/19949207?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/ayushdg",
+            "html_url": "https://github.com/ayushdg",
+            "followers_url": "https://api.github.com/users/ayushdg/followers",
+            "following_url": "https://api.github.com/users/ayushdg/following{/other_user}",
+            "gists_url": "https://api.github.com/users/ayushdg/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/ayushdg/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/ayushdg/subscriptions",
+            "organizations_url": "https://api.github.com/users/ayushdg/orgs",
+            "repos_url": "https://api.github.com/users/ayushdg/repos",
+            "events_url": "https://api.github.com/users/ayushdg/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/ayushdg/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "created_at": "2024-03-01T23:21:22Z",
+        "updated_at": "2024-03-01T23:21:22Z",
+        "author_association": "MEMBER",
+        "body": "Adding to this, testing functions like `to_csv` seem to preserve the unicode encoding as-is while `to_json` converts utf-8 chars to the ascii representation before writing. So I'm guessing libcuDF does support directly writing utf-8 (maybe just not within to_json). ",
+        "reactions": {
+            "url": "https://api.github.com/repos/rapidsai/cudf/issues/comments/1974062717/reactions",
+            "total_count": 0,
+            "+1": 0,
+            "-1": 0,
+            "laugh": 0,
+            "hooray": 0,
+            "confused": 0,
+            "heart": 0,
+            "rocket": 0,
+            "eyes": 0
+        },
+        "performed_via_github_app": null
+    }
+]

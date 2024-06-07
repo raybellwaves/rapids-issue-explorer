@@ -1,0 +1,46 @@
+[
+    {
+        "url": "https://api.github.com/repos/rapidsai/cudf/issues/comments/1577262812",
+        "html_url": "https://github.com/rapidsai/cudf/issues/12903#issuecomment-1577262812",
+        "issue_url": "https://api.github.com/repos/rapidsai/cudf/issues/12903",
+        "id": 1577262812,
+        "node_id": "IC_kwDOBWUGps5eAx7c",
+        "user": {
+            "login": "GregoryKimball",
+            "id": 12725111,
+            "node_id": "MDQ6VXNlcjEyNzI1MTEx",
+            "avatar_url": "https://avatars.githubusercontent.com/u/12725111?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/GregoryKimball",
+            "html_url": "https://github.com/GregoryKimball",
+            "followers_url": "https://api.github.com/users/GregoryKimball/followers",
+            "following_url": "https://api.github.com/users/GregoryKimball/following{/other_user}",
+            "gists_url": "https://api.github.com/users/GregoryKimball/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/GregoryKimball/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/GregoryKimball/subscriptions",
+            "organizations_url": "https://api.github.com/users/GregoryKimball/orgs",
+            "repos_url": "https://api.github.com/users/GregoryKimball/repos",
+            "events_url": "https://api.github.com/users/GregoryKimball/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/GregoryKimball/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "created_at": "2023-06-05T18:21:50Z",
+        "updated_at": "2023-06-05T18:21:50Z",
+        "author_association": "CONTRIBUTOR",
+        "body": "Thank you @kijeungchoi for raising this, we will look into updating the docs or adding this feature.",
+        "reactions": {
+            "url": "https://api.github.com/repos/rapidsai/cudf/issues/comments/1577262812/reactions",
+            "total_count": 0,
+            "+1": 0,
+            "-1": 0,
+            "laugh": 0,
+            "hooray": 0,
+            "confused": 0,
+            "heart": 0,
+            "rocket": 0,
+            "eyes": 0
+        },
+        "performed_via_github_app": null
+    }
+]

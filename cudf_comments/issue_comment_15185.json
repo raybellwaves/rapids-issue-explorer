@@ -1,0 +1,46 @@
+[
+    {
+        "url": "https://api.github.com/repos/rapidsai/cudf/issues/comments/1970280058",
+        "html_url": "https://github.com/rapidsai/cudf/issues/15185#issuecomment-1970280058",
+        "issue_url": "https://api.github.com/repos/rapidsai/cudf/issues/15185",
+        "id": 1970280058,
+        "node_id": "IC_kwDOBWUGps51cBZ6",
+        "user": {
+            "login": "vuule",
+            "id": 16005690,
+            "node_id": "MDQ6VXNlcjE2MDA1Njkw",
+            "avatar_url": "https://avatars.githubusercontent.com/u/16005690?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/vuule",
+            "html_url": "https://github.com/vuule",
+            "followers_url": "https://api.github.com/users/vuule/followers",
+            "following_url": "https://api.github.com/users/vuule/following{/other_user}",
+            "gists_url": "https://api.github.com/users/vuule/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/vuule/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/vuule/subscriptions",
+            "organizations_url": "https://api.github.com/users/vuule/orgs",
+            "repos_url": "https://api.github.com/users/vuule/repos",
+            "events_url": "https://api.github.com/users/vuule/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/vuule/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "created_at": "2024-02-29T02:23:33Z",
+        "updated_at": "2024-02-29T02:23:33Z",
+        "author_association": "CONTRIBUTOR",
+        "body": "An interesting interaction with https://github.com/rapidsai/cudf/issues/15186: datasource can prevent full reading of the next byte range by limiting the returned data to the mapped range. This means that fixing https://github.com/rapidsai/cudf/issues/15186 would increase the IO overhead in this issue.",
+        "reactions": {
+            "url": "https://api.github.com/repos/rapidsai/cudf/issues/comments/1970280058/reactions",
+            "total_count": 0,
+            "+1": 0,
+            "-1": 0,
+            "laugh": 0,
+            "hooray": 0,
+            "confused": 0,
+            "heart": 0,
+            "rocket": 0,
+            "eyes": 0
+        },
+        "performed_via_github_app": null
+    }
+]

@@ -1,0 +1,46 @@
+[
+    {
+        "url": "https://api.github.com/repos/rapidsai/cudf/issues/comments/1792476167",
+        "html_url": "https://github.com/rapidsai/cudf/issues/12588#issuecomment-1792476167",
+        "issue_url": "https://api.github.com/repos/rapidsai/cudf/issues/12588",
+        "id": 1792476167,
+        "node_id": "IC_kwDOBWUGps5q1wQH",
+        "user": {
+            "login": "beckernick",
+            "id": 8457388,
+            "node_id": "MDQ6VXNlcjg0NTczODg=",
+            "avatar_url": "https://avatars.githubusercontent.com/u/8457388?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/beckernick",
+            "html_url": "https://github.com/beckernick",
+            "followers_url": "https://api.github.com/users/beckernick/followers",
+            "following_url": "https://api.github.com/users/beckernick/following{/other_user}",
+            "gists_url": "https://api.github.com/users/beckernick/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/beckernick/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/beckernick/subscriptions",
+            "organizations_url": "https://api.github.com/users/beckernick/orgs",
+            "repos_url": "https://api.github.com/users/beckernick/repos",
+            "events_url": "https://api.github.com/users/beckernick/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/beckernick/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "created_at": "2023-11-03T13:52:12Z",
+        "updated_at": "2023-11-03T13:52:12Z",
+        "author_association": "MEMBER",
+        "body": "A user hit this issue processing a Kaggle dataset. While it's not super common, it is supported in pandas (and Polars).",
+        "reactions": {
+            "url": "https://api.github.com/repos/rapidsai/cudf/issues/comments/1792476167/reactions",
+            "total_count": 0,
+            "+1": 0,
+            "-1": 0,
+            "laugh": 0,
+            "hooray": 0,
+            "confused": 0,
+            "heart": 0,
+            "rocket": 0,
+            "eyes": 0
+        },
+        "performed_via_github_app": null
+    }
+]

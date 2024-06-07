@@ -1,0 +1,46 @@
+[
+    {
+        "url": "https://api.github.com/repos/rapidsai/cudf/issues/comments/1740546487",
+        "html_url": "https://github.com/rapidsai/cudf/issues/14229#issuecomment-1740546487",
+        "issue_url": "https://api.github.com/repos/rapidsai/cudf/issues/14229",
+        "id": 1740546487,
+        "node_id": "IC_kwDOBWUGps5nvqG3",
+        "user": {
+            "login": "wence-",
+            "id": 1126981,
+            "node_id": "MDQ6VXNlcjExMjY5ODE=",
+            "avatar_url": "https://avatars.githubusercontent.com/u/1126981?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/wence-",
+            "html_url": "https://github.com/wence-",
+            "followers_url": "https://api.github.com/users/wence-/followers",
+            "following_url": "https://api.github.com/users/wence-/following{/other_user}",
+            "gists_url": "https://api.github.com/users/wence-/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/wence-/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/wence-/subscriptions",
+            "organizations_url": "https://api.github.com/users/wence-/orgs",
+            "repos_url": "https://api.github.com/users/wence-/repos",
+            "events_url": "https://api.github.com/users/wence-/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/wence-/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "created_at": "2023-09-29T08:57:35Z",
+        "updated_at": "2023-09-29T08:57:35Z",
+        "author_association": "CONTRIBUTOR",
+        "body": "After some (long) discussions, my current position is:\r\n\r\n1. cudf Python should explicitly pass memory resources to all calls to libcudf that require them.\r\n2. It was a mistake to provide defaulted `mr = rmm::mr::get_current_device_resource()` in all functions in libcudf that allocate data, since in the presence of a third-party library that is also using RMM we have no control of the provenance of this pointer and therefore cannot guarantee the lifetime of the memory resource it points to.",
+        "reactions": {
+            "url": "https://api.github.com/repos/rapidsai/cudf/issues/comments/1740546487/reactions",
+            "total_count": 0,
+            "+1": 0,
+            "-1": 0,
+            "laugh": 0,
+            "hooray": 0,
+            "confused": 0,
+            "heart": 0,
+            "rocket": 0,
+            "eyes": 0
+        },
+        "performed_via_github_app": null
+    }
+]

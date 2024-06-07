@@ -1,0 +1,46 @@
+[
+    {
+        "url": "https://api.github.com/repos/rapidsai/cudf/issues/comments/1997790657",
+        "html_url": "https://github.com/rapidsai/cudf/issues/15222#issuecomment-1997790657",
+        "issue_url": "https://api.github.com/repos/rapidsai/cudf/issues/15222",
+        "id": 1997790657,
+        "node_id": "IC_kwDOBWUGps53E93B",
+        "user": {
+            "login": "revans2",
+            "id": 3441321,
+            "node_id": "MDQ6VXNlcjM0NDEzMjE=",
+            "avatar_url": "https://avatars.githubusercontent.com/u/3441321?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/revans2",
+            "html_url": "https://github.com/revans2",
+            "followers_url": "https://api.github.com/users/revans2/followers",
+            "following_url": "https://api.github.com/users/revans2/following{/other_user}",
+            "gists_url": "https://api.github.com/users/revans2/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/revans2/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/revans2/subscriptions",
+            "organizations_url": "https://api.github.com/users/revans2/orgs",
+            "repos_url": "https://api.github.com/users/revans2/repos",
+            "events_url": "https://api.github.com/users/revans2/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/revans2/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "created_at": "2024-03-14T15:58:17Z",
+        "updated_at": "2024-03-14T15:58:17Z",
+        "author_association": "CONTRIBUTOR",
+        "body": "I should add that I have a bit more information about backslash escaping \r\n\r\nhttps://github.com/rapidsai/cudf/issues/15303\r\n\r\nSpecifically if we enable allowing single quotes escaping single quotes also works `\\'` in addition to `\\\"`, or if we allow escaping any character. If we have both of these disabled, then `\\'` is invalid no matter what string it appears in.",
+        "reactions": {
+            "url": "https://api.github.com/repos/rapidsai/cudf/issues/comments/1997790657/reactions",
+            "total_count": 0,
+            "+1": 0,
+            "-1": 0,
+            "laugh": 0,
+            "hooray": 0,
+            "confused": 0,
+            "heart": 0,
+            "rocket": 0,
+            "eyes": 0
+        },
+        "performed_via_github_app": null
+    }
+]

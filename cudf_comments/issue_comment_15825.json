@@ -1,0 +1,46 @@
+[
+    {
+        "url": "https://api.github.com/repos/rapidsai/cudf/issues/comments/2126230238",
+        "html_url": "https://github.com/rapidsai/cudf/issues/15825#issuecomment-2126230238",
+        "issue_url": "https://api.github.com/repos/rapidsai/cudf/issues/15825",
+        "id": 2126230238,
+        "node_id": "IC_kwDOBWUGps5-u7Le",
+        "user": {
+            "login": "etseidl",
+            "id": 25541553,
+            "node_id": "MDQ6VXNlcjI1NTQxNTUz",
+            "avatar_url": "https://avatars.githubusercontent.com/u/25541553?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/etseidl",
+            "html_url": "https://github.com/etseidl",
+            "followers_url": "https://api.github.com/users/etseidl/followers",
+            "following_url": "https://api.github.com/users/etseidl/following{/other_user}",
+            "gists_url": "https://api.github.com/users/etseidl/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/etseidl/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/etseidl/subscriptions",
+            "organizations_url": "https://api.github.com/users/etseidl/orgs",
+            "repos_url": "https://api.github.com/users/etseidl/repos",
+            "events_url": "https://api.github.com/users/etseidl/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/etseidl/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "created_at": "2024-05-23T04:54:09Z",
+        "updated_at": "2024-05-23T04:54:09Z",
+        "author_association": "CONTRIBUTOR",
+        "body": "how about something like\r\n```c++\r\ntemplate <class TrieT>\r\nstruct _parse_options {\r\n  char delimiter;\r\n  ...\r\n  TrieT trie_true;\r\n  TrieT trie_false;\r\n  TrieT trie_na;\r\n  bool multi_delimiter;\r\n};\r\n\r\nusing parse_options_view = _parse_options<cudf::detail::trie_view>;\r\n\r\nstruct parse_options : public _parse_options<cudf::detail::optional_trie> {\r\n  [[nodiscard]] json_inference_options_view json_view() const { ... }\r\n  ...\r\n};\r\n```\r\ncc @vuule ",
+        "reactions": {
+            "url": "https://api.github.com/repos/rapidsai/cudf/issues/comments/2126230238/reactions",
+            "total_count": 0,
+            "+1": 0,
+            "-1": 0,
+            "laugh": 0,
+            "hooray": 0,
+            "confused": 0,
+            "heart": 0,
+            "rocket": 0,
+            "eyes": 0
+        },
+        "performed_via_github_app": null
+    }
+]

@@ -1,0 +1,46 @@
+[
+    {
+        "url": "https://api.github.com/repos/rapidsai/cudf/issues/comments/1646665146",
+        "html_url": "https://github.com/rapidsai/cudf/issues/13684#issuecomment-1646665146",
+        "issue_url": "https://api.github.com/repos/rapidsai/cudf/issues/13684",
+        "id": 1646665146,
+        "node_id": "IC_kwDOBWUGps5iJh26",
+        "user": {
+            "login": "GregoryKimball",
+            "id": 12725111,
+            "node_id": "MDQ6VXNlcjEyNzI1MTEx",
+            "avatar_url": "https://avatars.githubusercontent.com/u/12725111?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/GregoryKimball",
+            "html_url": "https://github.com/GregoryKimball",
+            "followers_url": "https://api.github.com/users/GregoryKimball/followers",
+            "following_url": "https://api.github.com/users/GregoryKimball/following{/other_user}",
+            "gists_url": "https://api.github.com/users/GregoryKimball/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/GregoryKimball/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/GregoryKimball/subscriptions",
+            "organizations_url": "https://api.github.com/users/GregoryKimball/orgs",
+            "repos_url": "https://api.github.com/users/GregoryKimball/repos",
+            "events_url": "https://api.github.com/users/GregoryKimball/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/GregoryKimball/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "created_at": "2023-07-22T20:23:24Z",
+        "updated_at": "2023-07-22T20:23:24Z",
+        "author_association": "CONTRIBUTOR",
+        "body": "Thank you @paleolimbot for your request. We've taken the approach to use libcudf ASTs for processing `read_parquet` filters. We could extend the existing approach to flatten/extract nested types, or perhaps even expand the type support for ASTs. Once we stabilize our IO filtering improvements we will revisit this request.",
+        "reactions": {
+            "url": "https://api.github.com/repos/rapidsai/cudf/issues/comments/1646665146/reactions",
+            "total_count": 0,
+            "+1": 0,
+            "-1": 0,
+            "laugh": 0,
+            "hooray": 0,
+            "confused": 0,
+            "heart": 0,
+            "rocket": 0,
+            "eyes": 0
+        },
+        "performed_via_github_app": null
+    }
+]

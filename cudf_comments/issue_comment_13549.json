@@ -1,0 +1,46 @@
+[
+    {
+        "url": "https://api.github.com/repos/rapidsai/cudf/issues/comments/1590863914",
+        "html_url": "https://github.com/rapidsai/cudf/issues/13549#issuecomment-1590863914",
+        "issue_url": "https://api.github.com/repos/rapidsai/cudf/issues/13549",
+        "id": 1590863914,
+        "node_id": "IC_kwDOBWUGps5e0qgq",
+        "user": {
+            "login": "shwina",
+            "id": 3190405,
+            "node_id": "MDQ6VXNlcjMxOTA0MDU=",
+            "avatar_url": "https://avatars.githubusercontent.com/u/3190405?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/shwina",
+            "html_url": "https://github.com/shwina",
+            "followers_url": "https://api.github.com/users/shwina/followers",
+            "following_url": "https://api.github.com/users/shwina/following{/other_user}",
+            "gists_url": "https://api.github.com/users/shwina/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/shwina/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/shwina/subscriptions",
+            "organizations_url": "https://api.github.com/users/shwina/orgs",
+            "repos_url": "https://api.github.com/users/shwina/repos",
+            "events_url": "https://api.github.com/users/shwina/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/shwina/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "created_at": "2023-06-14T09:47:55Z",
+        "updated_at": "2023-06-14T09:47:55Z",
+        "author_association": "CONTRIBUTOR",
+        "body": "Hi @gucasbrg. Can you describe what exactly you'd like to do with `multiprocessing` + `cudf`? Are you looking to chunk your data up and hand off each chunk to a separate process? If so, perhaps you could use `dask`: https://medium.com/rapids-ai/easy-cpu-gpu-arrays-and-dataframes-run-your-dask-code-where-youd-like-e349d92351d?\r\n\r\n---\r\n\r\nI modified your script as follows:\r\n\r\n```python\r\nimport cudf\r\nfrom multiprocessing import get_context\r\nimport time\r\npdf = cudf.DataFrame({\r\n        'low':[i for i in range(1000)],\r\n        'close':[i for i in range(1000)],\r\n    })\r\n\r\ndef get_df(idx):\r\n    return idx.rolling(5).mean()\r\n\r\nif __name__ == \"__main__\":\r\n    ctx = get_context(\"spawn\")\r\n    for num in range(1, 10):\r\n        with ctx.Pool(num) as pool:\r\n            start = time.time()\r\n            cudf.concat(pool.map(get_df, [pdf.low[i:] for i in range(100, 200)]))\r\n            print(time.time()-start)\r\n```\r\n\r\nAnd the output is:\r\n\r\n```\r\n2.704458713531494\r\n2.7769949436187744\r\n2.8762805461883545\r\n2.846607208251953\r\n3.157398223876953\r\n3.077711582183838\r\n2.9359912872314453\r\n3.0212976932525635\r\n3.5092809200286865\r\n3.669832229614258\r\n```\r\n\r\nCould you please post your result for the same script? ",
+        "reactions": {
+            "url": "https://api.github.com/repos/rapidsai/cudf/issues/comments/1590863914/reactions",
+            "total_count": 0,
+            "+1": 0,
+            "-1": 0,
+            "laugh": 0,
+            "hooray": 0,
+            "confused": 0,
+            "heart": 0,
+            "rocket": 0,
+            "eyes": 0
+        },
+        "performed_via_github_app": null
+    }
+]

@@ -1,0 +1,46 @@
+[
+    {
+        "url": "https://api.github.com/repos/rapidsai/cudf/issues/comments/1702568966",
+        "html_url": "https://github.com/rapidsai/cudf/issues/14027#issuecomment-1702568966",
+        "issue_url": "https://api.github.com/repos/rapidsai/cudf/issues/14027",
+        "id": 1702568966,
+        "node_id": "IC_kwDOBWUGps5leyQG",
+        "user": {
+            "login": "wence-",
+            "id": 1126981,
+            "node_id": "MDQ6VXNlcjExMjY5ODE=",
+            "avatar_url": "https://avatars.githubusercontent.com/u/1126981?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/wence-",
+            "html_url": "https://github.com/wence-",
+            "followers_url": "https://api.github.com/users/wence-/followers",
+            "following_url": "https://api.github.com/users/wence-/following{/other_user}",
+            "gists_url": "https://api.github.com/users/wence-/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/wence-/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/wence-/subscriptions",
+            "organizations_url": "https://api.github.com/users/wence-/orgs",
+            "repos_url": "https://api.github.com/users/wence-/repos",
+            "events_url": "https://api.github.com/users/wence-/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/wence-/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "created_at": "2023-09-01T11:00:44Z",
+        "updated_at": "2023-09-01T11:00:44Z",
+        "author_association": "CONTRIBUTOR",
+        "body": "Hmmm, this opens a can of worms:\r\n```\r\nimport cudf\r\ndt = cudf.CategoricalDtype([\"a\", \"b\", \"c\"])\r\nhash(dt) # TypeError\r\nhash(dt.categories) # works, dt.categories is a `StringIndex`, so that's immutable, so hashing is ok.\r\nhash(dt.categories._column) # works?! This seems bad, since a column is _not_ immutable\r\nhash(cudf.StringIndex([\"a\", \"b\", \"c\"])) == hash(cudf.StringIndex([\"a\", \"b\", \"c\"])) # False, uh-oh\r\n```\r\n\r\nWhat is going on?\r\n\r\nRecall that if you define no dunder ops on a class, then you get `__eq__` and `__hash__` from `object`, which uses `id` for equality and a hash of `id` for `__hash__`.\r\n\r\nIf you define a class that sets `__eq__` but not `__hash__` then the interpreter automatically sets `__hash__ = None`, to indicate that the object is unhashable. Since it can't automatically construct a hash function that satisfies the invariant `x == y => hash(x) == hash(y) and x is y`. See https://docs.python.org/3/reference/datamodel.html#object.__hash__\r\n\r\n`Column`s and `Index`s have `__eq__` defined, so why can we hash them? Turns out the `__eq__` method is set programmatically through a mixin class, through `__init_subclass__`, and it appears that this is sufficiently dynamic that the interpreter doesn't spot the `__eq__` method and set `__hash__ = None`.\r\n\r\n`CategoricalDtype` explicitly defines `__eq__`, hence we get `__hash__ = None`.\r\n\r\nTo hash this we need to compute a deterministic hash of the categories, and mix with the ordered flag (as you note). This requires, ideally, a libcudf implementation of a hash of a column of values: right now all of the hashes that are implemented produce a per-row hash.",
+        "reactions": {
+            "url": "https://api.github.com/repos/rapidsai/cudf/issues/comments/1702568966/reactions",
+            "total_count": 0,
+            "+1": 0,
+            "-1": 0,
+            "laugh": 0,
+            "hooray": 0,
+            "confused": 0,
+            "heart": 0,
+            "rocket": 0,
+            "eyes": 0
+        },
+        "performed_via_github_app": null
+    }
+]

@@ -1,0 +1,46 @@
+[
+    {
+        "url": "https://api.github.com/repos/rapidsai/cudf/issues/comments/1429946388",
+        "html_url": "https://github.com/rapidsai/cudf/issues/12774#issuecomment-1429946388",
+        "issue_url": "https://api.github.com/repos/rapidsai/cudf/issues/12774",
+        "id": 1429946388,
+        "node_id": "IC_kwDOBWUGps5VO0AU",
+        "user": {
+            "login": "bdice",
+            "id": 3943761,
+            "node_id": "MDQ6VXNlcjM5NDM3NjE=",
+            "avatar_url": "https://avatars.githubusercontent.com/u/3943761?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/bdice",
+            "html_url": "https://github.com/bdice",
+            "followers_url": "https://api.github.com/users/bdice/followers",
+            "following_url": "https://api.github.com/users/bdice/following{/other_user}",
+            "gists_url": "https://api.github.com/users/bdice/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/bdice/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/bdice/subscriptions",
+            "organizations_url": "https://api.github.com/users/bdice/orgs",
+            "repos_url": "https://api.github.com/users/bdice/repos",
+            "events_url": "https://api.github.com/users/bdice/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/bdice/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "created_at": "2023-02-14T15:36:42Z",
+        "updated_at": "2023-02-14T15:38:32Z",
+        "author_association": "CONTRIBUTOR",
+        "body": "This is a duplicate of https://github.com/rapidsai/cudf/issues/12551 but this issue summarizes the problem well and has useful context / code snippets for validation. I believe the person who posted that diagnosed the reason for the slowness correctly:\r\n\r\n> I think it calculates the whole window every time rather than just replacing the first and last elements of the moving window of 400000 elements, causing this delay whereas pandas does not do it that way.\r\n\r\nWe would need to investigate some kind of cooperative groups or consider the use of thrust/cub if appropriate (and not already used). I'm not sure how much of that we can combine with the JIT approaches to custom rolling aggregations.",
+        "reactions": {
+            "url": "https://api.github.com/repos/rapidsai/cudf/issues/comments/1429946388/reactions",
+            "total_count": 0,
+            "+1": 0,
+            "-1": 0,
+            "laugh": 0,
+            "hooray": 0,
+            "confused": 0,
+            "heart": 0,
+            "rocket": 0,
+            "eyes": 0
+        },
+        "performed_via_github_app": null
+    }
+]

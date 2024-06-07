@@ -1,0 +1,46 @@
+[
+    {
+        "url": "https://api.github.com/repos/rapidsai/cudf/issues/comments/1597416143",
+        "html_url": "https://github.com/rapidsai/cudf/issues/13581#issuecomment-1597416143",
+        "issue_url": "https://api.github.com/repos/rapidsai/cudf/issues/13581",
+        "id": 1597416143,
+        "node_id": "IC_kwDOBWUGps5fNqLP",
+        "user": {
+            "login": "wence-",
+            "id": 1126981,
+            "node_id": "MDQ6VXNlcjExMjY5ODE=",
+            "avatar_url": "https://avatars.githubusercontent.com/u/1126981?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/wence-",
+            "html_url": "https://github.com/wence-",
+            "followers_url": "https://api.github.com/users/wence-/followers",
+            "following_url": "https://api.github.com/users/wence-/following{/other_user}",
+            "gists_url": "https://api.github.com/users/wence-/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/wence-/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/wence-/subscriptions",
+            "organizations_url": "https://api.github.com/users/wence-/orgs",
+            "repos_url": "https://api.github.com/users/wence-/repos",
+            "events_url": "https://api.github.com/users/wence-/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/wence-/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "created_at": "2023-06-19T15:51:16Z",
+        "updated_at": "2023-06-19T15:51:25Z",
+        "author_association": "CONTRIBUTOR",
+        "body": "This needs to happen in the `cudf` implementation of `merge` (which doesn't support `indicator` either). The implementation is relatively straightforward. You carry around an extra column that is `2^0` for the left frame, `2^1` for the right frame. Then you merge, and sum those columns (treating null as zero). Where this result column is `2^0`, the input only appeared in the left frame, where it is `2^1` it only appeared in the right frame, if it's `3`, it appeared in both. This can be encoded as a categorical column.\r\n\r\nCare to try implementing that (relevant code is in `cudf/python/core/join/join.py`)?",
+        "reactions": {
+            "url": "https://api.github.com/repos/rapidsai/cudf/issues/comments/1597416143/reactions",
+            "total_count": 1,
+            "+1": 0,
+            "-1": 0,
+            "laugh": 0,
+            "hooray": 0,
+            "confused": 0,
+            "heart": 1,
+            "rocket": 0,
+            "eyes": 0
+        },
+        "performed_via_github_app": null
+    }
+]

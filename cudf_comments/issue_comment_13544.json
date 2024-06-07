@@ -1,0 +1,46 @@
+[
+    {
+        "url": "https://api.github.com/repos/rapidsai/cudf/issues/comments/1584944136",
+        "html_url": "https://github.com/rapidsai/cudf/issues/13544#issuecomment-1584944136",
+        "issue_url": "https://api.github.com/repos/rapidsai/cudf/issues/13544",
+        "id": 1584944136,
+        "node_id": "IC_kwDOBWUGps5eeFQI",
+        "user": {
+            "login": "vyasr",
+            "id": 1538165,
+            "node_id": "MDQ6VXNlcjE1MzgxNjU=",
+            "avatar_url": "https://avatars.githubusercontent.com/u/1538165?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/vyasr",
+            "html_url": "https://github.com/vyasr",
+            "followers_url": "https://api.github.com/users/vyasr/followers",
+            "following_url": "https://api.github.com/users/vyasr/following{/other_user}",
+            "gists_url": "https://api.github.com/users/vyasr/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/vyasr/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/vyasr/subscriptions",
+            "organizations_url": "https://api.github.com/users/vyasr/orgs",
+            "repos_url": "https://api.github.com/users/vyasr/repos",
+            "events_url": "https://api.github.com/users/vyasr/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/vyasr/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "created_at": "2023-06-09T17:51:49Z",
+        "updated_at": "2023-06-09T17:51:49Z",
+        "author_association": "CONTRIBUTOR",
+        "body": "100% agree. I've made very similar points on multiple occasions (everywhere from design documents to issues) specifically focused on: 1) the performance impacts of multiple validation, 2) the correctness impacts of inconsistent and hard to track validation, and 3) the readability impacts of the resulting spaghetti code. One of the most pervasive issues is simply tracking calls to `as_column`, which on certain particularly convoluted code paths can happen a dozen times to the same inputs. \r\n\r\nI like the approach that you're proposing. It is analogous in many ways to the approach I've taken in various specific aspects of refactoring. For instance, here are a handful of PRs around an extended binops refactor that essentially implement more internal APIs that are allowed to make assumptions about input sanitization: https://github.com/rapidsai/cudf/pull/10509, https://github.com/rapidsai/cudf/pull/10563, https://github.com/rapidsai/cudf/pull/10421, https://github.com/rapidsai/cudf/pull/8598. Certainly not sufficient, and not entirely the same as what you're proposing, but along the same lines and aimed at tackling the same types of problems. Using types to formalize the structures would go a long way to expressing the dispatch cleanly.",
+        "reactions": {
+            "url": "https://api.github.com/repos/rapidsai/cudf/issues/comments/1584944136/reactions",
+            "total_count": 0,
+            "+1": 0,
+            "-1": 0,
+            "laugh": 0,
+            "hooray": 0,
+            "confused": 0,
+            "heart": 0,
+            "rocket": 0,
+            "eyes": 0
+        },
+        "performed_via_github_app": null
+    }
+]

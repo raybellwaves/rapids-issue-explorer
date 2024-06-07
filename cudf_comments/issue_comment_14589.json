@@ -1,0 +1,46 @@
+[
+    {
+        "url": "https://api.github.com/repos/rapidsai/cudf/issues/comments/1978713903",
+        "html_url": "https://github.com/rapidsai/cudf/issues/14589#issuecomment-1978713903",
+        "issue_url": "https://api.github.com/repos/rapidsai/cudf/issues/14589",
+        "id": 1978713903,
+        "node_id": "IC_kwDOBWUGps518Mcv",
+        "user": {
+            "login": "wence-",
+            "id": 1126981,
+            "node_id": "MDQ6VXNlcjExMjY5ODE=",
+            "avatar_url": "https://avatars.githubusercontent.com/u/1126981?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/wence-",
+            "html_url": "https://github.com/wence-",
+            "followers_url": "https://api.github.com/users/wence-/followers",
+            "following_url": "https://api.github.com/users/wence-/following{/other_user}",
+            "gists_url": "https://api.github.com/users/wence-/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/wence-/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/wence-/subscriptions",
+            "organizations_url": "https://api.github.com/users/wence-/orgs",
+            "repos_url": "https://api.github.com/users/wence-/repos",
+            "events_url": "https://api.github.com/users/wence-/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/wence-/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "created_at": "2024-03-05T12:52:41Z",
+        "updated_at": "2024-03-05T12:52:41Z",
+        "author_association": "CONTRIBUTOR",
+        "body": "Apologies for the slowness of this response.\r\n\r\nDo you definitely want to go through cudf, or is it just a (semi) convenient route to loading parquet data into device memory? And, as a follow up, do you always start with parquet data, or is that again a \"convenient\" starting point?\r\n\r\nWe could plausibly support this new type, now that it is standardised in C++ arrow (rather than just pyarrow). However we probably wouldn't have any algorithms attached to it in the first instance.\r\n\r\nI'm also a little confused as to where you want zero-copy to occur. For example you rule out zarr+kvikio because:\r\n\r\n> [....] don't think zero copy between cpu and gpu is supported https://xarray.dev/blog/xarray-kvikio\r\n\r\nHowever, if you had a pyarrow table in CPU memory, converting it to a cudf dataframe would also not be zero-copy: the data must be copied from host to device memory (I brush under the table for now unified, or managed, cuda memory since that has some non-trivial performance implications).\r\n\r\n",
+        "reactions": {
+            "url": "https://api.github.com/repos/rapidsai/cudf/issues/comments/1978713903/reactions",
+            "total_count": 0,
+            "+1": 0,
+            "-1": 0,
+            "laugh": 0,
+            "hooray": 0,
+            "confused": 0,
+            "heart": 0,
+            "rocket": 0,
+            "eyes": 0
+        },
+        "performed_via_github_app": null
+    }
+]
