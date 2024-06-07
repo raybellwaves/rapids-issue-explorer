@@ -1,0 +1,46 @@
+[
+    {
+        "url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/comments/731377678",
+        "html_url": "https://github.com/NVIDIA/spark-rapids/issues/1143#issuecomment-731377678",
+        "issue_url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/1143",
+        "id": 731377678,
+        "node_id": "MDEyOklzc3VlQ29tbWVudDczMTM3NzY3OA==",
+        "user": {
+            "login": "razajafri",
+            "id": 8813002,
+            "node_id": "MDQ6VXNlcjg4MTMwMDI=",
+            "avatar_url": "https://avatars.githubusercontent.com/u/8813002?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/razajafri",
+            "html_url": "https://github.com/razajafri",
+            "followers_url": "https://api.github.com/users/razajafri/followers",
+            "following_url": "https://api.github.com/users/razajafri/following{/other_user}",
+            "gists_url": "https://api.github.com/users/razajafri/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/razajafri/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/razajafri/subscriptions",
+            "organizations_url": "https://api.github.com/users/razajafri/orgs",
+            "repos_url": "https://api.github.com/users/razajafri/repos",
+            "events_url": "https://api.github.com/users/razajafri/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/razajafri/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "created_at": "2020-11-20T19:56:04Z",
+        "updated_at": "2020-11-20T19:56:04Z",
+        "author_association": "COLLABORATOR",
+        "body": "This is a follow on to our work on Spark Cache that was done as a part of #444 ",
+        "reactions": {
+            "url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/comments/731377678/reactions",
+            "total_count": 0,
+            "+1": 0,
+            "-1": 0,
+            "laugh": 0,
+            "hooray": 0,
+            "confused": 0,
+            "heart": 0,
+            "rocket": 0,
+            "eyes": 0
+        },
+        "performed_via_github_app": null
+    }
+]

@@ -1,0 +1,46 @@
+[
+    {
+        "url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/comments/2096821085",
+        "html_url": "https://github.com/NVIDIA/spark-rapids/issues/10687#issuecomment-2096821085",
+        "issue_url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/10687",
+        "id": 2096821085,
+        "node_id": "IC_kwDOD7z77c58-vNd",
+        "user": {
+            "login": "NVnavkumar",
+            "id": 97137715,
+            "node_id": "U_kgDOBco0Mw",
+            "avatar_url": "https://avatars.githubusercontent.com/u/97137715?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/NVnavkumar",
+            "html_url": "https://github.com/NVnavkumar",
+            "followers_url": "https://api.github.com/users/NVnavkumar/followers",
+            "following_url": "https://api.github.com/users/NVnavkumar/following{/other_user}",
+            "gists_url": "https://api.github.com/users/NVnavkumar/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/NVnavkumar/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/NVnavkumar/subscriptions",
+            "organizations_url": "https://api.github.com/users/NVnavkumar/orgs",
+            "repos_url": "https://api.github.com/users/NVnavkumar/repos",
+            "events_url": "https://api.github.com/users/NVnavkumar/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/NVnavkumar/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "created_at": "2024-05-06T20:09:46Z",
+        "updated_at": "2024-05-06T20:13:54Z",
+        "author_association": "COLLABORATOR",
+        "body": "See https://github.com/apache/spark/commit/6ee662c28ff\r\n\r\nThe default collation can be changed with `spark.sql.session.collation.default`. It's possible that we might have to support explicitly UTF8_BINARY (the original default) as the only collation type for strings on the GPU.",
+        "reactions": {
+            "url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/comments/2096821085/reactions",
+            "total_count": 0,
+            "+1": 0,
+            "-1": 0,
+            "laugh": 0,
+            "hooray": 0,
+            "confused": 0,
+            "heart": 0,
+            "rocket": 0,
+            "eyes": 0
+        },
+        "performed_via_github_app": null
+    }
+]

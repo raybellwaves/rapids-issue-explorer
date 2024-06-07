@@ -1,0 +1,46 @@
+[
+    {
+        "url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/comments/883529388",
+        "html_url": "https://github.com/NVIDIA/spark-rapids/issues/2931#issuecomment-883529388",
+        "issue_url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/2931",
+        "id": 883529388,
+        "node_id": "IC_kwDOD7z77c40qZas",
+        "user": {
+            "login": "andygrove",
+            "id": 934084,
+            "node_id": "MDQ6VXNlcjkzNDA4NA==",
+            "avatar_url": "https://avatars.githubusercontent.com/u/934084?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/andygrove",
+            "html_url": "https://github.com/andygrove",
+            "followers_url": "https://api.github.com/users/andygrove/followers",
+            "following_url": "https://api.github.com/users/andygrove/following{/other_user}",
+            "gists_url": "https://api.github.com/users/andygrove/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/andygrove/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/andygrove/subscriptions",
+            "organizations_url": "https://api.github.com/users/andygrove/orgs",
+            "repos_url": "https://api.github.com/users/andygrove/repos",
+            "events_url": "https://api.github.com/users/andygrove/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/andygrove/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "created_at": "2021-07-20T16:28:49Z",
+        "updated_at": "2021-07-20T16:28:49Z",
+        "author_association": "CONTRIBUTOR",
+        "body": "CSV parsing uses a different code path to our CAST logic and does not have special handling for things like ansi mode or timeParserPolicy. Also, parsing from all non-string types is disabled by default and the documentation points out the reasons for this.\r\n\r\nIf we did want to support ansi/legacy in CSV parsing than we could consider a different approach where we just read strings from the csv file and then wrap in a projection that casts columns from string to another type.",
+        "reactions": {
+            "url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/comments/883529388/reactions",
+            "total_count": 0,
+            "+1": 0,
+            "-1": 0,
+            "laugh": 0,
+            "hooray": 0,
+            "confused": 0,
+            "heart": 0,
+            "rocket": 0,
+            "eyes": 0
+        },
+        "performed_via_github_app": null
+    }
+]

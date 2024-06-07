@@ -1,0 +1,46 @@
+[
+    {
+        "url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/comments/2132589677",
+        "html_url": "https://github.com/NVIDIA/spark-rapids/issues/8750#issuecomment-2132589677",
+        "issue_url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/8750",
+        "id": 2132589677,
+        "node_id": "IC_kwDOD7z77c5_HLxt",
+        "user": {
+            "login": "thirtiseven",
+            "id": 7326403,
+            "node_id": "MDQ6VXNlcjczMjY0MDM=",
+            "avatar_url": "https://avatars.githubusercontent.com/u/7326403?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/thirtiseven",
+            "html_url": "https://github.com/thirtiseven",
+            "followers_url": "https://api.github.com/users/thirtiseven/followers",
+            "following_url": "https://api.github.com/users/thirtiseven/following{/other_user}",
+            "gists_url": "https://api.github.com/users/thirtiseven/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/thirtiseven/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/thirtiseven/subscriptions",
+            "organizations_url": "https://api.github.com/users/thirtiseven/orgs",
+            "repos_url": "https://api.github.com/users/thirtiseven/repos",
+            "events_url": "https://api.github.com/users/thirtiseven/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/thirtiseven/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "created_at": "2024-05-27T03:48:02Z",
+        "updated_at": "2024-05-30T07:53:49Z",
+        "author_association": "COLLABORATOR",
+        "body": "A Spark UT failed related to `substring_index`:\r\n```\r\n'Rapids - string substring_index function' offload to RAPIDS\r\n- Rapids - string substring_index function *** FAILED ***\r\n  org.apache.spark.SparkException: Job aborted due to stage failure: Task 1 in stage 705.0 failed 1 times, most recent failure: Lost task 1.0 in stage 705.0 (TID 1411) (spark-haoyang executor driver): java.lang.AssertionError:  value at 0 is null\r\n\tat ai.rapids.cudf.HostColumnVectorCore.assertsForGet(HostColumnVectorCore.java:230)\r\n\tat ai.rapids.cudf.HostColumnVectorCore.getUTF8(HostColumnVectorCore.java:364)\r\n\tat com.nvidia.spark.rapids.RapidsHostColumnVectorCore.getUTF8String(RapidsHostColumnVectorCore.java:183)\r\n\tat org.apache.spark.sql.vectorized.ColumnarBatchRow.getUTF8String(ColumnarBatchRow.java:126)\r\n\tat org.apache.spark.sql.catalyst.expressions.GeneratedClass$SpecificUnsafeProjection.apply(Unknown Source)\r\n\tat org.apache.spark.sql.catalyst.expressions.GeneratedClass$SpecificUnsafeProjection.apply(Unknown Source)\r\n\tat scala.collection.Iterator$$anon$10.next(Iterator.scala:461)\r\n\tat org.apache.spark.sql.execution.SparkPlan.$anonfun$getByteArrayRdd$1(SparkPlan.scala:365)\r\n\tat org.apache.spark.rdd.RDD.$anonfun$mapPartitionsInternal$2(RDD.scala:890)\r\n\tat org.apache.spark.rdd.RDD.$anonfun$mapPartitionsInternal$2$adapted(RDD.scala:890)\r\n\tat org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)\r\n\tat org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:365)\r\n\tat org.apache.spark.rdd.RDD.iterator(RDD.scala:329)\r\n\tat org.apache.spark.scheduler.ResultTask.runTask(ResultTask.scala:90)\r\n\tat org.apache.spark.scheduler.Task.run(Task.scala:136)\r\n\tat org.apache.spark.executor.Executor$TaskRunner.$anonfun$run$3(Executor.scala:548)\r\n\tat org.apache.spark.util.Utils$.tryWithSafeFinally(Utils.scala:1504)\r\n\tat org.apache.spark.executor.Executor$TaskRunner.run(Executor.scala:551)\r\n\tat java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)\r\n\tat java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)\r\n\tat java.lang.Thread.run(Thread.java:750)\r\n\r\nDriver stacktrace:\r\n  at org.apache.spark.scheduler.DAGScheduler.failJobAndIndependentStages(DAGScheduler.scala:2672)\r\n  at org.apache.spark.scheduler.DAGScheduler.$anonfun$abortStage$2(DAGScheduler.scala:2608)\r\n  at org.apache.spark.scheduler.DAGScheduler.$anonfun$abortStage$2$adapted(DAGScheduler.scala:2607)\r\n  at scala.collection.mutable.ResizableArray.foreach(ResizableArray.scala:62)\r\n  at scala.collection.mutable.ResizableArray.foreach$(ResizableArray.scala:55)\r\n  at scala.collection.mutable.ArrayBuffer.foreach(ArrayBuffer.scala:49)\r\n  at org.apache.spark.scheduler.DAGScheduler.abortStage(DAGScheduler.scala:2607)\r\n  at org.apache.spark.scheduler.DAGScheduler.$anonfun$handleTaskSetFailed$1(DAGScheduler.scala:1182)\r\n  at org.apache.spark.scheduler.DAGScheduler.$anonfun$handleTaskSetFailed$1$adapted(DAGScheduler.scala:1182)\r\n  at scala.Option.foreach(Option.scala:407)\r\n  ...\r\n  Cause: java.lang.AssertionError: value at 0 is null\r\n  at ai.rapids.cudf.HostColumnVectorCore.assertsForGet(HostColumnVectorCore.java:230)\r\n  at ai.rapids.cudf.HostColumnVectorCore.getUTF8(HostColumnVectorCore.java:364)\r\n  at com.nvidia.spark.rapids.RapidsHostColumnVectorCore.getUTF8String(RapidsHostColumnVectorCore.java:183)\r\n  at org.apache.spark.sql.vectorized.ColumnarBatchRow.getUTF8String(ColumnarBatchRow.java:126)\r\n  at org.apache.spark.sql.catalyst.expressions.GeneratedClass$SpecificUnsafeProjection.apply(Unknown Source)\r\n  at org.apache.spark.sql.catalyst.expressions.GeneratedClass$SpecificUnsafeProjection.apply(Unknown Source)\r\n  at scala.collection.Iterator$$anon$10.next(Iterator.scala:461)\r\n  at org.apache.spark.sql.execution.SparkPlan.$anonfun$getByteArrayRdd$1(SparkPlan.scala:365)\r\n  at org.apache.spark.rdd.RDD.$anonfun$mapPartitionsInternal$2(RDD.scala:890)\r\n  at org.apache.spark.rdd.RDD.$anonfun$mapPartitionsInternal$2$adapted(RDD.scala:890)\r\n```\r\n\r\nIt is from following case:\r\n```\r\nSubstringIndex(Literal(\"\"), Literal(\".\"), Literal(-2))\r\n```\r\n\r\nSpark-shell reproduce:\r\n```\r\nscala> Seq(\"\").toDF.write.mode(\"overwrite\").parquet(\"TEMP\")\r\n24/05/30 07:47:38 WARN GpuOverrides:\r\n*Exec <DataWritingCommandExec> will run on GPU\r\n  *Output <InsertIntoHadoopFsRelationCommand> will run on GPU\r\n  ! <LocalTableScanExec> cannot run on GPU because GPU does not currently support the operator class org.apache.spark.sql.execution.LocalTableScanExec\r\n    @Expression <AttributeReference> value#1 could run on GPU\r\n\r\n\r\nscala> val df = spark.read.parquet(\"TEMP\")\r\ndf: org.apache.spark.sql.DataFrame = [value: string]\r\n\r\nscala> df.selectExpr(\"value\", \"substring_index(value, '.', -2)\").show()\r\n24/05/30 07:48:21 WARN GpuOverrides:\r\n!Exec <CollectLimitExec> cannot run on GPU because the Exec CollectLimitExec has been disabled, and is disabled by default because Collect Limit replacement can be slower on the GPU, if huge number of rows in a batch it could help by limiting the number of rows transferred from GPU to CPU. Set spark.rapids.sql.exec.CollectLimitExec to true if you wish to enable it\r\n  @Partitioning <SinglePartition$> could run on GPU\r\n  *Exec <ProjectExec> will run on GPU\r\n    *Expression <Alias> substring_index(value#6, ., -2) AS substring_index(value, ., -2)#15 will run on GPU\r\n      *Expression <SubstringIndex> substring_index(value#6, ., -2) will run on GPU\r\n    *Exec <FileSourceScanExec> will run on GPU\r\n\r\n+-----+-----------------------------+\r\n|value|substring_index(value, ., -2)|\r\n+-----+-----------------------------+\r\n|     |                         null|\r\n+-----+-----------------------------+\r\n\r\n\r\nscala>\r\n\r\nscala> spark.conf.set(\"spark.rapids.sql.enabled\", \"false\")\r\n\r\nscala> df.selectExpr(\"value\", \"substring_index(value, '.', -2)\").show()\r\n+-----+-----------------------------+\r\n|value|substring_index(value, ., -2)|\r\n+-----+-----------------------------+\r\n|     |                             |\r\n+-----+-----------------------------+\r\n```\r\n\r\n\r\nSince `GpuSubstringIndex` needs reworking, I think we can fix this Spark UT by reworking instead of fixing on the original way.",
+        "reactions": {
+            "url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/comments/2132589677/reactions",
+            "total_count": 0,
+            "+1": 0,
+            "-1": 0,
+            "laugh": 0,
+            "hooray": 0,
+            "confused": 0,
+            "heart": 0,
+            "rocket": 0,
+            "eyes": 0
+        },
+        "performed_via_github_app": null
+    }
+]

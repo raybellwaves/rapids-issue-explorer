@@ -1,0 +1,46 @@
+[
+    {
+        "url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/comments/1132490692",
+        "html_url": "https://github.com/NVIDIA/spark-rapids/issues/4982#issuecomment-1132490692",
+        "issue_url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/4982",
+        "id": 1132490692,
+        "node_id": "IC_kwDOD7z77c5DgG_E",
+        "user": {
+            "login": "GaryShen2008",
+            "id": 22128535,
+            "node_id": "MDQ6VXNlcjIyMTI4NTM1",
+            "avatar_url": "https://avatars.githubusercontent.com/u/22128535?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/GaryShen2008",
+            "html_url": "https://github.com/GaryShen2008",
+            "followers_url": "https://api.github.com/users/GaryShen2008/followers",
+            "following_url": "https://api.github.com/users/GaryShen2008/following{/other_user}",
+            "gists_url": "https://api.github.com/users/GaryShen2008/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/GaryShen2008/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/GaryShen2008/subscriptions",
+            "organizations_url": "https://api.github.com/users/GaryShen2008/orgs",
+            "repos_url": "https://api.github.com/users/GaryShen2008/repos",
+            "events_url": "https://api.github.com/users/GaryShen2008/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/GaryShen2008/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "created_at": "2022-05-20T05:31:40Z",
+        "updated_at": "2022-05-20T05:31:40Z",
+        "author_association": "COLLABORATOR",
+        "body": "Not planned in 22.06. Move to 22.08.",
+        "reactions": {
+            "url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/comments/1132490692/reactions",
+            "total_count": 0,
+            "+1": 0,
+            "-1": 0,
+            "laugh": 0,
+            "hooray": 0,
+            "confused": 0,
+            "heart": 0,
+            "rocket": 0,
+            "eyes": 0
+        },
+        "performed_via_github_app": null
+    }
+]

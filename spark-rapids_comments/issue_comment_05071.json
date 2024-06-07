@@ -1,0 +1,46 @@
+[
+    {
+        "url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/comments/1080812031",
+        "html_url": "https://github.com/NVIDIA/spark-rapids/issues/5071#issuecomment-1080812031",
+        "issue_url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/5071",
+        "id": 1080812031,
+        "node_id": "IC_kwDOD7z77c5Aa-H_",
+        "user": {
+            "login": "revans2",
+            "id": 3441321,
+            "node_id": "MDQ6VXNlcjM0NDEzMjE=",
+            "avatar_url": "https://avatars.githubusercontent.com/u/3441321?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/revans2",
+            "html_url": "https://github.com/revans2",
+            "followers_url": "https://api.github.com/users/revans2/followers",
+            "following_url": "https://api.github.com/users/revans2/following{/other_user}",
+            "gists_url": "https://api.github.com/users/revans2/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/revans2/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/revans2/subscriptions",
+            "organizations_url": "https://api.github.com/users/revans2/orgs",
+            "repos_url": "https://api.github.com/users/revans2/repos",
+            "events_url": "https://api.github.com/users/revans2/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/revans2/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "created_at": "2022-03-28T15:41:25Z",
+        "updated_at": "2022-03-28T15:41:25Z",
+        "author_association": "COLLABORATOR",
+        "body": "Okay a bit more information. It looks like the 130ms is JIT. In later calls the same code takes about 5ms to run. So this is a much lower priority, but it might be nice to have a way to start the JIT early in the life of the task so we can avoid this on the first run.",
+        "reactions": {
+            "url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/comments/1080812031/reactions",
+            "total_count": 0,
+            "+1": 0,
+            "-1": 0,
+            "laugh": 0,
+            "hooray": 0,
+            "confused": 0,
+            "heart": 0,
+            "rocket": 0,
+            "eyes": 0
+        },
+        "performed_via_github_app": null
+    }
+]

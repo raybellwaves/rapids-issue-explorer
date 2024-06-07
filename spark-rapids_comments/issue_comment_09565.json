@@ -1,0 +1,46 @@
+[
+    {
+        "url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/comments/2052067419",
+        "html_url": "https://github.com/NVIDIA/spark-rapids/issues/9565#issuecomment-2052067419",
+        "issue_url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/9565",
+        "id": 2052067419,
+        "node_id": "IC_kwDOD7z77c56UBBb",
+        "user": {
+            "login": "parthosa",
+            "id": 13639815,
+            "node_id": "MDQ6VXNlcjEzNjM5ODE1",
+            "avatar_url": "https://avatars.githubusercontent.com/u/13639815?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/parthosa",
+            "html_url": "https://github.com/parthosa",
+            "followers_url": "https://api.github.com/users/parthosa/followers",
+            "following_url": "https://api.github.com/users/parthosa/following{/other_user}",
+            "gists_url": "https://api.github.com/users/parthosa/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/parthosa/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/parthosa/subscriptions",
+            "organizations_url": "https://api.github.com/users/parthosa/orgs",
+            "repos_url": "https://api.github.com/users/parthosa/repos",
+            "events_url": "https://api.github.com/users/parthosa/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/parthosa/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "created_at": "2024-04-12T16:17:09Z",
+        "updated_at": "2024-04-12T16:17:09Z",
+        "author_association": "COLLABORATOR",
+        "body": "Follow up for this work: Additional check was added to handle NPE.\r\n\r\n\r\nSpark Commit: https://github.com/apache/spark/commit/aa566ff3b9f",
+        "reactions": {
+            "url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/comments/2052067419/reactions",
+            "total_count": 0,
+            "+1": 0,
+            "-1": 0,
+            "laugh": 0,
+            "hooray": 0,
+            "confused": 0,
+            "heart": 0,
+            "rocket": 0,
+            "eyes": 0
+        },
+        "performed_via_github_app": null
+    }
+]

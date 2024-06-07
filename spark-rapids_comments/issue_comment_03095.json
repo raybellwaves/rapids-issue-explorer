@@ -1,0 +1,46 @@
+[
+    {
+        "url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/comments/896202191",
+        "html_url": "https://github.com/NVIDIA/spark-rapids/issues/3095#issuecomment-896202191",
+        "issue_url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/3095",
+        "id": 896202191,
+        "node_id": "IC_kwDOD7z77c41avXP",
+        "user": {
+            "login": "andygrove",
+            "id": 934084,
+            "node_id": "MDQ6VXNlcjkzNDA4NA==",
+            "avatar_url": "https://avatars.githubusercontent.com/u/934084?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/andygrove",
+            "html_url": "https://github.com/andygrove",
+            "followers_url": "https://api.github.com/users/andygrove/followers",
+            "following_url": "https://api.github.com/users/andygrove/following{/other_user}",
+            "gists_url": "https://api.github.com/users/andygrove/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/andygrove/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/andygrove/subscriptions",
+            "organizations_url": "https://api.github.com/users/andygrove/orgs",
+            "repos_url": "https://api.github.com/users/andygrove/repos",
+            "events_url": "https://api.github.com/users/andygrove/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/andygrove/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "created_at": "2021-08-10T18:05:44Z",
+        "updated_at": "2021-08-10T18:05:44Z",
+        "author_association": "CONTRIBUTOR",
+        "body": "Although no action is required, I would like to at least explore implementing our own cost evaluator that delegates to our existing CostBasedOptimizer and compares the original Spark plan with the plugin version of the plan, and chooses the cheapest plan. This would only take effect if the user specifies `spark.sql.adaptive.customCostEvaluatorClass` to use our custom cost evaluator. ",
+        "reactions": {
+            "url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/comments/896202191/reactions",
+            "total_count": 0,
+            "+1": 0,
+            "-1": 0,
+            "laugh": 0,
+            "hooray": 0,
+            "confused": 0,
+            "heart": 0,
+            "rocket": 0,
+            "eyes": 0
+        },
+        "performed_via_github_app": null
+    }
+]

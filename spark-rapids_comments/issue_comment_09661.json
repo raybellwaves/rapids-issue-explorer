@@ -1,0 +1,46 @@
+[
+    {
+        "url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/comments/1809368573",
+        "html_url": "https://github.com/NVIDIA/spark-rapids/issues/9661#issuecomment-1809368573",
+        "issue_url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/9661",
+        "id": 1809368573,
+        "node_id": "IC_kwDOD7z77c5r2MX9",
+        "user": {
+            "login": "winningsix",
+            "id": 2278268,
+            "node_id": "MDQ6VXNlcjIyNzgyNjg=",
+            "avatar_url": "https://avatars.githubusercontent.com/u/2278268?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/winningsix",
+            "html_url": "https://github.com/winningsix",
+            "followers_url": "https://api.github.com/users/winningsix/followers",
+            "following_url": "https://api.github.com/users/winningsix/following{/other_user}",
+            "gists_url": "https://api.github.com/users/winningsix/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/winningsix/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/winningsix/subscriptions",
+            "organizations_url": "https://api.github.com/users/winningsix/orgs",
+            "repos_url": "https://api.github.com/users/winningsix/repos",
+            "events_url": "https://api.github.com/users/winningsix/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/winningsix/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "created_at": "2023-11-14T00:52:12Z",
+        "updated_at": "2023-11-14T00:52:12Z",
+        "author_association": "COLLABORATOR",
+        "body": "Regards to \"Support conditional equi-joins with non-AST rewrite\" above, it seems not applicable to have non-ast-split there. It seems we should close it.\r\n\r\nGiven this ```left.join(broadcast(right), f.round(left.a).cast('integer') == f.round(f.log(right.r_a).cast('integer')), join_type)``` as an example, join condition will be split into left and right key expressions in GpuBroadcastHashJoinExec.scala\r\nhttps://github.com/NVIDIA/spark-rapids/blob/792b4c14f27b73cf86012d3220b61b2c6ca23f0f/sql-plugin/src/main/spark340/scala/org/apache/spark/sql/rapids/execution/GpuBroadcastHashJoinExec.scala#L65-L66\r\n\r\nAnd it will be evaluated in separated project nodes for build and stream sides accordingly.\r\n\r\nBuild side:\r\nhttps://github.com/NVIDIA/spark-rapids/blob/792b4c14f27b73cf86012d3220b61b2c6ca23f0f/sql-plugin/src/main/scala/org/apache/spark/sql/rapids/execution/GpuHashJoin.scala#L324-L327\r\n\r\nStream side:\r\nhttps://github.com/NVIDIA/spark-rapids/blob/792b4c14f27b73cf86012d3220b61b2c6ca23f0f/sql-plugin/src/main/scala/org/apache/spark/sql/rapids/execution/GpuHashJoin.scala#L394-L398\r\n\r\nThe remain case I came up is that a join condition involves columns across both sides. In that case, it's also not a split-able case.\r\n\r\nExplained Plan\r\n```\r\nGpuBroadcastHashJoin [gpuround(a#22, 0, IntegerType)], [gpuround(cast(LOG(cast(r_a#30 as double)) as int), 0, IntegerType)], Cross, GpuBuildRight\r\n:- GpuRowToColumnar targetsize(104857600)\r\n:  +- *(1) Scan ExistingRDD[a#22,b#23]\r\n+- GpuBroadcastExchange HashedRelationBroadcastMode(List(cast(round(cast(ln(cast(input[0, int, true] as double)) as int), 0) as bigint)),false), [plan_id=107]\r\n   +- GpuProject [a#26 AS r_a#30, b#27 AS r_b#33]\r\n      +- GpuRowToColumnar targetsize(104857600)\r\n         +- *(2) Scan ExistingRDD[a#26,b#27]\r\n```\r\n\r\n@revans2 @jlowe any thoughts here?",
+        "reactions": {
+            "url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/comments/1809368573/reactions",
+            "total_count": 0,
+            "+1": 0,
+            "-1": 0,
+            "laugh": 0,
+            "hooray": 0,
+            "confused": 0,
+            "heart": 0,
+            "rocket": 0,
+            "eyes": 0
+        },
+        "performed_via_github_app": null
+    }
+]

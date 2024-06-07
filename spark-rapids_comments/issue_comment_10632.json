@@ -1,0 +1,46 @@
+[
+    {
+        "url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/comments/2018746880",
+        "html_url": "https://github.com/NVIDIA/spark-rapids/issues/10632#issuecomment-2018746880",
+        "issue_url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/10632",
+        "id": 2018746880,
+        "node_id": "IC_kwDOD7z77c54U6IA",
+        "user": {
+            "login": "jlowe",
+            "id": 1360766,
+            "node_id": "MDQ6VXNlcjEzNjA3NjY=",
+            "avatar_url": "https://avatars.githubusercontent.com/u/1360766?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/jlowe",
+            "html_url": "https://github.com/jlowe",
+            "followers_url": "https://api.github.com/users/jlowe/followers",
+            "following_url": "https://api.github.com/users/jlowe/following{/other_user}",
+            "gists_url": "https://api.github.com/users/jlowe/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/jlowe/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/jlowe/subscriptions",
+            "organizations_url": "https://api.github.com/users/jlowe/orgs",
+            "repos_url": "https://api.github.com/users/jlowe/repos",
+            "events_url": "https://api.github.com/users/jlowe/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/jlowe/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "created_at": "2024-03-25T19:24:53Z",
+        "updated_at": "2024-03-25T19:24:53Z",
+        "author_association": "MEMBER",
+        "body": "After chatting with the Nsight Systems team, we can probably accomplish most of the tracing needs we want by leveraging the [cupti](https://developer.nvidia.com/cupti) toolkit.  This won't generate a qdrep file, but it might be easy to post-process the cupti trace data such that we could generate the qdrep file from it.",
+        "reactions": {
+            "url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/comments/2018746880/reactions",
+            "total_count": 0,
+            "+1": 0,
+            "-1": 0,
+            "laugh": 0,
+            "hooray": 0,
+            "confused": 0,
+            "heart": 0,
+            "rocket": 0,
+            "eyes": 0
+        },
+        "performed_via_github_app": null
+    }
+]

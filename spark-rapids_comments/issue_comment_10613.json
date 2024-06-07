@@ -1,0 +1,46 @@
+[
+    {
+        "url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/comments/2009625670",
+        "html_url": "https://github.com/NVIDIA/spark-rapids/issues/10613#issuecomment-2009625670",
+        "issue_url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/10613",
+        "id": 2009625670,
+        "node_id": "IC_kwDOD7z77c53yHRG",
+        "user": {
+            "login": "revans2",
+            "id": 3441321,
+            "node_id": "MDQ6VXNlcjM0NDEzMjE=",
+            "avatar_url": "https://avatars.githubusercontent.com/u/3441321?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/revans2",
+            "html_url": "https://github.com/revans2",
+            "followers_url": "https://api.github.com/users/revans2/followers",
+            "following_url": "https://api.github.com/users/revans2/following{/other_user}",
+            "gists_url": "https://api.github.com/users/revans2/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/revans2/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/revans2/subscriptions",
+            "organizations_url": "https://api.github.com/users/revans2/orgs",
+            "repos_url": "https://api.github.com/users/revans2/repos",
+            "events_url": "https://api.github.com/users/revans2/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/revans2/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "created_at": "2024-03-20T13:55:05Z",
+        "updated_at": "2024-03-20T13:55:05Z",
+        "author_association": "COLLABORATOR",
+        "body": "On the GPU the problems typically show up around thread divergence and non-coalesed memory access patterns.\r\n\r\nI am not 100% sure about this so we should run some experiments and see, but I don't think it is a clear win every time. If the string is long, then it will always have a bad memory access pattern, and the length of time that the kernel takes to run is likely the amount of time it takes for the longest string to be processed by a warp. If the string is short then the memory access pattern is likely good, and even though we might still have thread divergence it is decently fast.\r\n\r\nReplacing string values with nulls requires a memory copy, and copy_if_else for strings is not known to be that great. So we might need some kind of a heuristic to see what matters. I think in really bad cases today this could be a big win, especially if we can free up some warps early to process more data, and there are enough input strings to make that be a win.",
+        "reactions": {
+            "url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/comments/2009625670/reactions",
+            "total_count": 0,
+            "+1": 0,
+            "-1": 0,
+            "laugh": 0,
+            "hooray": 0,
+            "confused": 0,
+            "heart": 0,
+            "rocket": 0,
+            "eyes": 0
+        },
+        "performed_via_github_app": null
+    }
+]

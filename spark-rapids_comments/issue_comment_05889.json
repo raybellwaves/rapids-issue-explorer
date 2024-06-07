@@ -1,0 +1,46 @@
+[
+    {
+        "url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/comments/1163584994",
+        "html_url": "https://github.com/NVIDIA/spark-rapids/issues/5889#issuecomment-1163584994",
+        "issue_url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/5889",
+        "id": 1163584994,
+        "node_id": "IC_kwDOD7z77c5FWuXi",
+        "user": {
+            "login": "jlowe",
+            "id": 1360766,
+            "node_id": "MDQ6VXNlcjEzNjA3NjY=",
+            "avatar_url": "https://avatars.githubusercontent.com/u/1360766?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/jlowe",
+            "html_url": "https://github.com/jlowe",
+            "followers_url": "https://api.github.com/users/jlowe/followers",
+            "following_url": "https://api.github.com/users/jlowe/following{/other_user}",
+            "gists_url": "https://api.github.com/users/jlowe/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/jlowe/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/jlowe/subscriptions",
+            "organizations_url": "https://api.github.com/users/jlowe/orgs",
+            "repos_url": "https://api.github.com/users/jlowe/repos",
+            "events_url": "https://api.github.com/users/jlowe/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/jlowe/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "created_at": "2022-06-22T20:47:00Z",
+        "updated_at": "2022-06-22T20:47:00Z",
+        "author_association": "MEMBER",
+        "body": "Applying the following patch appears to fix it, but I'm not sure if there's any ramifications for this change:\r\n```patch\r\ndiff --git a/sql-plugin/src/main/scala/org/apache/spark/sql/rapids/GpuScalarSubquery.scala b/sql-plugin/src/main/scala/org/apache/spark/sql/rapids/GpuScalarSubquery.scala\r\nindex be494bbbd..61098f410 100644\r\n--- a/sql-plugin/src/main/scala/org/apache/spark/sql/rapids/GpuScalarSubquery.scala\r\n+++ b/sql-plugin/src/main/scala/org/apache/spark/sql/rapids/GpuScalarSubquery.scala\r\n@@ -31,11 +31,11 @@ import org.apache.spark.sql.vectorized.ColumnarBatch\r\n  * other GPU overrides.\r\n  */\r\n case class GpuScalarSubquery(\r\n-    plan: BaseSubqueryExec,\r\n+    @transient plan: BaseSubqueryExec,\r\n     exprId: ExprId)\r\n   extends ExecSubqueryExpression with GpuExpression with ShimExpression {\r\n \r\n-  override def dataType: DataType = plan.schema.fields.head.dataType\r\n+  override lazy val dataType: DataType = plan.schema.fields.head.dataType\r\n   override def children: Seq[Expression] = Seq.empty\r\n   override def nullable: Boolean = true\r\n   override def toString: String = plan.simpleString(SQLConf.get.maxToStringFields)\r\n```\r\n\r\nNote that Apache Spark's `ScalarSubquery` has the same issue.",
+        "reactions": {
+            "url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/comments/1163584994/reactions",
+            "total_count": 0,
+            "+1": 0,
+            "-1": 0,
+            "laugh": 0,
+            "hooray": 0,
+            "confused": 0,
+            "heart": 0,
+            "rocket": 0,
+            "eyes": 0
+        },
+        "performed_via_github_app": null
+    }
+]

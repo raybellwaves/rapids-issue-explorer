@@ -1,0 +1,46 @@
+[
+    {
+        "url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/comments/1557361359",
+        "html_url": "https://github.com/NVIDIA/spark-rapids/issues/8292#issuecomment-1557361359",
+        "issue_url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/8292",
+        "id": 1557361359,
+        "node_id": "IC_kwDOD7z77c5c03LP",
+        "user": {
+            "login": "revans2",
+            "id": 3441321,
+            "node_id": "MDQ6VXNlcjM0NDEzMjE=",
+            "avatar_url": "https://avatars.githubusercontent.com/u/3441321?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/revans2",
+            "html_url": "https://github.com/revans2",
+            "followers_url": "https://api.github.com/users/revans2/followers",
+            "following_url": "https://api.github.com/users/revans2/following{/other_user}",
+            "gists_url": "https://api.github.com/users/revans2/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/revans2/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/revans2/subscriptions",
+            "organizations_url": "https://api.github.com/users/revans2/orgs",
+            "repos_url": "https://api.github.com/users/revans2/repos",
+            "events_url": "https://api.github.com/users/revans2/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/revans2/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "created_at": "2023-05-22T14:51:33Z",
+        "updated_at": "2023-05-22T14:51:33Z",
+        "author_association": "COLLABORATOR",
+        "body": "Actually I have some new information, which might help us a lot in all of the cases, but especially the case when we had to spill data to disk and there were too many partitions to keep the file handles open.\r\n\r\nAll of the compression codecs that Spark supports can be concatenated after the fact.\r\n\r\nhttps://github.com/apache/spark/blob/46acedb3842484cb4eadb02f1c1e69e71c334748/core/src/main/scala/org/apache/spark/io/CompressionCodec.scala#L62-L71\r\n\r\nAlso the default checksum used by Spark `adler32`  or `NONE` depending on the version of Spark we are on have a way to calculate the checksum in a distributed way. (The checksum is used as a part of the message handed back to the driver with the shuffle data is committed and written out to the metadata file as well)\r\n\r\nFor adler32 I need to do a bit more research but CERN did it so we should be able to do it too. http://cds.cern.ch/record/2673802/files/ATL-DAQ-PROC-2019-002.pdf\r\n\r\nThe only problem shows up if encryption is enabled or if the checksum is CRC32.  So we will need to support the algorithm I described originally for when encryption is enabled but we might be able to have a very fast common case for shuffle.  If creating a compression output stream is cheap enough we should be able to compress each batch as we see it come in, in parallel in a thread pool along with a checksum for the data. We can decide if that should stay in memory or go out to disk directly, but I think keeping it in memory might be the best. Then if we need to spill we can write it out to disk and keep a pointer to where it is along with the checksum.\r\n\r\nIf the checksum is CRC32 we can still do the compression in parallel, but we would have to calculate the checksum serially on the resulting data.\r\n\r\nWhen we need to write out the final data we can move the compressed data to the proper location in the final file and start combining checksums together, if needed.\r\n\r\nThe details of the output stream used are.\r\n\r\n```\r\nSerializationStream( // Converts the objects into bytes\r\n  CompressionOutputStream( // Optional compresses the data\r\n    ErrorHandlingOutputStream(CryptoOutputStream( // Optional encrypts the data\r\n      ManualCloseOutputStream( // Does a flush instead of a close and the close is separate\r\n        BufferedOutputStream(\r\n          ChecksumOutputStream( // Optional if empty none is set\r\n            TimeTrackinOutputStream( // used for metrics\r\n              FileOutputStream\r\n            )\r\n          )\r\n        )\r\n      )\r\n    ))\r\n  )\r\n)\r\n```\r\n\r\nA few things to keep in mind.\r\n\r\nFirst if `spark.file.transferTo` is enabled, and the there is no encryption and the compression codec can be concatenated, then spark will use NIO (file channels) to transfer the data to the final location.  Apparently there are some bugs in old versions of Linux that make this not work. I don't think we support any version of linux with this bug in it (2.6.32 according to the error message), so we might be able to always to the faster transfer.\r\n\r\n\r\nSecond `spark.shuffle.sync` is off by default, but if it is enabled then we need to make sure that the data hits the disk before we go on with shuffle (or we need to fall back to the old shuffle code)\r\n\r\nThe reason I am bringing this up is that in order to make this work we are likely going to have to copy over a lot more code from Spark at a lower level for shuffle.  We also are going to have to be much more careful about auditing any shuffle changes while we are at it.",
+        "reactions": {
+            "url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/comments/1557361359/reactions",
+            "total_count": 0,
+            "+1": 0,
+            "-1": 0,
+            "laugh": 0,
+            "hooray": 0,
+            "confused": 0,
+            "heart": 0,
+            "rocket": 0,
+            "eyes": 0
+        },
+        "performed_via_github_app": null
+    }
+]

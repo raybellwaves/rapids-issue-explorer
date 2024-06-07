@@ -1,0 +1,46 @@
+[
+    {
+        "url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/comments/1061807255",
+        "html_url": "https://github.com/NVIDIA/spark-rapids/issues/4910#issuecomment-1061807255",
+        "issue_url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/4910",
+        "id": 1061807255,
+        "node_id": "IC_kwDOD7z77c4_SeSX",
+        "user": {
+            "login": "revans2",
+            "id": 3441321,
+            "node_id": "MDQ6VXNlcjM0NDEzMjE=",
+            "avatar_url": "https://avatars.githubusercontent.com/u/3441321?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/revans2",
+            "html_url": "https://github.com/revans2",
+            "followers_url": "https://api.github.com/users/revans2/followers",
+            "following_url": "https://api.github.com/users/revans2/following{/other_user}",
+            "gists_url": "https://api.github.com/users/revans2/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/revans2/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/revans2/subscriptions",
+            "organizations_url": "https://api.github.com/users/revans2/orgs",
+            "repos_url": "https://api.github.com/users/revans2/repos",
+            "events_url": "https://api.github.com/users/revans2/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/revans2/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "created_at": "2022-03-08T13:58:39Z",
+        "updated_at": "2022-03-08T13:58:39Z",
+        "author_association": "COLLABORATOR",
+        "body": "It is unlikely that we are going to be able to support this fully without some changes to CUDF.\r\n\r\nCUDF's round only supports HALF_UP and HALF_EVEN.\r\n\r\nhttps://github.com/rapidsai/cudf/blob/57ff6f55b9fd44e8a8e10282d3f95d5f38e299ef/cpp/include/cudf/round.hpp#L36\r\n\r\nFloor and Ceil are unary operators and do not support setting a scale.\r\n\r\nSo in the sort term we are probably going to have to fall back to the CPU if we see a floor or ceil with a scale that is not 0, and then later on put in support to CUDF for what we need.",
+        "reactions": {
+            "url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/comments/1061807255/reactions",
+            "total_count": 0,
+            "+1": 0,
+            "-1": 0,
+            "laugh": 0,
+            "hooray": 0,
+            "confused": 0,
+            "heart": 0,
+            "rocket": 0,
+            "eyes": 0
+        },
+        "performed_via_github_app": null
+    }
+]

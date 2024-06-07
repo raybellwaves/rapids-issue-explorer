@@ -1,0 +1,46 @@
+[
+    {
+        "url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/comments/1997600771",
+        "html_url": "https://github.com/NVIDIA/spark-rapids/issues/10595#issuecomment-1997600771",
+        "issue_url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/10595",
+        "id": 1997600771,
+        "node_id": "IC_kwDOD7z77c53EPgD",
+        "user": {
+            "login": "revans2",
+            "id": 3441321,
+            "node_id": "MDQ6VXNlcjM0NDEzMjE=",
+            "avatar_url": "https://avatars.githubusercontent.com/u/3441321?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/revans2",
+            "html_url": "https://github.com/revans2",
+            "followers_url": "https://api.github.com/users/revans2/followers",
+            "following_url": "https://api.github.com/users/revans2/following{/other_user}",
+            "gists_url": "https://api.github.com/users/revans2/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/revans2/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/revans2/subscriptions",
+            "organizations_url": "https://api.github.com/users/revans2/orgs",
+            "repos_url": "https://api.github.com/users/revans2/repos",
+            "events_url": "https://api.github.com/users/revans2/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/revans2/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "created_at": "2024-03-14T14:34:00Z",
+        "updated_at": "2024-03-14T14:34:00Z",
+        "author_association": "COLLABORATOR",
+        "body": "I should add that an empty struct results in a different error.\r\n\r\n```\r\nSeq(\"\"\"{\"a\":1,\"b\":\"\",\"c\":{}}\"\"\").toDF(\"json\").repartition(1).selectExpr(\"from_json(json, 'a int, b string, c struct<a string>')\").show()\r\n```\r\n\r\n```\r\nCaused by: java.lang.NullPointerException\r\n  at ai.rapids.cudf.Table.gatherJSONColumns(Table.java:1105)\r\n  at ai.rapids.cudf.Table.gatherJSONColumns(Table.java:1225)\r\n  at ai.rapids.cudf.Table.readJSON(Table.java:1391)\r\n  at org.apache.spark.sql.rapids.GpuJsonToStructs.$anonfun$doColumnar$2(GpuJsonToStructs.scala:180)\r\n  at com.nvidia.spark.rapids.Arm$.withResource(Arm.scala:30)\r\n  at org.apache.spark.sql.rapids.GpuJsonToStructs.$anonfun$doColumnar$1(GpuJsonToStructs.scala:178)\r\n  at com.nvidia.spark.rapids.Arm$.withResource(Arm.scala:30)\r\n  at org.apache.spark.sql.rapids.GpuJsonToStructs.doColumnar(GpuJsonToStructs.scala:176)\r\n```\r\n\r\nThis looks almost identical to reading an list with only empty top level structs.",
+        "reactions": {
+            "url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/comments/1997600771/reactions",
+            "total_count": 0,
+            "+1": 0,
+            "-1": 0,
+            "laugh": 0,
+            "hooray": 0,
+            "confused": 0,
+            "heart": 0,
+            "rocket": 0,
+            "eyes": 0
+        },
+        "performed_via_github_app": null
+    }
+]

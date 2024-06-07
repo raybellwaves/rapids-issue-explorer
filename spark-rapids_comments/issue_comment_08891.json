@@ -1,0 +1,46 @@
+[
+    {
+        "url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/comments/1851215035",
+        "html_url": "https://github.com/NVIDIA/spark-rapids/issues/8891#issuecomment-1851215035",
+        "issue_url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/8891",
+        "id": 1851215035,
+        "node_id": "IC_kwDOD7z77c5uV0y7",
+        "user": {
+            "login": "nvliyuan",
+            "id": 84758614,
+            "node_id": "MDQ6VXNlcjg0NzU4NjE0",
+            "avatar_url": "https://avatars.githubusercontent.com/u/84758614?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/nvliyuan",
+            "html_url": "https://github.com/nvliyuan",
+            "followers_url": "https://api.github.com/users/nvliyuan/followers",
+            "following_url": "https://api.github.com/users/nvliyuan/following{/other_user}",
+            "gists_url": "https://api.github.com/users/nvliyuan/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/nvliyuan/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/nvliyuan/subscriptions",
+            "organizations_url": "https://api.github.com/users/nvliyuan/orgs",
+            "repos_url": "https://api.github.com/users/nvliyuan/repos",
+            "events_url": "https://api.github.com/users/nvliyuan/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/nvliyuan/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "created_at": "2023-12-12T02:45:39Z",
+        "updated_at": "2023-12-12T02:45:39Z",
+        "author_association": "COLLABORATOR",
+        "body": "Just marked nvbug-***8068 here.",
+        "reactions": {
+            "url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/comments/1851215035/reactions",
+            "total_count": 0,
+            "+1": 0,
+            "-1": 0,
+            "laugh": 0,
+            "hooray": 0,
+            "confused": 0,
+            "heart": 0,
+            "rocket": 0,
+            "eyes": 0
+        },
+        "performed_via_github_app": null
+    }
+]

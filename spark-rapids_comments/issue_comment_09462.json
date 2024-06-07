@@ -1,0 +1,46 @@
+[
+    {
+        "url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/comments/1777957059",
+        "html_url": "https://github.com/NVIDIA/spark-rapids/issues/9462#issuecomment-1777957059",
+        "issue_url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/9462",
+        "id": 1777957059,
+        "node_id": "IC_kwDOD7z77c5p-XjD",
+        "user": {
+            "login": "mattahrens",
+            "id": 5303895,
+            "node_id": "MDQ6VXNlcjUzMDM4OTU=",
+            "avatar_url": "https://avatars.githubusercontent.com/u/5303895?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/mattahrens",
+            "html_url": "https://github.com/mattahrens",
+            "followers_url": "https://api.github.com/users/mattahrens/followers",
+            "following_url": "https://api.github.com/users/mattahrens/following{/other_user}",
+            "gists_url": "https://api.github.com/users/mattahrens/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/mattahrens/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/mattahrens/subscriptions",
+            "organizations_url": "https://api.github.com/users/mattahrens/orgs",
+            "repos_url": "https://api.github.com/users/mattahrens/repos",
+            "events_url": "https://api.github.com/users/mattahrens/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/mattahrens/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "created_at": "2023-10-24T20:06:54Z",
+        "updated_at": "2023-10-24T20:06:54Z",
+        "author_association": "COLLABORATOR",
+        "body": "@pxLi we will start working on this soon.  As part of this, CI/CD jobs for Cloudera 3.2.1 will need to be removed.",
+        "reactions": {
+            "url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/comments/1777957059/reactions",
+            "total_count": 1,
+            "+1": 1,
+            "-1": 0,
+            "laugh": 0,
+            "hooray": 0,
+            "confused": 0,
+            "heart": 0,
+            "rocket": 0,
+            "eyes": 0
+        },
+        "performed_via_github_app": null
+    }
+]

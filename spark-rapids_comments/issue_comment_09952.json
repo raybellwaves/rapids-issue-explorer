@@ -1,0 +1,46 @@
+[
+    {
+        "url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/comments/1839720040",
+        "html_url": "https://github.com/NVIDIA/spark-rapids/issues/9952#issuecomment-1839720040",
+        "issue_url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/9952",
+        "id": 1839720040,
+        "node_id": "IC_kwDOD7z77c5tp-Zo",
+        "user": {
+            "login": "NVnavkumar",
+            "id": 97137715,
+            "node_id": "U_kgDOBco0Mw",
+            "avatar_url": "https://avatars.githubusercontent.com/u/97137715?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/NVnavkumar",
+            "html_url": "https://github.com/NVnavkumar",
+            "followers_url": "https://api.github.com/users/NVnavkumar/followers",
+            "following_url": "https://api.github.com/users/NVnavkumar/following{/other_user}",
+            "gists_url": "https://api.github.com/users/NVnavkumar/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/NVnavkumar/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/NVnavkumar/subscriptions",
+            "organizations_url": "https://api.github.com/users/NVnavkumar/orgs",
+            "repos_url": "https://api.github.com/users/NVnavkumar/repos",
+            "events_url": "https://api.github.com/users/NVnavkumar/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/NVnavkumar/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "created_at": "2023-12-04T23:31:15Z",
+        "updated_at": "2023-12-04T23:31:15Z",
+        "author_association": "COLLABORATOR",
+        "body": "Note that we don't necessarily want to replace all instances. If immutable semantics are used throughout the usage, than it is better to stick with the immutable sequence as that will be more thread-safe and could potentially be lighter on memory usage since it's immutable.",
+        "reactions": {
+            "url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/comments/1839720040/reactions",
+            "total_count": 0,
+            "+1": 0,
+            "-1": 0,
+            "laugh": 0,
+            "hooray": 0,
+            "confused": 0,
+            "heart": 0,
+            "rocket": 0,
+            "eyes": 0
+        },
+        "performed_via_github_app": null
+    }
+]

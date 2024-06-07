@@ -1,0 +1,46 @@
+[
+    {
+        "url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/comments/1293187000",
+        "html_url": "https://github.com/NVIDIA/spark-rapids/issues/6917#issuecomment-1293187000",
+        "issue_url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/6917",
+        "id": 1293187000,
+        "node_id": "IC_kwDOD7z77c5NFHe4",
+        "user": {
+            "login": "firestarman",
+            "id": 7280411,
+            "node_id": "MDQ6VXNlcjcyODA0MTE=",
+            "avatar_url": "https://avatars.githubusercontent.com/u/7280411?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/firestarman",
+            "html_url": "https://github.com/firestarman",
+            "followers_url": "https://api.github.com/users/firestarman/followers",
+            "following_url": "https://api.github.com/users/firestarman/following{/other_user}",
+            "gists_url": "https://api.github.com/users/firestarman/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/firestarman/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/firestarman/subscriptions",
+            "organizations_url": "https://api.github.com/users/firestarman/orgs",
+            "repos_url": "https://api.github.com/users/firestarman/repos",
+            "events_url": "https://api.github.com/users/firestarman/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/firestarman/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "created_at": "2022-10-27T08:39:17Z",
+        "updated_at": "2022-10-27T08:52:49Z",
+        "author_association": "COLLABORATOR",
+        "body": "The root cause is probably the same with https://github.com/NVIDIA/spark-rapids/issues/6435#issuecomment-1285842837.\r\n\r\nSome rows are changed in the writen CSV file, comparing to the original file. And some of the changed rows now contain strings like `x\"\"`, which the GPU reading can not handle correctly, as mentioned in https://github.com/NVIDIA/spark-rapids/issues/6435#issuecomment-1285842837.\r\n\r\nHere is a minimal repro case.\r\nThe 4 rows are picked from the writen file, and the first row ends with `\\\"\"`, leading to the following two rows being skipped in GPU reading.\r\n```\r\ncategory,description\r\nSci/Tech,The U.S. Forest Service on Wednesday rejected environmentalists' appeal of a plan to poison a stream south of Lake Tahoe to aid what wildlife officials call \\\"the rarest trout in America.\\\"\"\r\nSci/Tech,One of the pleasures of    stargazing is noticing and enjoying the various colors that stars display in    dark skies. These hues offer direct visual evidence of how stellar temperatures    vary.\r\nSci/Tech,\"Britain granted its first license for human cloning Wednesday, joining South Korea on the leading edge of stem cell research, which is restricted by the Bush administration and which many scientists believe may lead to new treatments for a range of diseases.\"\r\nSci/Tech,Meteorologists at North Carolina State University are working on a way to more accurately measure rainfall in small areas.\r\n```\r\n\r\nCPU\r\n```\r\nscala> spark.conf.set(\"spark.rapids.sql.enabled\", \"false\")\r\n\r\nscala> spark.read.option(\"header\", \"true\").csv(\"/data/tmp/6917/test.csv\").show()\r\n+--------+--------------------+\r\n|category|         description|\r\n+--------+--------------------+\r\n|Sci/Tech|The U.S. Forest S...|\r\n|Sci/Tech|One of the pleasu...|\r\n|Sci/Tech|Britain granted i...|\r\n|Sci/Tech|Meteorologists at...|\r\n+--------+--------------------+\r\n```\r\nGPU\r\n```\r\nscala> spark.conf.set(\"spark.rapids.sql.enabled\", \"true\")\r\n\r\nscala> spark.read.option(\"header\", \"true\").csv(\"/data/tmp/6917/test.csv\").show()\r\n+--------+--------------------+\r\n|category|         description|\r\n+--------+--------------------+\r\n|Sci/Tech|The U.S. Forest S...|\r\n|Sci/Tech|Meteorologists at...|\r\n+--------+--------------------+\r\n```",
+        "reactions": {
+            "url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/comments/1293187000/reactions",
+            "total_count": 0,
+            "+1": 0,
+            "-1": 0,
+            "laugh": 0,
+            "hooray": 0,
+            "confused": 0,
+            "heart": 0,
+            "rocket": 0,
+            "eyes": 0
+        },
+        "performed_via_github_app": null
+    }
+]

@@ -1,0 +1,46 @@
+[
+    {
+        "url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/comments/1222974040",
+        "html_url": "https://github.com/NVIDIA/spark-rapids/issues/6391#issuecomment-1222974040",
+        "issue_url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/6391",
+        "id": 1222974040,
+        "node_id": "IC_kwDOD7z77c5I5RpY",
+        "user": {
+            "login": "trivialfis",
+            "id": 16746409,
+            "node_id": "MDQ6VXNlcjE2NzQ2NDA5",
+            "avatar_url": "https://avatars.githubusercontent.com/u/16746409?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/trivialfis",
+            "html_url": "https://github.com/trivialfis",
+            "followers_url": "https://api.github.com/users/trivialfis/followers",
+            "following_url": "https://api.github.com/users/trivialfis/following{/other_user}",
+            "gists_url": "https://api.github.com/users/trivialfis/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/trivialfis/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/trivialfis/subscriptions",
+            "organizations_url": "https://api.github.com/users/trivialfis/orgs",
+            "repos_url": "https://api.github.com/users/trivialfis/repos",
+            "events_url": "https://api.github.com/users/trivialfis/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/trivialfis/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "created_at": "2022-08-22T20:37:19Z",
+        "updated_at": "2022-08-22T20:37:33Z",
+        "author_association": "NONE",
+        "body": "Similar to https://github.com/NVIDIA/spark-rapids/issues/5561 , I can help work on the feature if it's approved by maintainers here.  Although, we need some additional help from ops for maintaining a new Python package.",
+        "reactions": {
+            "url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/comments/1222974040/reactions",
+            "total_count": 0,
+            "+1": 0,
+            "-1": 0,
+            "laugh": 0,
+            "hooray": 0,
+            "confused": 0,
+            "heart": 0,
+            "rocket": 0,
+            "eyes": 0
+        },
+        "performed_via_github_app": null
+    }
+]

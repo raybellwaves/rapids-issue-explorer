@@ -1,0 +1,46 @@
+[
+    {
+        "url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/comments/1220958845",
+        "html_url": "https://github.com/NVIDIA/spark-rapids/issues/3149#issuecomment-1220958845",
+        "issue_url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/3149",
+        "id": 1220958845,
+        "node_id": "IC_kwDOD7z77c5Ixlp9",
+        "user": {
+            "login": "rwlee",
+            "id": 10645552,
+            "node_id": "MDQ6VXNlcjEwNjQ1NTUy",
+            "avatar_url": "https://avatars.githubusercontent.com/u/10645552?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/rwlee",
+            "html_url": "https://github.com/rwlee",
+            "followers_url": "https://api.github.com/users/rwlee/followers",
+            "following_url": "https://api.github.com/users/rwlee/following{/other_user}",
+            "gists_url": "https://api.github.com/users/rwlee/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/rwlee/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/rwlee/subscriptions",
+            "organizations_url": "https://api.github.com/users/rwlee/orgs",
+            "repos_url": "https://api.github.com/users/rwlee/repos",
+            "events_url": "https://api.github.com/users/rwlee/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/rwlee/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "created_at": "2022-08-19T18:01:37Z",
+        "updated_at": "2022-08-19T18:01:49Z",
+        "author_association": "COLLABORATOR",
+        "body": "EqualNullSafe, EqualTo, GreaterThan, GreaterThanOrEqual, Greatest, LessThan, and LessThanOrEqual are all complete.\r\n\r\nLeast does not have support and not currently in progress.",
+        "reactions": {
+            "url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/comments/1220958845/reactions",
+            "total_count": 0,
+            "+1": 0,
+            "-1": 0,
+            "laugh": 0,
+            "hooray": 0,
+            "confused": 0,
+            "heart": 0,
+            "rocket": 0,
+            "eyes": 0
+        },
+        "performed_via_github_app": null
+    }
+]

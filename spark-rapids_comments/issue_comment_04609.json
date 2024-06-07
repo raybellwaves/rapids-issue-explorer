@@ -1,0 +1,46 @@
+[
+    {
+        "url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/comments/1178353730",
+        "html_url": "https://github.com/NVIDIA/spark-rapids/issues/4609#issuecomment-1178353730",
+        "issue_url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/4609",
+        "id": 1178353730,
+        "node_id": "IC_kwDOD7z77c5GPEBC",
+        "user": {
+            "login": "sameerz",
+            "id": 7036315,
+            "node_id": "MDQ6VXNlcjcwMzYzMTU=",
+            "avatar_url": "https://avatars.githubusercontent.com/u/7036315?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/sameerz",
+            "html_url": "https://github.com/sameerz",
+            "followers_url": "https://api.github.com/users/sameerz/followers",
+            "following_url": "https://api.github.com/users/sameerz/following{/other_user}",
+            "gists_url": "https://api.github.com/users/sameerz/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/sameerz/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/sameerz/subscriptions",
+            "organizations_url": "https://api.github.com/users/sameerz/orgs",
+            "repos_url": "https://api.github.com/users/sameerz/repos",
+            "events_url": "https://api.github.com/users/sameerz/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/sameerz/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "created_at": "2022-07-07T23:10:49Z",
+        "updated_at": "2022-07-07T23:10:49Z",
+        "author_association": "COLLABORATOR",
+        "body": "Removing from 22.08 until the cudf dependencies are satisfied.  ",
+        "reactions": {
+            "url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/comments/1178353730/reactions",
+            "total_count": 0,
+            "+1": 0,
+            "-1": 0,
+            "laugh": 0,
+            "hooray": 0,
+            "confused": 0,
+            "heart": 0,
+            "rocket": 0,
+            "eyes": 0
+        },
+        "performed_via_github_app": null
+    }
+]

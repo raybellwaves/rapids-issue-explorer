@@ -1,0 +1,46 @@
+[
+    {
+        "url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/comments/1906606616",
+        "html_url": "https://github.com/NVIDIA/spark-rapids/issues/10241#issuecomment-1906606616",
+        "issue_url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/10241",
+        "id": 1906606616,
+        "node_id": "IC_kwDOD7z77c5xpIIY",
+        "user": {
+            "login": "andygrove",
+            "id": 934084,
+            "node_id": "MDQ6VXNlcjkzNDA4NA==",
+            "avatar_url": "https://avatars.githubusercontent.com/u/934084?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/andygrove",
+            "html_url": "https://github.com/andygrove",
+            "followers_url": "https://api.github.com/users/andygrove/followers",
+            "following_url": "https://api.github.com/users/andygrove/following{/other_user}",
+            "gists_url": "https://api.github.com/users/andygrove/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/andygrove/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/andygrove/subscriptions",
+            "organizations_url": "https://api.github.com/users/andygrove/orgs",
+            "repos_url": "https://api.github.com/users/andygrove/repos",
+            "events_url": "https://api.github.com/users/andygrove/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/andygrove/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "created_at": "2024-01-23T17:50:36Z",
+        "updated_at": "2024-01-23T17:50:36Z",
+        "author_association": "CONTRIBUTOR",
+        "body": "Depends on https://github.com/rapidsai/cudf/issues/14830",
+        "reactions": {
+            "url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/comments/1906606616/reactions",
+            "total_count": 0,
+            "+1": 0,
+            "-1": 0,
+            "laugh": 0,
+            "hooray": 0,
+            "confused": 0,
+            "heart": 0,
+            "rocket": 0,
+            "eyes": 0
+        },
+        "performed_via_github_app": null
+    }
+]

@@ -1,0 +1,46 @@
+[
+    {
+        "url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/comments/929643869",
+        "html_url": "https://github.com/NVIDIA/spark-rapids/issues/3492#issuecomment-929643869",
+        "issue_url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/3492",
+        "id": 929643869,
+        "node_id": "IC_kwDOD7z77c43aT1d",
+        "user": {
+            "login": "tgravescs",
+            "id": 4563792,
+            "node_id": "MDQ6VXNlcjQ1NjM3OTI=",
+            "avatar_url": "https://avatars.githubusercontent.com/u/4563792?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/tgravescs",
+            "html_url": "https://github.com/tgravescs",
+            "followers_url": "https://api.github.com/users/tgravescs/followers",
+            "following_url": "https://api.github.com/users/tgravescs/following{/other_user}",
+            "gists_url": "https://api.github.com/users/tgravescs/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/tgravescs/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/tgravescs/subscriptions",
+            "organizations_url": "https://api.github.com/users/tgravescs/orgs",
+            "repos_url": "https://api.github.com/users/tgravescs/repos",
+            "events_url": "https://api.github.com/users/tgravescs/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/tgravescs/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "created_at": "2021-09-28T21:36:56Z",
+        "updated_at": "2021-09-28T21:36:56Z",
+        "author_association": "COLLABORATOR",
+        "body": "Instead of changing these to pyspark tests, unless there is a real reason to or hole that we aren't testing with existing tests,  we should just make the unit tests work on Databricks.   ",
+        "reactions": {
+            "url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/comments/929643869/reactions",
+            "total_count": 0,
+            "+1": 0,
+            "-1": 0,
+            "laugh": 0,
+            "hooray": 0,
+            "confused": 0,
+            "heart": 0,
+            "rocket": 0,
+            "eyes": 0
+        },
+        "performed_via_github_app": null
+    }
+]

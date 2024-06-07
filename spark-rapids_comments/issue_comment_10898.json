@@ -1,0 +1,46 @@
+[
+    {
+        "url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/comments/2138862792",
+        "html_url": "https://github.com/NVIDIA/spark-rapids/issues/10898#issuecomment-2138862792",
+        "issue_url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/10898",
+        "id": 2138862792,
+        "node_id": "IC_kwDOD7z77c5_fHTI",
+        "user": {
+            "login": "thirtiseven",
+            "id": 7326403,
+            "node_id": "MDQ6VXNlcjczMjY0MDM=",
+            "avatar_url": "https://avatars.githubusercontent.com/u/7326403?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/thirtiseven",
+            "html_url": "https://github.com/thirtiseven",
+            "followers_url": "https://api.github.com/users/thirtiseven/followers",
+            "following_url": "https://api.github.com/users/thirtiseven/following{/other_user}",
+            "gists_url": "https://api.github.com/users/thirtiseven/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/thirtiseven/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/thirtiseven/subscriptions",
+            "organizations_url": "https://api.github.com/users/thirtiseven/orgs",
+            "repos_url": "https://api.github.com/users/thirtiseven/repos",
+            "events_url": "https://api.github.com/users/thirtiseven/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/thirtiseven/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "created_at": "2024-05-30T07:30:30Z",
+        "updated_at": "2024-05-30T07:30:30Z",
+        "author_association": "COLLABORATOR",
+        "body": "It is a bug from cast string to decimal:\r\n```\r\n--- CPU OUTPUT\r\n+++ GPU OUTPUT\r\n@@ -453,7 +453,7 @@\r\n Row(a='{ \"a\": \"-57303.62e+66\" }', from_json(a)=Row(a=None))\r\n Row(a='{ \"a\": \"-85630.6E48\" }', from_json(a)=Row(a=None))\r\n Row(a='', from_json(a)=None)\r\n-Row(a='{ \"a\": \"00000.0E57\" }', from_json(a)=Row(a=Decimal('0')))\r\n+Row(a='{ \"a\": \"00000.0E57\" }', from_json(a)=Row(a=None))\r\n Row(a='{ \"a\": \"-96009.9e+08\" }', from_json(a)=Row(a=None))\r\n Row(a='null', from_json(a)=Row(a=None))\r\n Row(a='{ \"a\": \"+36638.56e+0\" }', from_json(a)=Row(a=Decimal('36639')))\r\nFAILED\r\n```\r\nSome strings be converted to 0 on cpu but None on gpu. A easier repro it:\r\n```\r\n@allow_non_gpu(*non_utc_allow)\r\ndef test_from_json_struct_decimal():\r\n    json_string_gen = StringGen(r'{ \"a\": \"[+-]?0(\\.0{0,2})?([eE][+-]?[0-9]{1,2})?\" }') \\\r\n        .with_special_pattern('', weight=50) \\\r\n        .with_special_pattern('null', weight=50)\r\n    assert_gpu_and_cpu_are_equal_collect(\r\n        lambda spark : unary_op_df(spark, json_string_gen, length=100) \\\r\n            .select(f.col('a'), f.from_json('a', 'struct<a:decimal>')),\r\n        conf=_enable_all_types_conf)\r\n```\r\n\r\nloacl reproduce In spark-shell:\r\n\r\n```\r\nscala> val data = Seq(\"-0.E+85\", \"0.0E+24\", \"0.e+19\").toDF\r\ndata: org.apache.spark.sql.DataFrame = [value: string]\r\n\r\nscala> data.write.mode(\"OVERWRITE\").parquet(\"TEMP\")\r\n\r\nscala> val df = spark.read.parquet(\"TEMP\")\r\ndf: org.apache.spark.sql.DataFrame = [value: string]\r\n\r\nscala> df.select(col(\"value\"), col(\"value\").cast(DecimalType(10, 0))).show()\r\n24/05/30 06:30:26 WARN GpuOverrides:\r\n!Exec <CollectLimitExec> cannot run on GPU because the Exec CollectLimitExec has been disabled, and is disabled by default because Collect Limit replacement can be slower on the GPU, if huge number of rows in a batch it could help by limiting the number of rows transferred from GPU to CPU. Set spark.rapids.sql.exec.CollectLimitExec to true if you wish to enable it\r\n  @Partitioning <SinglePartition$> could run on GPU\r\n  *Exec <ProjectExec> will run on GPU\r\n    *Expression <Alias> cast(cast(value#75 as decimal(10,0)) as string) AS value#98 will run on GPU\r\n      *Expression <Cast> cast(cast(value#75 as decimal(10,0)) as string) will run on GPU\r\n        *Expression <Cast> cast(value#75 as decimal(10,0)) will run on GPU\r\n    *Exec <FileSourceScanExec> will run on GPU\r\n\r\n+-------+-----+\r\n|  value|value|\r\n+-------+-----+\r\n|-0.E+85| null|\r\n|0.0E+24| null|\r\n| 0.e+19| null|\r\n+-------+-----+\r\n\r\n\r\nscala> spark.conf.set(\"spark.rapids.sql.enabled\", \"false\")\r\n\r\nscala> df.select(col(\"value\"), col(\"value\").cast(DecimalType(10, 0))).show()\r\n+-------+-----+\r\n|  value|value|\r\n+-------+-----+\r\n|-0.E+85| null|\r\n|0.0E+24|    0|\r\n| 0.e+19|    0|\r\n+-------+-----+\r\n```\r\nseems -0.E+85 failed on test_from_json_struct_decimal but not in spark-shell somehow \r\n",
+        "reactions": {
+            "url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/comments/2138862792/reactions",
+            "total_count": 0,
+            "+1": 0,
+            "-1": 0,
+            "laugh": 0,
+            "hooray": 0,
+            "confused": 0,
+            "heart": 0,
+            "rocket": 0,
+            "eyes": 0
+        },
+        "performed_via_github_app": null
+    }
+]

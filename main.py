@@ -1,7 +1,9 @@
 # python main.py
 
-ORG = "rapidsai"
-REPO = "cudf"
+# ORG = "rapidsai"
+# REPO = "cudf"
+ORG = "NVIDIA"
+REPO = "spark-rapids"
 BOTS = ["dependabot[bot]", "GPUtester", "github-actions[bot]"]
 import os  # noqa: E402
 
@@ -22,7 +24,10 @@ def chat_response(content):
     return response.choices[0].message.content
 
 
-def num_tokens_from_string(string: str, encoding_name: str) -> int:
+def num_tokens_from_string(
+    string: str,
+    encoding_name: str = "cl100k_base",
+) -> int:
     """Returns the number of tokens in a text string."""
     import tiktoken
 
@@ -97,6 +102,9 @@ def concat_issues(repo: str = REPO) -> None:
         with open(f"{repo}_issues/{file}", "r") as f:
             data = json.load(f)
         _df = pd.json_normalize(data)
+        if _df["body"][0] is None:
+            _df["body"] = ""
+
         _df["label_names"] = _df["labels"].apply(
             lambda x: [label["name"] for label in x] if isinstance(x, list) else []
         )
@@ -105,7 +113,12 @@ def concat_issues(repo: str = REPO) -> None:
             f"Give me a one word summary of the following GitHub {repo} issue title: {_df['title'][0]}"
         )
         # Count tokens in issue
-        _df["issue_text_tokens"] = num_tokens_from_string(_df["body"][0], "cl100k_base")
+        try:
+            _df["issue_text_tokens"] = num_tokens_from_string(
+                _df["body"][0], "cl100k_base"
+            )
+        except TypeError:
+            _df["issue_text_tokens"] = -1
 
         # TODO remove issue template?
         df = pd.concat([df, _df], axis=0).reset_index(drop=True)
@@ -465,16 +478,15 @@ def create_dataframe(repo: str = REPO) -> None:
 
 
 def create_vector_db(repo: str = REPO) -> None:
-    import os
     import pickle
     import pandas as pd
     from langchain_openai import OpenAIEmbeddings
     from pymilvus import MilvusClient
 
     df = pd.read_parquet(f"{repo}_issue_summary.parquet")
-    embeddings_model = OpenAIEmbeddings(api_key=os.environ.get("OPENAI_API_KEY"))
+    embeddings_model = OpenAIEmbeddings(api_key=OPENAI_API_KEY)
     embeddings = embeddings_model.embed_documents(
-        df["issue_text"].values
+        df["issue_text"].fillna("").values
     )  # ndocs x 1536
     with open(f"{repo}_embeddings.pkl", "wb") as f:
         pickle.dump(embeddings, f)
@@ -488,18 +500,11 @@ def create_vector_db(repo: str = REPO) -> None:
         for i, row in df.iterrows()
     ]
 
-    client = MilvusClient(f"./milvus_{repo}.db")
-    client.create_collection(collection_name="issue_text", dimension=1536)
-    res = client.insert(collection_name="issue_text", data=data)
-
-    # question = "what features is cudf missing?"
-    # question_embeddings = embeddings_model.embed_documents(question)
-    # res = client.search(
-    #     collection_name="issue_text",
-    #     data=question_embeddings,
-    #     limit=1,
-    #     output_fields=["text", "subject"],
-    # )
+    client = MilvusClient(f"./milvus_{repo.replace('-', '_')}.db")
+    client.create_collection(
+        collection_name=f"{repo.replace('-', '_')}_issue_text", dimension=1536
+    )
+    _ = client.insert(collection_name=f"{repo.replace('-', '_')}_issue_text", data=data)
 
 
 def query_data(repo: str = REPO) -> None:
@@ -559,8 +564,12 @@ def query_data(repo: str = REPO) -> None:
         df_issues,
         verbose=True,
     )
-    print(df_issues[df_issues["company"] == "Walmart"])
-    response = agent_response(agent, "What issues are Walmart most interested in?")
+    if repo == "cudf":
+        _company = "Walmart"
+    elif repo == "spark-rapids":
+        _company = "bytedance"
+    print(df_issues[df_issues["company"] == _company])
+    response = agent_response(agent, f"What issues have {_company} created?")
     print(response)
     if ":" in response:
         response = response.split(":")[1].strip()
@@ -568,9 +577,9 @@ def query_data(repo: str = REPO) -> None:
     question = f"What issues are similar to {response}?"
     embeddings_model = OpenAIEmbeddings(api_key=OPENAI_API_KEY)
     question_embeddings = embeddings_model.embed_documents([question])
-    client = MilvusClient(f"./milvus_{repo}.db")
+    client = MilvusClient(f"./milvus_{repo.replace('-', '_')}.db")
     res = client.search(
-        collection_name="issue_text",
+        collection_name=f"{repo.replace('-', '_')}_issue_text",
         data=question_embeddings,
         limit=2,
     )
@@ -681,7 +690,7 @@ def steamlit_dashboard():
     if repo == "cudf":
         default_q = "What type of company is Halliburton?"
     else:
-        default_q = "What type of company is XYZ?"
+        default_q = "What type of company is bytedance?"
     content = st.text_input(
         f"Ask questions about companies who use {repo}:",
         default_q,
@@ -767,27 +776,27 @@ def steamlit_dashboard():
         verbose=True,
     )
     if repo == "cudf":
-        default_q = "What type of issues are Walmart most interested in?"
+        default_q = "What issues has the company Walmart created?"
     else:
-        default_q = "What type of issues are XYZ most interested in?"
+        default_q = "What issues has the company bytedance created?"
     content = st.text_input(
-        "Ask questions about about external cudf users and developers using the GitHub data:",
+        f"Ask questions about about external {repo} users and developers using the GitHub data:",
         default_q,
     )
     if openai_api_key:
         response = agent_response(agent, content)
         st.write(response)
-    if ":" in response:
-        response = response.split(":")[1].strip()
+        if ":" in response:
+            response = response.split(":")[1].strip()
 
     st.markdown("We will now use a vector database to query matching issues:")
     if openai_api_key:
         embeddings_model = OpenAIEmbeddings(api_key=openai_api_key)
         question = f"What issues are similar to {response}?"
         question_embeddings = embeddings_model.embed_documents([question])
-        milvus_client = MilvusClient(f"./milvus_{repo}.db")
+        milvus_client = MilvusClient(f"./milvus_{repo.replace('-', '_')}.db")
         res = milvus_client.search(
-            collection_name="issue_text",
+            collection_name=f"{repo.replace('-', '_')}_issue_text",
             data=question_embeddings,
             limit=3,
         )
@@ -806,14 +815,13 @@ if __name__ == "__main__":
     # python main.py
     # streamlit run main.py
 
-    pull_issues()
-    concat_issues()
-    pull_comments()
-    concat_comments()
-    pull_users()
-    concat_users()
-    create_dataframe()
-    # create_vector_db()
-    # query_data()
-    # steamlit_dashboard()
-    # pass
+    # pull_issues()
+    # concat_issues()
+    # pull_comments()
+    # concat_comments()
+    # pull_users()
+    # concat_users()
+    # create_dataframe()
+    # create_vector_db(repo="cudf")
+    # query_data("cudf")
+    steamlit_dashboard()

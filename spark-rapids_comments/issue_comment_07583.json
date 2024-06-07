@@ -1,0 +1,46 @@
+[
+    {
+        "url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/comments/1404283100",
+        "html_url": "https://github.com/NVIDIA/spark-rapids/issues/7583#issuecomment-1404283100",
+        "issue_url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/7583",
+        "id": 1404283100,
+        "node_id": "IC_kwDOD7z77c5Ts6jc",
+        "user": {
+            "login": "abellina",
+            "id": 1901059,
+            "node_id": "MDQ6VXNlcjE5MDEwNTk=",
+            "avatar_url": "https://avatars.githubusercontent.com/u/1901059?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/abellina",
+            "html_url": "https://github.com/abellina",
+            "followers_url": "https://api.github.com/users/abellina/followers",
+            "following_url": "https://api.github.com/users/abellina/following{/other_user}",
+            "gists_url": "https://api.github.com/users/abellina/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/abellina/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/abellina/subscriptions",
+            "organizations_url": "https://api.github.com/users/abellina/orgs",
+            "repos_url": "https://api.github.com/users/abellina/repos",
+            "events_url": "https://api.github.com/users/abellina/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/abellina/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "created_at": "2023-01-25T22:01:22Z",
+        "updated_at": "2023-01-27T15:38:25Z",
+        "author_association": "COLLABORATOR",
+        "body": "The `makeSplitIterator` method in this class, returning `Iterator[ColumnarBatch]` is calling `contiguousSplit` and holding on to all the split tables while the caller calls `.next()`. Additionally, this iterator does not make an attempt to close these tables if there is an exception or the task finishes, it just leaks them. The code does make an attempt to use `closeOnExcept` during a next call (inside of `splitInput.zipWithIndex.iterator.map`) but that is not sufficient, as it only handles exceptions that can occur when converting the cuDF Table to a ColumnarBatch which I don't think is the intention.\r\n\r\nWe do need to split, so we should split and make all the contiguous tables spillable, then we can `getColumnarBatch` from these spillables. We also need to register a shutdown hook against the `TaskContext` so that we can remove these spillables if the task exits prematurely.\r\n\r\nHere's the detected leak when tasks failed:\r\n\r\n```\r\n23/01/27 15:35:55 ERROR MemoryCleaner: Leaked device buffer (ID: 1439): 2023-01-27 15:35:54.0969 UTC: INC\r\njava.lang.Thread.getStackTrace(Thread.java:1564)\r\nai.rapids.cudf.MemoryCleaner$RefCountDebugItem.<init>(MemoryCleaner.java:333)\r\nai.rapids.cudf.MemoryCleaner$Cleaner.addRef(MemoryCleaner.java:91)\r\nai.rapids.cudf.MemoryBuffer.incRefCount(MemoryBuffer.java:275)\r\nai.rapids.cudf.MemoryBuffer.<init>(MemoryBuffer.java:117)\r\nai.rapids.cudf.BaseDeviceMemoryBuffer.<init>(BaseDeviceMemoryBuffer.java:30)\r\nai.rapids.cudf.DeviceMemoryBuffer.<init>(DeviceMemoryBuffer.java:116)\r\nai.rapids.cudf.DeviceMemoryBuffer.fromRmm(DeviceMemoryBuffer.java:112)\r\nai.rapids.cudf.ContiguousTable.fromPackedTable(ContiguousTable.java:40)\r\nai.rapids.cudf.Table.contiguousSplit(Native Method)\r\nai.rapids.cudf.Table.contiguousSplit(Table.java:2170)\r\ncom.nvidia.spark.rapids.GpuGenerateExec.$anonfun$makeSplitIterator$2(GpuGenerateExec.scala:769)\r\ncom.nvidia.spark.rapids.Arm.withResource(Arm.scala:28)\r\ncom.nvidia.spark.rapids.Arm.withResource$(Arm.scala:26)\r\ncom.nvidia.spark.rapids.GpuGenerateExec.withResource(GpuGenerateExec.scala:660)\r\ncom.nvidia.spark.rapids.GpuGenerateExec.makeSplitIterator(GpuGenerateExec.scala:768)\r\ncom.nvidia.spark.rapids.GpuGenerateExec.$anonfun$doGenerate$2(GpuGenerateExec.scala:746)\r\ncom.nvidia.spark.rapids.Arm.withResource(Arm.scala:28)\r\ncom.nvidia.spark.rapids.Arm.withResource$(Arm.scala:26)\r\ncom.nvidia.spark.rapids.GpuGenerateExec.withResource(GpuGenerateExec.scala:660)\r\ncom.nvidia.spark.rapids.GpuGenerateExec.$anonfun$doGenerate$1(GpuGenerateExec.scala:738)\r\ncom.nvidia.spark.rapids.Arm.withResource(Arm.scala:28)\r\ncom.nvidia.spark.rapids.Arm.withResource$(Arm.scala:26)\r\ncom.nvidia.spark.rapids.GpuGenerateExec.withResource(GpuGenerateExec.scala:660)\r\ncom.nvidia.spark.rapids.GpuGenerateExec.doGenerate(GpuGenerateExec.scala:733)\r\ncom.nvidia.spark.rapids.GpuGenerateExec.$anonfun$doExecuteColumnar$4(GpuGenerateExec.scala:721)\r\ncom.nvidia.spark.rapids.Arm.withResource(Arm.scala:28)\r\ncom.nvidia.spark.rapids.Arm.withResource$(Arm.scala:26)\r\ncom.nvidia.spark.rapids.GpuGenerateExec.withResource(GpuGenerateExec.scala:660)\r\ncom.nvidia.spark.rapids.GpuGenerateExec.$anonfun$doExecuteColumnar$3(GpuGenerateExec.scala:719)\r\nscala.collection.Iterator$$anon$11.nextCur(Iterator.scala:486)\r\nscala.collection.Iterator$$anon$11.hasNext(Iterator.scala:492)\r\nscala.collection.Iterator$$anon$10.hasNext(Iterator.scala:460)\r\ncom.nvidia.spark.rapids.CollectTimeIterator.$anonfun$hasNext$1(GpuExec.scala:193)\r\ncom.nvidia.spark.rapids.CollectTimeIterator.$anonfun$hasNext$1$adapted(GpuExec.scala:192)\r\ncom.nvidia.spark.rapids.Arm.withResource(Arm.scala:28)\r\ncom.nvidia.spark.rapids.Arm.withResource$(Arm.scala:26)\r\ncom.nvidia.spark.RebaseHelper$.withResource(RebaseHelper.scala:26)\r\ncom.nvidia.spark.rapids.CollectTimeIterator.hasNext(GpuExec.scala:192)\r\ncom.nvidia.spark.rapids.AbstractGpuCoalesceIterator.hasNext(GpuCoalesceBatches.scala:292)\r\nscala.collection.Iterator$$anon$10.hasNext(Iterator.scala:460)\r\ncom.nvidia.spark.rapids.GpuHashAggregateIterator.$anonfun$hasNext$2(aggregate.scala:232)\r\nscala.runtime.java8.JFunction0$mcZ$sp.apply(JFunction0$mcZ$sp.java:23)\r\nscala.Option.getOrElse(Option.scala:189)\r\ncom.nvidia.spark.rapids.GpuHashAggregateIterator.hasNext(aggregate.scala:232)\r\norg.apache.spark.sql.rapids.execution.GpuShuffleExchangeExecBase$$anon$1.partNextBatch(GpuShuffleExchangeExecBase.scala:317)\r\norg.apache.spark.sql.rapids.execution.GpuShuffleExchangeExecBase$$anon$1.hasNext(GpuShuffleExchangeExecBase.scala:340)\r\norg.apache.spark.shuffle.sort.BypassMergeSortShuffleWriter.write(BypassMergeSortShuffleWriter.java:140)\r\norg.apache.spark.shuffle.ShuffleWriteProcessor.write(ShuffleWriteProcessor.scala:59)\r\norg.apache.spark.scheduler.ShuffleMapTask.runTask(ShuffleMapTask.scala:99)\r\norg.apache.spark.scheduler.ShuffleMapTask.runTask(ShuffleMapTask.scala:52)\r\norg.apache.spark.scheduler.Task.run(Task.scala:131)\r\norg.apache.spark.executor.Executor$TaskRunner.$anonfun$run$3(Executor.scala:506)\r\norg.apache.spark.util.Utils$.tryWithSafeFinally(Utils.scala:1462)\r\norg.apache.spark.executor.Executor$TaskRunner.run(Executor.scala:509)\r\njava.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)\r\njava.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)\r\njava.lang.Thread.run(Thread.java:750)\r\n```",
+        "reactions": {
+            "url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/comments/1404283100/reactions",
+            "total_count": 0,
+            "+1": 0,
+            "-1": 0,
+            "laugh": 0,
+            "hooray": 0,
+            "confused": 0,
+            "heart": 0,
+            "rocket": 0,
+            "eyes": 0
+        },
+        "performed_via_github_app": null
+    }
+]

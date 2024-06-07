@@ -1,0 +1,46 @@
+[
+    {
+        "url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/comments/745390833",
+        "html_url": "https://github.com/NVIDIA/spark-rapids/issues/363#issuecomment-745390833",
+        "issue_url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/363",
+        "id": 745390833,
+        "node_id": "MDEyOklzc3VlQ29tbWVudDc0NTM5MDgzMw==",
+        "user": {
+            "login": "pococito",
+            "id": 16767388,
+            "node_id": "MDQ6VXNlcjE2NzY3Mzg4",
+            "avatar_url": "https://avatars.githubusercontent.com/u/16767388?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/pococito",
+            "html_url": "https://github.com/pococito",
+            "followers_url": "https://api.github.com/users/pococito/followers",
+            "following_url": "https://api.github.com/users/pococito/following{/other_user}",
+            "gists_url": "https://api.github.com/users/pococito/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/pococito/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/pococito/subscriptions",
+            "organizations_url": "https://api.github.com/users/pococito/orgs",
+            "repos_url": "https://api.github.com/users/pococito/repos",
+            "events_url": "https://api.github.com/users/pococito/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/pococito/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "created_at": "2020-12-15T16:06:32Z",
+        "updated_at": "2020-12-15T16:06:32Z",
+        "author_association": "NONE",
+        "body": "This is not \"oppresive language\", but technical language. This does not oppress anyone in their right mind, i.e. not pursuing nonsense revolutionary goals rather than doing something useful.",
+        "reactions": {
+            "url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/comments/745390833/reactions",
+            "total_count": 1,
+            "+1": 1,
+            "-1": 0,
+            "laugh": 0,
+            "hooray": 0,
+            "confused": 0,
+            "heart": 0,
+            "rocket": 0,
+            "eyes": 0
+        },
+        "performed_via_github_app": null
+    }
+]

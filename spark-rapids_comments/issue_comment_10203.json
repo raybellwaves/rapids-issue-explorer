@@ -1,0 +1,46 @@
+[
+    {
+        "url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/comments/1894317722",
+        "html_url": "https://github.com/NVIDIA/spark-rapids/issues/10203#issuecomment-1894317722",
+        "issue_url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/10203",
+        "id": 1894317722,
+        "node_id": "IC_kwDOD7z77c5w6P6a",
+        "user": {
+            "login": "NVnavkumar",
+            "id": 97137715,
+            "node_id": "U_kgDOBco0Mw",
+            "avatar_url": "https://avatars.githubusercontent.com/u/97137715?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/NVnavkumar",
+            "html_url": "https://github.com/NVnavkumar",
+            "followers_url": "https://api.github.com/users/NVnavkumar/followers",
+            "following_url": "https://api.github.com/users/NVnavkumar/following{/other_user}",
+            "gists_url": "https://api.github.com/users/NVnavkumar/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/NVnavkumar/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/NVnavkumar/subscriptions",
+            "organizations_url": "https://api.github.com/users/NVnavkumar/orgs",
+            "repos_url": "https://api.github.com/users/NVnavkumar/repos",
+            "events_url": "https://api.github.com/users/NVnavkumar/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/NVnavkumar/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "created_at": "2024-01-16T18:43:29Z",
+        "updated_at": "2024-01-16T18:49:05Z",
+        "author_association": "COLLABORATOR",
+        "body": "I was able to replicate this locally trying to build against Spark 3.5.0 using JDK 8 + Scala **2.12.17** by editing `pom.xml` and setting the `scala.version` to `2.12.17`.\r\n\r\n```diff\r\ndiff --git a/pom.xml b/pom.xml\r\nindex fd1c821cf..0d6ed32d9 100644\r\n--- a/pom.xml\r\n+++ b/pom.xml\r\n@@ -639,7 +639,7 @@\r\n             <id>scala-2.12</id>\r\n             <properties>\r\n                 <scala.binary.version>2.12</scala.binary.version>\r\n-                <scala.version>2.12.15</scala.version>\r\n+                <scala.version>2.12.17</scala.version>\r\n             </properties>\r\n         </profile>\r\n         <profile>\r\n@@ -727,7 +727,7 @@\r\n         <scala.binary.version>2.12</scala.binary.version>\r\n         <alluxio.client.version>2.8.0</alluxio.client.version>\r\n         <scala.recompileMode>incremental</scala.recompileMode>\r\n-        <scala.version>2.12.15</scala.version>\r\n+        <scala.version>2.12.17</scala.version>\r\n         <!--\r\n         -processing\r\n         to suppress unactionable \"No processor claimed any of these annotations\"\r\ndiff --git a/scala2.13/pom.xml b/scala2.13/pom.xml\r\nindex 5ccc17c4b..3a4806fe5 100644\r\n--- a/scala2.13/pom.xml\r\n+++ b/scala2.13/pom.xml\r\n@@ -639,7 +639,7 @@\r\n             <id>scala-2.12</id>\r\n             <properties>\r\n                 <scala.binary.version>2.12</scala.binary.version>\r\n-                <scala.version>2.12.15</scala.version>\r\n+                <scala.version>2.12.17</scala.version>\r\n             </properties>\r\n         </profile>\r\n         <profile>\r\n```\r\n\r\n\r\n Interesting in that this issue doesn't occur in Scala 2.13 using JDK8 + Scala **2.13.8** ",
+        "reactions": {
+            "url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/comments/1894317722/reactions",
+            "total_count": 0,
+            "+1": 0,
+            "-1": 0,
+            "laugh": 0,
+            "hooray": 0,
+            "confused": 0,
+            "heart": 0,
+            "rocket": 0,
+            "eyes": 0
+        },
+        "performed_via_github_app": null
+    }
+]

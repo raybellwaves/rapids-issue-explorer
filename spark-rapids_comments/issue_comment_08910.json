@@ -1,0 +1,46 @@
+[
+    {
+        "url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/comments/1664607202",
+        "html_url": "https://github.com/NVIDIA/spark-rapids/issues/8910#issuecomment-1664607202",
+        "issue_url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/8910",
+        "id": 1664607202,
+        "node_id": "IC_kwDOD7z77c5jN-Pi",
+        "user": {
+            "login": "andygrove",
+            "id": 934084,
+            "node_id": "MDQ6VXNlcjkzNDA4NA==",
+            "avatar_url": "https://avatars.githubusercontent.com/u/934084?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/andygrove",
+            "html_url": "https://github.com/andygrove",
+            "followers_url": "https://api.github.com/users/andygrove/followers",
+            "following_url": "https://api.github.com/users/andygrove/following{/other_user}",
+            "gists_url": "https://api.github.com/users/andygrove/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/andygrove/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/andygrove/subscriptions",
+            "organizations_url": "https://api.github.com/users/andygrove/orgs",
+            "repos_url": "https://api.github.com/users/andygrove/repos",
+            "events_url": "https://api.github.com/users/andygrove/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/andygrove/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "created_at": "2023-08-03T20:29:33Z",
+        "updated_at": "2023-08-03T21:00:21Z",
+        "author_association": "CONTRIBUTOR",
+        "body": "Some more details on the failures:\r\n\r\n## Column name resolution error with metadata fields\r\n\r\nAffects `test_[csv|orc|parquet]_scan_with_hidden_metadata_fallback`\r\n\r\n```\r\npyspark.errors.exceptions.captured.AnalysisException: [UNRESOLVED_COLUMN.WITH_SUGGESTION] A column or function parameter with name `_metadata`.`file_path` cannot be resolved. \r\n\r\nDid you mean one of the following? [`_c0`].; line 1 pos 0; 'Project [_c0#16965, '_metadata.file_path]\r\n```\r\n\r\nPossibly related to changes in Spark 3.5.0 in https://github.com/apache/spark/commit/3baf7f7b7106f3fd30257b793ff4908d0f1ec427\r\n\r\n##  Fall back to BatchScanExec instead of FileSourceScanExec\r\n\r\nAffects a number of fallback tests, such as `test_csv_datetime_parsing_fallback_cpu_fallback`\r\n\r\nTest is expecting `FileSourceScanExec` but finds `v2.BatchScanExec`\r\n\r\n## Test assertion failure in test_parquet_read_count\r\n\r\n```\r\njava.lang.AssertionError: assertion failed: Could not find GpuFileGpuScan parquet .* ReadSchema: struct<> in the Spark plan\r\n E                   GpuColumnarToRow false\r\n E                   +- GpuHashAggregate(keys=[], functions=[gpucount(1, false)], output=[count(1)#115634L])\r\n E                      +- GpuShuffleCoalesce 1073741824\r\n E                         +- GpuColumnarExchange gpusinglepartitioning$(), ENSURE_REQUIREMENTS, [plan_id=213897]\r\n E                            +- GpuHashAggregate(keys=[], functions=[partial_gpucount(1, false)], output=[count#115637L])\r\n E                               +- GpuBatchScan parquet hdfs://ip-172-31-0-176.us-west-2.compute.internal:8020/tmp/pyspark_tests/ip-172-31-8-237-main-840-848679351/PARQUET_DATA[] GpuParquetScan DataFilters: [], Format: gpuparquet, Location: InMemoryFileIndex(1 paths)[hdfs://ip-172-31-0-176.us-west-2.compute.internal:8020/tmp/pyspark_tes..., PartitionFilters: [], ReadSchema: struct<>, PushedFilters: [] RuntimeFilters: []\r\n E\r\n```\r\n\r\n## ArrowColumnarDataSourceV2 not found\r\n\r\nAffects `test_read_*` tests\r\n\r\n```\r\norg.apache.spark.SparkClassNotFoundException: [DATA_SOURCE_NOT_FOUND] Failed to find the data source: com.nvidia.spark.rapids.tests.datasourcev2.parquet.ArrowColumnarDataSourceV2. Please find packages at `https://spark.apache.org/third-party-projects.html`.\r\n```\r\n\r\n## UDF loading issues\r\n\r\n```\r\npyspark.errors.exceptions.captured.AnalysisException: [CANNOT_LOAD_FUNCTION_CLASS] Cannot load class com.nvidia.spark.rapids.tests.udf.hive.EmptyHiveSimpleUDF when registering the function `emptysimple`, please make sure it is on the classpath.\r\n```\r\n\r\n\r\n",
+        "reactions": {
+            "url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/comments/1664607202/reactions",
+            "total_count": 0,
+            "+1": 0,
+            "-1": 0,
+            "laugh": 0,
+            "hooray": 0,
+            "confused": 0,
+            "heart": 0,
+            "rocket": 0,
+            "eyes": 0
+        },
+        "performed_via_github_app": null
+    }
+]

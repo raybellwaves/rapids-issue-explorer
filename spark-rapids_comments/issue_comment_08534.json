@@ -1,0 +1,46 @@
+[
+    {
+        "url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/comments/1654781170",
+        "html_url": "https://github.com/NVIDIA/spark-rapids/issues/8534#issuecomment-1654781170",
+        "issue_url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/8534",
+        "id": 1654781170,
+        "node_id": "IC_kwDOD7z77c5iofTy",
+        "user": {
+            "login": "cindyyuanjiang",
+            "id": 47068112,
+            "node_id": "MDQ6VXNlcjQ3MDY4MTEy",
+            "avatar_url": "https://avatars.githubusercontent.com/u/47068112?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/cindyyuanjiang",
+            "html_url": "https://github.com/cindyyuanjiang",
+            "followers_url": "https://api.github.com/users/cindyyuanjiang/followers",
+            "following_url": "https://api.github.com/users/cindyyuanjiang/following{/other_user}",
+            "gists_url": "https://api.github.com/users/cindyyuanjiang/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/cindyyuanjiang/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/cindyyuanjiang/subscriptions",
+            "organizations_url": "https://api.github.com/users/cindyyuanjiang/orgs",
+            "repos_url": "https://api.github.com/users/cindyyuanjiang/repos",
+            "events_url": "https://api.github.com/users/cindyyuanjiang/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/cindyyuanjiang/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "created_at": "2023-07-28T00:05:47Z",
+        "updated_at": "2023-07-28T00:05:47Z",
+        "author_association": "COLLABORATOR",
+        "body": "I went through the Kubernetes documentation as well, and here are some additional thoughts:\r\n\r\n- [ ] As a new user for Kubernetes, I wish there are more clear references to instructions on setting up a Kubernetes cluster. In the [Prerequisites](https://nvidia.github.io/spark-rapids/docs/get-started/getting-started-kubernetes.html#prerequisites) section, there is a link to \"how to install a Kubernetes cluster with NVIDIA GPU support\", but the link takes me to a \"NVIDIA Cloud Native Technologies\" overview page, and I could hardly find any resources for installing Kubernetes clusters there.",
+        "reactions": {
+            "url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/comments/1654781170/reactions",
+            "total_count": 0,
+            "+1": 0,
+            "-1": 0,
+            "laugh": 0,
+            "hooray": 0,
+            "confused": 0,
+            "heart": 0,
+            "rocket": 0,
+            "eyes": 0
+        },
+        "performed_via_github_app": null
+    }
+]

@@ -1,0 +1,46 @@
+[
+    {
+        "url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/comments/1674840477",
+        "html_url": "https://github.com/NVIDIA/spark-rapids/issues/9004#issuecomment-1674840477",
+        "issue_url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/9004",
+        "id": 1674840477,
+        "node_id": "IC_kwDOD7z77c5j1Amd",
+        "user": {
+            "login": "revans2",
+            "id": 3441321,
+            "node_id": "MDQ6VXNlcjM0NDEzMjE=",
+            "avatar_url": "https://avatars.githubusercontent.com/u/3441321?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/revans2",
+            "html_url": "https://github.com/revans2",
+            "followers_url": "https://api.github.com/users/revans2/followers",
+            "following_url": "https://api.github.com/users/revans2/following{/other_user}",
+            "gists_url": "https://api.github.com/users/revans2/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/revans2/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/revans2/subscriptions",
+            "organizations_url": "https://api.github.com/users/revans2/orgs",
+            "repos_url": "https://api.github.com/users/revans2/repos",
+            "events_url": "https://api.github.com/users/revans2/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/revans2/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "created_at": "2023-08-11T13:58:22Z",
+        "updated_at": "2023-08-11T13:58:22Z",
+        "author_association": "COLLABORATOR",
+        "body": "This can happen today also. \r\n\r\n```\r\nmy_udf(a, c + another_udf(d))\r\n```\r\n\r\nbecause there is a `+` in between the two UDFs they end up being run as separate processes.  The CPU memory overhead has similar limits.  This is one of the ugly problems with pyspark, besides the fact that the UDFs are all dog slow.",
+        "reactions": {
+            "url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/comments/1674840477/reactions",
+            "total_count": 0,
+            "+1": 0,
+            "-1": 0,
+            "laugh": 0,
+            "hooray": 0,
+            "confused": 0,
+            "heart": 0,
+            "rocket": 0,
+            "eyes": 0
+        },
+        "performed_via_github_app": null
+    }
+]

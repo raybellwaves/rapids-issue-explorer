@@ -1,0 +1,46 @@
+[
+    {
+        "url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/comments/1881714947",
+        "html_url": "https://github.com/NVIDIA/spark-rapids/issues/8587#issuecomment-1881714947",
+        "issue_url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/8587",
+        "id": 1881714947,
+        "node_id": "IC_kwDOD7z77c5wKLED",
+        "user": {
+            "login": "gerashegalov",
+            "id": 3187938,
+            "node_id": "MDQ6VXNlcjMxODc5Mzg=",
+            "avatar_url": "https://avatars.githubusercontent.com/u/3187938?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/gerashegalov",
+            "html_url": "https://github.com/gerashegalov",
+            "followers_url": "https://api.github.com/users/gerashegalov/followers",
+            "following_url": "https://api.github.com/users/gerashegalov/following{/other_user}",
+            "gists_url": "https://api.github.com/users/gerashegalov/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/gerashegalov/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/gerashegalov/subscriptions",
+            "organizations_url": "https://api.github.com/users/gerashegalov/orgs",
+            "repos_url": "https://api.github.com/users/gerashegalov/repos",
+            "events_url": "https://api.github.com/users/gerashegalov/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/gerashegalov/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "created_at": "2024-01-08T19:42:58Z",
+        "updated_at": "2024-01-08T19:42:58Z",
+        "author_association": "COLLABORATOR",
+        "body": "We can also improve the reliability of the *released* spark-rapids jars using the nightly pipeline of the *pending* release. \r\n\r\nWe know that semi-monthly/bi-weekly maintenance updates to Databricks Runtimes can break released spark-rapids plugin code. \r\nUsually it is more subtle than just breaking the API https://github.com/NVIDIA/spark-rapids/pull/10070#issuecomment-1862013962. \r\n\r\nIdeally we want to retest the jar version that is already used by customers upon every maintenance update. However, testing is time consuming. So we do not want to retest last `N`  releases nightly. Say we do it on a weekly schedule. And say due to an unfortunate sequencing the test runs just before the DBR update push, it may take another week for the next run to catch new issues.\r\n\r\nHowever, we can utilize the fact that our pending release runs nightly tests on DBR to detect whether we need to kick off released  artifacts tests.\r\n\r\nWe can maintain a table mapping DB buildver to last tested build hashes\r\n\r\n| DB buildver | DBR hashes tested | \r\n| - |  - |\r\n| spark321db | \r\n| spark330db |\r\n| spark332db | \r\n| spark341db |\r\n \r\nSomewhere in the source code we will have a test or `./integration_tests/run_pyspark_from_build.sh` log the current values  `org.apache.spark.BuildInfo.gitHash`, `com.databricks.BuildInfo.gitHash`\r\n\r\nthen the  CI can compare it to the last known value for the DB shim based on the table and kick off a pipeline for released test jars automatically, then update the table. This should shorten the window of detection to a couple of a days. ",
+        "reactions": {
+            "url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/comments/1881714947/reactions",
+            "total_count": 0,
+            "+1": 0,
+            "-1": 0,
+            "laugh": 0,
+            "hooray": 0,
+            "confused": 0,
+            "heart": 0,
+            "rocket": 0,
+            "eyes": 0
+        },
+        "performed_via_github_app": null
+    }
+]

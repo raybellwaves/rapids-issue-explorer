@@ -1,0 +1,46 @@
+[
+    {
+        "url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/comments/1387224502",
+        "html_url": "https://github.com/NVIDIA/spark-rapids/issues/7525#issuecomment-1387224502",
+        "issue_url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/7525",
+        "id": 1387224502,
+        "node_id": "IC_kwDOD7z77c5Sr122",
+        "user": {
+            "login": "revans2",
+            "id": 3441321,
+            "node_id": "MDQ6VXNlcjM0NDEzMjE=",
+            "avatar_url": "https://avatars.githubusercontent.com/u/3441321?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/revans2",
+            "html_url": "https://github.com/revans2",
+            "followers_url": "https://api.github.com/users/revans2/followers",
+            "following_url": "https://api.github.com/users/revans2/following{/other_user}",
+            "gists_url": "https://api.github.com/users/revans2/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/revans2/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/revans2/subscriptions",
+            "organizations_url": "https://api.github.com/users/revans2/orgs",
+            "repos_url": "https://api.github.com/users/revans2/repos",
+            "events_url": "https://api.github.com/users/revans2/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/revans2/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "created_at": "2023-01-18T15:08:16Z",
+        "updated_at": "2023-01-18T15:08:16Z",
+        "author_association": "COLLABORATOR",
+        "body": "This change is just a few lines that operate on the logical plan. This should have no impact to our ability to run the resulting command. \r\n\r\nIt would be nice to see how the configs that they set operate in practice for the GPU, and if we can implement something to improve the NDS performance using them.  But they are both off by default, so we would need to understand why. One of them uses a BloomFilter aggregation and check with an xxhash64. We don't currently support either of them, and we are not likely to support them any time soon.\r\n\r\nThe other one uses a sub-query to try and do something similar, so it might be interesting to see what it does by itself.\r\n\r\n```\r\nspark.sql.optimizer.runtime.bloomFilter.enabled=false\r\nspark.sql.optimizer.runtimeFilter.semiJoinReduction.enabled=true\r\n```",
+        "reactions": {
+            "url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/comments/1387224502/reactions",
+            "total_count": 0,
+            "+1": 0,
+            "-1": 0,
+            "laugh": 0,
+            "hooray": 0,
+            "confused": 0,
+            "heart": 0,
+            "rocket": 0,
+            "eyes": 0
+        },
+        "performed_via_github_app": null
+    }
+]

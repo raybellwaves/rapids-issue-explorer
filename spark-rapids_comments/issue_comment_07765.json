@@ -1,0 +1,46 @@
+[
+    {
+        "url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/comments/1487304706",
+        "html_url": "https://github.com/NVIDIA/spark-rapids/issues/7765#issuecomment-1487304706",
+        "issue_url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/7765",
+        "id": 1487304706,
+        "node_id": "IC_kwDOD7z77c5YpngC",
+        "user": {
+            "login": "trivialfis",
+            "id": 16746409,
+            "node_id": "MDQ6VXNlcjE2NzQ2NDA5",
+            "avatar_url": "https://avatars.githubusercontent.com/u/16746409?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/trivialfis",
+            "html_url": "https://github.com/trivialfis",
+            "followers_url": "https://api.github.com/users/trivialfis/followers",
+            "following_url": "https://api.github.com/users/trivialfis/following{/other_user}",
+            "gists_url": "https://api.github.com/users/trivialfis/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/trivialfis/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/trivialfis/subscriptions",
+            "organizations_url": "https://api.github.com/users/trivialfis/orgs",
+            "repos_url": "https://api.github.com/users/trivialfis/repos",
+            "events_url": "https://api.github.com/users/trivialfis/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/trivialfis/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "created_at": "2023-03-28T17:10:39Z",
+        "updated_at": "2023-03-28T17:10:39Z",
+        "author_association": "NONE",
+        "body": "Hi, it's not a nccl issue as shared in https://github.com/dmlc/xgboost/issues/8746#issuecomment-1474435378 . ",
+        "reactions": {
+            "url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/comments/1487304706/reactions",
+            "total_count": 0,
+            "+1": 0,
+            "-1": 0,
+            "laugh": 0,
+            "hooray": 0,
+            "confused": 0,
+            "heart": 0,
+            "rocket": 0,
+            "eyes": 0
+        },
+        "performed_via_github_app": null
+    }
+]

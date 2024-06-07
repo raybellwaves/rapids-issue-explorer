@@ -1,0 +1,46 @@
+[
+    {
+        "url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/comments/1779448307",
+        "html_url": "https://github.com/NVIDIA/spark-rapids/issues/9535#issuecomment-1779448307",
+        "issue_url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/9535",
+        "id": 1779448307,
+        "node_id": "IC_kwDOD7z77c5qEDnz",
+        "user": {
+            "login": "revans2",
+            "id": 3441321,
+            "node_id": "MDQ6VXNlcjM0NDEzMjE=",
+            "avatar_url": "https://avatars.githubusercontent.com/u/3441321?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/revans2",
+            "html_url": "https://github.com/revans2",
+            "followers_url": "https://api.github.com/users/revans2/followers",
+            "following_url": "https://api.github.com/users/revans2/following{/other_user}",
+            "gists_url": "https://api.github.com/users/revans2/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/revans2/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/revans2/subscriptions",
+            "organizations_url": "https://api.github.com/users/revans2/orgs",
+            "repos_url": "https://api.github.com/users/revans2/repos",
+            "events_url": "https://api.github.com/users/revans2/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/revans2/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "created_at": "2023-10-25T14:47:20Z",
+        "updated_at": "2023-10-25T14:47:20Z",
+        "author_association": "COLLABORATOR",
+        "body": "This is a known issue.\r\n\r\nhttps://github.com/NVIDIA/spark-rapids/issues/1860\r\n\r\nThe problem is that right now when we compute window operations, by default, we do it one partition at a time. This is the same that Spark does on the CPU.  We have put in a few special optimizations for running window (ROWS between unbounded preceding and current row) and for unbounded preceding to unbounded following.  But in the more general case of N preceding and M following we don't have a memory optimization yet.  The plan would be to take an input batch and process it. Then we would have to strip off M rows from the output batch because they were not complete. We would also have to save N rows from the input batch because they would be needed to fully compute the rows that we stripped off from the output. The hard part with this is really just making sure that we have covered all of the odd corner cases. Like what happens if preceding or following are negative?\r\n\r\nIt is not that terribly difficult of a problem to solve. Just need to sit down and do it.",
+        "reactions": {
+            "url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/comments/1779448307/reactions",
+            "total_count": 0,
+            "+1": 0,
+            "-1": 0,
+            "laugh": 0,
+            "hooray": 0,
+            "confused": 0,
+            "heart": 0,
+            "rocket": 0,
+            "eyes": 0
+        },
+        "performed_via_github_app": null
+    }
+]

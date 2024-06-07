@@ -1,0 +1,46 @@
+[
+    {
+        "url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/comments/1760971171",
+        "html_url": "https://github.com/NVIDIA/spark-rapids/issues/9356#issuecomment-1760971171",
+        "issue_url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/9356",
+        "id": 1760971171,
+        "node_id": "IC_kwDOD7z77c5o9kmj",
+        "user": {
+            "login": "gerashegalov",
+            "id": 3187938,
+            "node_id": "MDQ6VXNlcjMxODc5Mzg=",
+            "avatar_url": "https://avatars.githubusercontent.com/u/3187938?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/gerashegalov",
+            "html_url": "https://github.com/gerashegalov",
+            "followers_url": "https://api.github.com/users/gerashegalov/followers",
+            "following_url": "https://api.github.com/users/gerashegalov/following{/other_user}",
+            "gists_url": "https://api.github.com/users/gerashegalov/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/gerashegalov/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/gerashegalov/subscriptions",
+            "organizations_url": "https://api.github.com/users/gerashegalov/orgs",
+            "repos_url": "https://api.github.com/users/gerashegalov/repos",
+            "events_url": "https://api.github.com/users/gerashegalov/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/gerashegalov/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "created_at": "2023-10-13T06:25:32Z",
+        "updated_at": "2023-10-13T06:25:32Z",
+        "author_association": "COLLABORATOR",
+        "body": "potential dupe of #8759 ",
+        "reactions": {
+            "url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/comments/1760971171/reactions",
+            "total_count": 0,
+            "+1": 0,
+            "-1": 0,
+            "laugh": 0,
+            "hooray": 0,
+            "confused": 0,
+            "heart": 0,
+            "rocket": 0,
+            "eyes": 0
+        },
+        "performed_via_github_app": null
+    }
+]

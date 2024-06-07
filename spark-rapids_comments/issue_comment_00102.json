@@ -1,0 +1,46 @@
+[
+    {
+        "url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/comments/1195074563",
+        "html_url": "https://github.com/NVIDIA/spark-rapids/issues/102#issuecomment-1195074563",
+        "issue_url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/102",
+        "id": 1195074563,
+        "node_id": "IC_kwDOD7z77c5HO2QD",
+        "user": {
+            "login": "sinkinben",
+            "id": 31923950,
+            "node_id": "MDQ6VXNlcjMxOTIzOTUw",
+            "avatar_url": "https://avatars.githubusercontent.com/u/31923950?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/sinkinben",
+            "html_url": "https://github.com/sinkinben",
+            "followers_url": "https://api.github.com/users/sinkinben/followers",
+            "following_url": "https://api.github.com/users/sinkinben/following{/other_user}",
+            "gists_url": "https://api.github.com/users/sinkinben/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/sinkinben/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/sinkinben/subscriptions",
+            "organizations_url": "https://api.github.com/users/sinkinben/orgs",
+            "repos_url": "https://api.github.com/users/sinkinben/repos",
+            "events_url": "https://api.github.com/users/sinkinben/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/sinkinben/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "created_at": "2022-07-26T06:46:57Z",
+        "updated_at": "2022-07-26T06:48:08Z",
+        "author_association": "CONTRIBUTOR",
+        "body": "It seems that this issue can be done with #6034 and [PR-5946](https://github.com/NVIDIA/spark-rapids/pull/5946).\r\nWe can add some tests case like:\r\n```sql\r\n# 'sort by' guarantee to return the result rows sorted within each partition\r\nselect * from table sort by c1 limit 10\r\n# 'order by' guaranteed a global order in the data-frame.\r\n# 'order by' + 'limit offset' will generate plan `TakeOrderedAndProject, GpuTopN`.\r\nselect * from table order by c1 limit 10 offset 10\r\n```\r\n\r\nWith some tricks, e.g. `repartition(1)`, we can generate plan `CollectLimit, GlobalLimit`.",
+        "reactions": {
+            "url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/comments/1195074563/reactions",
+            "total_count": 0,
+            "+1": 0,
+            "-1": 0,
+            "laugh": 0,
+            "hooray": 0,
+            "confused": 0,
+            "heart": 0,
+            "rocket": 0,
+            "eyes": 0
+        },
+        "performed_via_github_app": null
+    }
+]

@@ -1,0 +1,46 @@
+[
+    {
+        "url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/comments/687277136",
+        "html_url": "https://github.com/NVIDIA/spark-rapids/issues/620#issuecomment-687277136",
+        "issue_url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/620",
+        "id": 687277136,
+        "node_id": "MDEyOklzc3VlQ29tbWVudDY4NzI3NzEzNg==",
+        "user": {
+            "login": "nartal1",
+            "id": 50492963,
+            "node_id": "MDQ6VXNlcjUwNDkyOTYz",
+            "avatar_url": "https://avatars.githubusercontent.com/u/50492963?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/nartal1",
+            "html_url": "https://github.com/nartal1",
+            "followers_url": "https://api.github.com/users/nartal1/followers",
+            "following_url": "https://api.github.com/users/nartal1/following{/other_user}",
+            "gists_url": "https://api.github.com/users/nartal1/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/nartal1/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/nartal1/subscriptions",
+            "organizations_url": "https://api.github.com/users/nartal1/orgs",
+            "repos_url": "https://api.github.com/users/nartal1/repos",
+            "events_url": "https://api.github.com/users/nartal1/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/nartal1/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "created_at": "2020-09-04T17:14:32Z",
+        "updated_at": "2020-09-04T17:14:32Z",
+        "author_association": "COLLABORATOR",
+        "body": "The plan is rewritten when there are multiple distincts along with non-distinct aggregations in the query by https://github.com/apache/spark/blob/1597d8fcd4c68e723eb3152335298c7d05155643/sql/catalyst/src/main/scala/org/apache/spark/sql/catalyst/optimizer/RewriteDistinctAggregates.scala\r\n The computation is done where the regular aggregation expressions and every distinct clause is aggregated\r\n in a separate group.\r\nThe plan would not have `distinct` identifier anymore.\r\n\r\nCurrently, we are falling back to CPU for this case as follows.\r\nIn `partial` mode, if there is an aggregation within `If` of `First` expression -> fall back to CPU.\r\nNon-distinct aggregations are computed by including `First` as mentioned in the bug. And in the plan, it includes an `If` expr for the aggs. \r\n\r\n\r\n",
+        "reactions": {
+            "url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/comments/687277136/reactions",
+            "total_count": 0,
+            "+1": 0,
+            "-1": 0,
+            "laugh": 0,
+            "hooray": 0,
+            "confused": 0,
+            "heart": 0,
+            "rocket": 0,
+            "eyes": 0
+        },
+        "performed_via_github_app": null
+    }
+]

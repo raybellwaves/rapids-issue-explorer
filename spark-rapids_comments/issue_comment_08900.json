@@ -1,0 +1,46 @@
+[
+    {
+        "url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/comments/1740966958",
+        "html_url": "https://github.com/NVIDIA/spark-rapids/issues/8900#issuecomment-1740966958",
+        "issue_url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/8900",
+        "id": 1740966958,
+        "node_id": "IC_kwDOD7z77c5nxQwu",
+        "user": {
+            "login": "abellina",
+            "id": 1901059,
+            "node_id": "MDQ6VXNlcjE5MDEwNTk=",
+            "avatar_url": "https://avatars.githubusercontent.com/u/1901059?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/abellina",
+            "html_url": "https://github.com/abellina",
+            "followers_url": "https://api.github.com/users/abellina/followers",
+            "following_url": "https://api.github.com/users/abellina/following{/other_user}",
+            "gists_url": "https://api.github.com/users/abellina/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/abellina/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/abellina/subscriptions",
+            "organizations_url": "https://api.github.com/users/abellina/orgs",
+            "repos_url": "https://api.github.com/users/abellina/repos",
+            "events_url": "https://api.github.com/users/abellina/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/abellina/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "created_at": "2023-09-29T14:16:25Z",
+        "updated_at": "2023-09-29T14:16:25Z",
+        "author_association": "COLLABORATOR",
+        "body": "This issue is a manifestation of not having good limits in the MT shuffle: https://github.com/NVIDIA/spark-rapids/issues/9153\r\n\r\nAs part of #8900, we should work out the pool of memory that we are allowing to be inflight. In terms of what I am finding in #9153, it seems 128MB is a better default per thread, so I'm going to PR that. That said, we need to work out if this is going to be a static amount dedicated for shuffle in #8900, or if we are going to allow the maxBytesInFlight to \"fluctuate\" as host memory usage is in demand.",
+        "reactions": {
+            "url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/comments/1740966958/reactions",
+            "total_count": 0,
+            "+1": 0,
+            "-1": 0,
+            "laugh": 0,
+            "hooray": 0,
+            "confused": 0,
+            "heart": 0,
+            "rocket": 0,
+            "eyes": 0
+        },
+        "performed_via_github_app": null
+    }
+]

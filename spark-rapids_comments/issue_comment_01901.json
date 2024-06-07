@@ -1,0 +1,46 @@
+[
+    {
+        "url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/comments/793987886",
+        "html_url": "https://github.com/NVIDIA/spark-rapids/issues/1901#issuecomment-793987886",
+        "issue_url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/1901",
+        "id": 793987886,
+        "node_id": "MDEyOklzc3VlQ29tbWVudDc5Mzk4Nzg4Ng==",
+        "user": {
+            "login": "revans2",
+            "id": 3441321,
+            "node_id": "MDQ6VXNlcjM0NDEzMjE=",
+            "avatar_url": "https://avatars.githubusercontent.com/u/3441321?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/revans2",
+            "html_url": "https://github.com/revans2",
+            "followers_url": "https://api.github.com/users/revans2/followers",
+            "following_url": "https://api.github.com/users/revans2/following{/other_user}",
+            "gists_url": "https://api.github.com/users/revans2/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/revans2/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/revans2/subscriptions",
+            "organizations_url": "https://api.github.com/users/revans2/orgs",
+            "repos_url": "https://api.github.com/users/revans2/repos",
+            "events_url": "https://api.github.com/users/revans2/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/revans2/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "created_at": "2021-03-09T14:43:10Z",
+        "updated_at": "2021-03-09T14:43:10Z",
+        "author_association": "COLLABORATOR",
+        "body": "To clarify a little bit.  Generators like `explode` and `pos_explode` produce both multiple columns of output and multiple rows of output for a single row of input. Where as most expressions only produce a single value of output for each row of input.  GenerateExec gets around this by requiring the output of a Generator to be an Array of Structs, and then does the equivalent of a flatMap followed by removing the wrapped struct.  Our code will act differently, but the type checking will still need to match.\r\n\r\nThe current type checking for nested types is very limited. It is not a problem of correctness, we can still sufficiently filter out operators that need to fall back to the CPU, even if we have to do a few extra programmatic checks in some cases.  The issue is more about being able to express to the user what is and isn't supported when we generate the documentation.  It would be nice to clearly show that there is not just one output value/type for these expressions, but multiple, and also what those outputs look like.  This is not super important just something that would be nice to have.",
+        "reactions": {
+            "url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/comments/793987886/reactions",
+            "total_count": 0,
+            "+1": 0,
+            "-1": 0,
+            "laugh": 0,
+            "hooray": 0,
+            "confused": 0,
+            "heart": 0,
+            "rocket": 0,
+            "eyes": 0
+        },
+        "performed_via_github_app": null
+    }
+]

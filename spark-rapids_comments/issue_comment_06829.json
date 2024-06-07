@@ -1,0 +1,46 @@
+[
+    {
+        "url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/comments/1284213252",
+        "html_url": "https://github.com/NVIDIA/spark-rapids/issues/6829#issuecomment-1284213252",
+        "issue_url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/6829",
+        "id": 1284213252,
+        "node_id": "IC_kwDOD7z77c5Mi4oE",
+        "user": {
+            "login": "amahussein",
+            "id": 50450311,
+            "node_id": "MDQ6VXNlcjUwNDUwMzEx",
+            "avatar_url": "https://avatars.githubusercontent.com/u/50450311?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/amahussein",
+            "html_url": "https://github.com/amahussein",
+            "followers_url": "https://api.github.com/users/amahussein/followers",
+            "following_url": "https://api.github.com/users/amahussein/following{/other_user}",
+            "gists_url": "https://api.github.com/users/amahussein/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/amahussein/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/amahussein/subscriptions",
+            "organizations_url": "https://api.github.com/users/amahussein/orgs",
+            "repos_url": "https://api.github.com/users/amahussein/repos",
+            "events_url": "https://api.github.com/users/amahussein/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/amahussein/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "created_at": "2022-10-19T15:38:55Z",
+        "updated_at": "2022-10-19T15:38:55Z",
+        "author_association": "COLLABORATOR",
+        "body": "Spark followps:\r\n\r\n- https://github.com/apache/spark/commit/9bc8c06bc4 [[SPARK-39876](https://issues.apache.org/jira/browse/SPARK-39876)][FOLLOW-UP][SQL] Add parser and Dataset tests for SQL UNPIVOT",
+        "reactions": {
+            "url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/comments/1284213252/reactions",
+            "total_count": 0,
+            "+1": 0,
+            "-1": 0,
+            "laugh": 0,
+            "hooray": 0,
+            "confused": 0,
+            "heart": 0,
+            "rocket": 0,
+            "eyes": 0
+        },
+        "performed_via_github_app": null
+    }
+]

@@ -1,0 +1,46 @@
+[
+    {
+        "url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/comments/1583141380",
+        "html_url": "https://github.com/NVIDIA/spark-rapids/issues/8532#issuecomment-1583141380",
+        "issue_url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/8532",
+        "id": 1583141380,
+        "node_id": "IC_kwDOD7z77c5eXNIE",
+        "user": {
+            "login": "revans2",
+            "id": 3441321,
+            "node_id": "MDQ6VXNlcjM0NDEzMjE=",
+            "avatar_url": "https://avatars.githubusercontent.com/u/3441321?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/revans2",
+            "html_url": "https://github.com/revans2",
+            "followers_url": "https://api.github.com/users/revans2/followers",
+            "following_url": "https://api.github.com/users/revans2/following{/other_user}",
+            "gists_url": "https://api.github.com/users/revans2/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/revans2/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/revans2/subscriptions",
+            "organizations_url": "https://api.github.com/users/revans2/orgs",
+            "repos_url": "https://api.github.com/users/revans2/repos",
+            "events_url": "https://api.github.com/users/revans2/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/revans2/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "created_at": "2023-06-08T18:31:14Z",
+        "updated_at": "2023-06-08T18:31:14Z",
+        "author_association": "COLLABORATOR",
+        "body": "This is very difficult to do on the GPU generically. We have a few choices on how to implement this, and none of them are great.\r\n\r\nWe do not currently have AST support for array aggregations. I filed https://github.com/rapidsai/cudf/issues/8020 for that a long time ago, and even if we got it we would still be limited.  We could only do operations that could be effectively translated to AST. We don't support a lot of them right now. Second from a performance standpoint it would not be great for long arrays. This is because of how the agg model works. It is single threaded so you get an accumulator that is updated for each entry in the list/array. That is not a good access pattern for GPUs.\r\n\r\nThe other option is to try and generate PTX/C++ ourselves and use make_udf_aggregation, but that also would not be perfect because we cannot handle strings or nested types as output, and we have not done anything with JIT in a very long time.  It had a lot of issues. Also I don't know if it would work with a segmented reduction, and it also would likely have similar limitations that the AST implementation would.\r\n\r\nI think the fastest way to get it done would be to try and do pattern matching to rewrite it into an existing segmented_reduction.  This would be very limited, even more so then the AST or PTX implementations.\r\n\r\nThe example above is doing a SUM followed by a multiplication of 10 at the end.  But that is not 100% correct, because if there is a null value in the array `+` is going to return a null, so would have to detect that and translate it into a make_sum_aggregation with a `null_policy.INCLUDE`, assuming that it works.\r\n\r\nBut if we got into something a little more difficult, like.\r\n\r\n```(acc, x) -> if (x = \"FOO\", acc + 1, acc)```\r\n\r\nwe would have to do some very fancy pattern matching to understand what is happening there and translate it to something correctly.",
+        "reactions": {
+            "url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/comments/1583141380/reactions",
+            "total_count": 0,
+            "+1": 0,
+            "-1": 0,
+            "laugh": 0,
+            "hooray": 0,
+            "confused": 0,
+            "heart": 0,
+            "rocket": 0,
+            "eyes": 0
+        },
+        "performed_via_github_app": null
+    }
+]

@@ -1,0 +1,46 @@
+[
+    {
+        "url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/comments/1610263590",
+        "html_url": "https://github.com/NVIDIA/spark-rapids/issues/8398#issuecomment-1610263590",
+        "issue_url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/8398",
+        "id": 1610263590,
+        "node_id": "IC_kwDOD7z77c5f-qwm",
+        "user": {
+            "login": "revans2",
+            "id": 3441321,
+            "node_id": "MDQ6VXNlcjM0NDEzMjE=",
+            "avatar_url": "https://avatars.githubusercontent.com/u/3441321?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/revans2",
+            "html_url": "https://github.com/revans2",
+            "followers_url": "https://api.github.com/users/revans2/followers",
+            "following_url": "https://api.github.com/users/revans2/following{/other_user}",
+            "gists_url": "https://api.github.com/users/revans2/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/revans2/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/revans2/subscriptions",
+            "organizations_url": "https://api.github.com/users/revans2/orgs",
+            "repos_url": "https://api.github.com/users/revans2/repos",
+            "events_url": "https://api.github.com/users/revans2/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/revans2/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "created_at": "2023-06-27T21:46:47Z",
+        "updated_at": "2023-06-27T21:46:47Z",
+        "author_association": "COLLABORATOR",
+        "body": "#8618 covers a lot of this, but not everything. One key idea that we still need to look at is splitting the aggregation by column instead of row. If the input data size gets too large then right now we split it up into smaller batches, but it probably would be better to split it up by columns instead.  If that looks good, then we need to also need some guarantees from CUDF that the output would be ordered the same, and we might want a way to cache the offsets of there the key transitions happen so we don't have to redo that computation.",
+        "reactions": {
+            "url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/comments/1610263590/reactions",
+            "total_count": 0,
+            "+1": 0,
+            "-1": 0,
+            "laugh": 0,
+            "hooray": 0,
+            "confused": 0,
+            "heart": 0,
+            "rocket": 0,
+            "eyes": 0
+        },
+        "performed_via_github_app": null
+    }
+]

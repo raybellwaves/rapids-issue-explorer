@@ -1,0 +1,46 @@
+[
+    {
+        "url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/comments/1636181114",
+        "html_url": "https://github.com/NVIDIA/spark-rapids/issues/8666#issuecomment-1636181114",
+        "issue_url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/8666",
+        "id": 1636181114,
+        "node_id": "IC_kwDOD7z77c5hhiR6",
+        "user": {
+            "login": "mythrocks",
+            "id": 5607330,
+            "node_id": "MDQ6VXNlcjU2MDczMzA=",
+            "avatar_url": "https://avatars.githubusercontent.com/u/5607330?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/mythrocks",
+            "html_url": "https://github.com/mythrocks",
+            "followers_url": "https://api.github.com/users/mythrocks/followers",
+            "following_url": "https://api.github.com/users/mythrocks/following{/other_user}",
+            "gists_url": "https://api.github.com/users/mythrocks/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/mythrocks/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/mythrocks/subscriptions",
+            "organizations_url": "https://api.github.com/users/mythrocks/orgs",
+            "repos_url": "https://api.github.com/users/mythrocks/repos",
+            "events_url": "https://api.github.com/users/mythrocks/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/mythrocks/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "created_at": "2023-07-14T17:42:46Z",
+        "updated_at": "2023-07-14T17:43:12Z",
+        "author_association": "COLLABORATOR",
+        "body": "Argh. Ignore the previous comment. The task descriptions are rendered unreadable if not logged in through Github Enterprise.\r\n\r\nSorry for the confusion. There isn't a problem here.",
+        "reactions": {
+            "url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/comments/1636181114/reactions",
+            "total_count": 0,
+            "+1": 0,
+            "-1": 0,
+            "laugh": 0,
+            "hooray": 0,
+            "confused": 0,
+            "heart": 0,
+            "rocket": 0,
+            "eyes": 0
+        },
+        "performed_via_github_app": null
+    }
+]

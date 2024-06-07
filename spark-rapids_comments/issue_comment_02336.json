@@ -1,0 +1,46 @@
+[
+    {
+        "url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/comments/831944813",
+        "html_url": "https://github.com/NVIDIA/spark-rapids/issues/2336#issuecomment-831944813",
+        "issue_url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/2336",
+        "id": 831944813,
+        "node_id": "MDEyOklzc3VlQ29tbWVudDgzMTk0NDgxMw==",
+        "user": {
+            "login": "abellina",
+            "id": 1901059,
+            "node_id": "MDQ6VXNlcjE5MDEwNTk=",
+            "avatar_url": "https://avatars.githubusercontent.com/u/1901059?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/abellina",
+            "html_url": "https://github.com/abellina",
+            "followers_url": "https://api.github.com/users/abellina/followers",
+            "following_url": "https://api.github.com/users/abellina/following{/other_user}",
+            "gists_url": "https://api.github.com/users/abellina/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/abellina/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/abellina/subscriptions",
+            "organizations_url": "https://api.github.com/users/abellina/orgs",
+            "repos_url": "https://api.github.com/users/abellina/repos",
+            "events_url": "https://api.github.com/users/abellina/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/abellina/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "created_at": "2021-05-04T13:33:01Z",
+        "updated_at": "2021-05-04T13:37:12Z",
+        "author_association": "COLLABORATOR",
+        "body": "I worked on a prototype for speedup up spilling to pageable memory (which is a real issue for us) via both a GPU and a pinned bounce buffer. I need to run some verification on and can post numbers here after that.\r\n\r\nThe approach is kind of expensive and made some assumptions, so here is the high level idea:\r\n\r\n- Focus on small buffers smaller than a threshold and those who are larger bypass this.\r\n- Copy small buffers to device bounce buffer. We'd keep a few of these bounce buffers around. For example, one bounce buffer is working on the small copies D2D while the other is committed to a copy to host.\r\n- Perform a big copy to pinned memory bounce buffer of same size, when the device bounce buffer is exhausted (or spill action is complete). This part could be avoided if we find copying to pageable memory is good enough at larger memcpy sizes.\r\n- Perform a memcpy from pinned to pageable target. We need a thread at least for this one, since `memcpy` is synchronous.\r\n\r\nSo the pageable buffer could either be one large buffer, which means we have references to it and can't free it until all the host buffers that are referencing it get spilled to disk, which may be unacceptable, or individual pageable buffers. I had implemented the larger pageable buffer, but want to try the individual approach.",
+        "reactions": {
+            "url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/comments/831944813/reactions",
+            "total_count": 0,
+            "+1": 0,
+            "-1": 0,
+            "laugh": 0,
+            "hooray": 0,
+            "confused": 0,
+            "heart": 0,
+            "rocket": 0,
+            "eyes": 0
+        },
+        "performed_via_github_app": null
+    }
+]

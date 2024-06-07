@@ -1,0 +1,46 @@
+[
+    {
+        "url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/comments/1591757335",
+        "html_url": "https://github.com/NVIDIA/spark-rapids/issues/8415#issuecomment-1591757335",
+        "issue_url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/8415",
+        "id": 1591757335,
+        "node_id": "IC_kwDOD7z77c5e4EoX",
+        "user": {
+            "login": "andygrove",
+            "id": 934084,
+            "node_id": "MDQ6VXNlcjkzNDA4NA==",
+            "avatar_url": "https://avatars.githubusercontent.com/u/934084?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/andygrove",
+            "html_url": "https://github.com/andygrove",
+            "followers_url": "https://api.github.com/users/andygrove/followers",
+            "following_url": "https://api.github.com/users/andygrove/following{/other_user}",
+            "gists_url": "https://api.github.com/users/andygrove/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/andygrove/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/andygrove/subscriptions",
+            "organizations_url": "https://api.github.com/users/andygrove/orgs",
+            "repos_url": "https://api.github.com/users/andygrove/repos",
+            "events_url": "https://api.github.com/users/andygrove/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/andygrove/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "created_at": "2023-06-14T18:08:15Z",
+        "updated_at": "2023-06-14T20:47:16Z",
+        "author_association": "CONTRIBUTOR",
+        "body": "Please ignore. This was unrelated to this issue and is now resolved.\r\n\r\n~One challenge in implementing this is that we replace `JoinedRowProcessor` with a `RapidsProcessDeltaMergeJoin` logical operator that involves a non-deterministic expression (`monotonically_increasing_id`). Spark has an analyzer rule that only allows non-deterministic expressions in a hard-coded set of operators, resulting in the following error:~\r\n\r\n```\r\n23/06/14 16:55:53 ERROR GpuMergeIntoCommand: Fatal error in MERGE with materialized source in attempt 1.\r\norg.apache.spark.sql.AnalysisException: nondeterministic expressions are only allowed in Project, Filter, Aggregate or Window, found:\r\na,b,c,_target_row_id_,_row_dropped_,_incr_row_count_,_change_type,(_source_row_present_ IS NULL),(_target_row_present_ IS NULL),true,a,b,c,_target_row_id_,true,(UDF() AND UDF()),CAST(NULL AS STRING),a,b,c,_target_row_id_,false,true,'delete',a,b,c,_target_row_id_,false,UDF(),CAST(NULL AS STRING),a,b,c,_target_row_id_,true,true,CAST(NULL AS STRING)\r\nin operator RapidsProcessDeltaMergeJoin [a#304727, b#304728, c#304729, _target_row_id_#304730L, _row_dropped_#304731, _incr_row_count_#304732, _change_type#304733], isnull(_source_row_present_#304699), isnull(_target_row_present_#304702), [true], [[[a#304425, b#304426, c#304427, _target_row_id_#304707L, true, (UDF() AND UDF()), null], [a#304425, b#304426, c#304427, _target_row_id_#304707L, false, true, delete]]], [a#304425, b#304426, c#304427, _target_row_id_#304707L, false, UDF(), null], [a#304425, b#304426, c#304427, _target_row_id_#304707L, true, true, null].; line 1 pos 0;\r\n```\r\n\r\nHere is the Spark code from `CheckAnalysis`:\r\n\r\n```scala\r\n          case o if o.expressions.exists(!_.deterministic) &&\r\n            !o.isInstanceOf[Project] && !o.isInstanceOf[Filter] &&\r\n            !o.isInstanceOf[Aggregate] && !o.isInstanceOf[Window] &&\r\n            // Lateral join is checked in checkSubqueryExpression.\r\n            !o.isInstanceOf[LateralJoin] =>\r\n            // The rule above is used to check Aggregate operator.\r\n            o.failAnalysis(\r\n              errorClass = \"_LEGACY_ERROR_TEMP_2439\",\r\n              messageParameters = Map(\r\n                \"sqlExprs\" -> o.expressions.map(_.sql).mkString(\",\"),\r\n                \"operator\" -> operator.simpleString(SQLConf.get.maxToStringFields)))\r\n```\r\n\r\nFor now, we avoid replacing the operator if `notMatchedBySourceClauses` is non-empty.",
+        "reactions": {
+            "url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/comments/1591757335/reactions",
+            "total_count": 0,
+            "+1": 0,
+            "-1": 0,
+            "laugh": 0,
+            "hooray": 0,
+            "confused": 0,
+            "heart": 0,
+            "rocket": 0,
+            "eyes": 0
+        },
+        "performed_via_github_app": null
+    }
+]

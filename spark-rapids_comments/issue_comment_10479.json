@@ -1,0 +1,46 @@
+[
+    {
+        "url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/comments/1997526906",
+        "html_url": "https://github.com/NVIDIA/spark-rapids/issues/10479#issuecomment-1997526906",
+        "issue_url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/10479",
+        "id": 1997526906,
+        "node_id": "IC_kwDOD7z77c53D9d6",
+        "user": {
+            "login": "revans2",
+            "id": 3441321,
+            "node_id": "MDQ6VXNlcjM0NDEzMjE=",
+            "avatar_url": "https://avatars.githubusercontent.com/u/3441321?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/revans2",
+            "html_url": "https://github.com/revans2",
+            "followers_url": "https://api.github.com/users/revans2/followers",
+            "following_url": "https://api.github.com/users/revans2/following{/other_user}",
+            "gists_url": "https://api.github.com/users/revans2/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/revans2/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/revans2/subscriptions",
+            "organizations_url": "https://api.github.com/users/revans2/orgs",
+            "repos_url": "https://api.github.com/users/revans2/repos",
+            "events_url": "https://api.github.com/users/revans2/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/revans2/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "created_at": "2024-03-14T13:59:13Z",
+        "updated_at": "2024-03-14T13:59:13Z",
+        "author_association": "COLLABORATOR",
+        "body": "This is mostly fixed, but if we try to read the data as a string, then it is not validated, it is just returned as a string.\r\n\r\nI see this as a subset of https://github.com/rapidsai/cudf/issues/15222\r\n\r\nWe can probably still fix it in our code, for non-nested data but it means we will have to run a regular expression over all of the returned string output, and ultimately we really should have CUDF do the validation everywhere if we want it to be right.",
+        "reactions": {
+            "url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/comments/1997526906/reactions",
+            "total_count": 0,
+            "+1": 0,
+            "-1": 0,
+            "laugh": 0,
+            "hooray": 0,
+            "confused": 0,
+            "heart": 0,
+            "rocket": 0,
+            "eyes": 0
+        },
+        "performed_via_github_app": null
+    }
+]

@@ -1,0 +1,46 @@
+[
+    {
+        "url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/comments/1793277595",
+        "html_url": "https://github.com/NVIDIA/spark-rapids/issues/9201#issuecomment-1793277595",
+        "issue_url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/9201",
+        "id": 1793277595,
+        "node_id": "IC_kwDOD7z77c5q4z6b",
+        "user": {
+            "login": "cindyyuanjiang",
+            "id": 47068112,
+            "node_id": "MDQ6VXNlcjQ3MDY4MTEy",
+            "avatar_url": "https://avatars.githubusercontent.com/u/47068112?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/cindyyuanjiang",
+            "html_url": "https://github.com/cindyyuanjiang",
+            "followers_url": "https://api.github.com/users/cindyyuanjiang/followers",
+            "following_url": "https://api.github.com/users/cindyyuanjiang/following{/other_user}",
+            "gists_url": "https://api.github.com/users/cindyyuanjiang/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/cindyyuanjiang/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/cindyyuanjiang/subscriptions",
+            "organizations_url": "https://api.github.com/users/cindyyuanjiang/orgs",
+            "repos_url": "https://api.github.com/users/cindyyuanjiang/repos",
+            "events_url": "https://api.github.com/users/cindyyuanjiang/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/cindyyuanjiang/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "created_at": "2023-11-04T00:56:08Z",
+        "updated_at": "2023-11-04T00:57:06Z",
+        "author_association": "COLLABORATOR",
+        "body": "After looking further into this, I don't think we should make this change in the plugin side.\r\n\r\nThe \"SQL func\" column in file `supportedExpr.csv` is generated based on a map called [expressions](https://github.com/apache/spark/blob/28961a6ce001e0c25c780a39a726fdd825542cee/sql/catalyst/src/main/scala/org/apache/spark/sql/catalyst/analysis/FunctionRegistry.scala#L357) in `FunctionRegistry.scala` in the Apache Spark Github repo, which is a mapping from expressions to SQL functions. Since we rely on this map as the ground truth for the \"SQL func\" column, we should not modify the meaning of this map by adding more entries into it.\r\n\r\nFor instance, `promote_precision` is not a SQL function and therefore it should not have a \"SQL func\" column by definition. In order for the tools repo to recognize supported expressions correctly, one approach would be to add another file/column to store the expressions and their corresponding names (that show up in event logs), instead of changing the \"SQL func\" column.\r\n\r\ncc: @mattahrens ",
+        "reactions": {
+            "url": "https://api.github.com/repos/NVIDIA/spark-rapids/issues/comments/1793277595/reactions",
+            "total_count": 1,
+            "+1": 1,
+            "-1": 0,
+            "laugh": 0,
+            "hooray": 0,
+            "confused": 0,
+            "heart": 0,
+            "rocket": 0,
+            "eyes": 0
+        },
+        "performed_via_github_app": null
+    }
+]
