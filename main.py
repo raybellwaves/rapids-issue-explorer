@@ -735,14 +735,16 @@ def steamlit_dashboard():
     st.subheader("Understanding developers")
 
     st.markdown(
-        "We can explore the GitHub data to understand what developers are interested in "
-        "and to ensure their requested features or bug are taken into account in the roadmap"
-        "You can ask questions such as: "
-        " - **What issues are Walmart most interested in?** "
-        " - **What issue is ETH Zürich most interested in?** "
-        " - **What issue has the most reactions?** "
-        " - **What company posted the issue with the most reactions?** "
-        " - **What are the top 5 issues with the most most reactions?** "
+        """
+        We can explore the GitHub data to understand what developers are interested in 
+        and to ensure their requested features or bug are taken into account in the roadmap
+        You can ask questions such as: 
+        - **What issues are Walmart most interested in?**
+        - **What issue is ETH Zürich most interested in?**
+        - **What issue has the most reactions?**
+        - **What company posted the issue with the most reactions?**
+        - **What are the top 5 issues with the most most reactions?**
+        """
     )
     df_issues = df_issues.drop(
         columns=[
