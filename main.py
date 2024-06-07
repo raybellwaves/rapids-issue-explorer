@@ -701,10 +701,8 @@ def steamlit_dashboard():
     st.subheader("Community building")
 
     st.markdown(
-        "We can explore the location of users who post on cudf. "
+        f"We can explore the location of users who post on {repo}. "
         "This can help with event planning and community building. "
-        "The legend isn't showing up (https://github.com/randyzwitch/streamlit-folium/issues/192) on this map where yellow marker are NVIDIA employees "
-        "and blue markers are non-NVIDIA employees. See https://github.com/raybellwaves/cudf-issue-explorer/blob/main/plots.ipynb for a clean version of this."
     )
 
     _df = df_issues[
