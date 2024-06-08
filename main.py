@@ -814,11 +814,10 @@ def steamlit_dashboard():
 
 
 if __name__ == "__main__":
-    """
-    python main.py
-    streamlit run main.py
-    https://raybellwaves-rapids-issue-explorer-main-svnwve.streamlit.app/
-    """
+    # python main.py
+    # streamlit run main.py
+    # https://raybellwaves-rapids-issue-explorer-main-svnwve.streamlit.app/
+    #
     # pull_issues()
     # concat_issues()
     # pull_comments()
