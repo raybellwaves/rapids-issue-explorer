@@ -745,7 +745,6 @@ def steamlit_dashboard():
         and to ensure their requested features or bug are taken into account in the roadmap
         You can ask questions such as: 
         - **What issues are {_company} most interested in?**
-        - **What issue is ETH Zürich most interested in?**
         - **What issue has the most reactions?**
         - **What company posted the issue with the most reactions?**
         - **What are the top 5 issues with the most most reactions?**
