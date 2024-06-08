@@ -1,4 +1,8 @@
-# python main.py
+"""
+python main.py
+streamlit run main.py
+https://raybellwaves-rapids-issue-explorer-main-svnwve.streamlit.app/
+"""
 
 # ORG = "rapidsai"
 # REPO = "cudf"
@@ -686,14 +690,15 @@ def steamlit_dashboard():
 
     st.markdown("**You will need to pass an OpenAI API key to ask questions below:**")
     openai_api_key = st.text_input("OpenAI API Key:", type="password")
-    openai_client = OpenAI(api_key=openai_api_key)
+    if openai_api_key:
+        openai_client = OpenAI(api_key=openai_api_key)
     if repo == "cudf":
-        default_q = "What type of company is Halliburton?"
-    else:
-        default_q = "What type of company is bytedance?"
+        _company = "Walmart"
+    elif repo == "spark-rapids":
+        _company = "bytedance"
     content = st.text_input(
         f"Ask questions about companies who use {repo}:",
-        default_q,
+        f"What type of company is {_company}?",
     )
     if openai_api_key:
         st.write(chat_response(content))
@@ -735,11 +740,11 @@ def steamlit_dashboard():
     st.subheader("Understanding developers")
 
     st.markdown(
-        """
+        f"""
         We can explore the GitHub data to understand what developers are interested in 
         and to ensure their requested features or bug are taken into account in the roadmap
         You can ask questions such as: 
-        - **What issues are Walmart most interested in?**
+        - **What issues are {_company} most interested in?**
         - **What issue is ETH Zürich most interested in?**
         - **What issue has the most reactions?**
         - **What company posted the issue with the most reactions?**
@@ -766,22 +771,19 @@ def steamlit_dashboard():
             "location_lon",
         ]
     )
-    agent = create_pandas_dataframe_agent(
-        OpenAI_langchain(
-            temperature=0,
-            model="gpt-3.5-turbo-instruct",
-            openai_api_key=openai_api_key,
-        ),
-        df_issues,
-        verbose=True,
-    )
-    if repo == "cudf":
-        default_q = "What issues has the company Walmart created?"
-    else:
-        default_q = "What issues has the company bytedance created?"
+    if openai_api_key:
+        agent = create_pandas_dataframe_agent(
+            OpenAI_langchain(
+                temperature=0,
+                model="gpt-3.5-turbo-instruct",
+                openai_api_key=openai_api_key,
+            ),
+            df_issues,
+            verbose=True,
+        )
     content = st.text_input(
         f"Ask questions about about external {repo} users and developers using the GitHub data:",
-        default_q,
+        f"What issues has the company {_company} created?",
     )
     if openai_api_key:
         response = agent_response(agent, content)
@@ -812,9 +814,11 @@ def steamlit_dashboard():
 
 
 if __name__ == "__main__":
-    # python main.py
-    # streamlit run main.py
-
+    """
+    python main.py
+    streamlit run main.py
+    https://raybellwaves-rapids-issue-explorer-main-svnwve.streamlit.app/
+    """
     # pull_issues()
     # concat_issues()
     # pull_comments()
