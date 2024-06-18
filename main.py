@@ -778,6 +778,7 @@ def steamlit_dashboard():
                 openai_api_key=openai_api_key,
             ),
             df_issues,
+            allow_dangerous_code=True,
             verbose=True,
         )
     content = st.text_input(
